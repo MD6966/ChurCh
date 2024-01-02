@@ -1,38 +1,65 @@
-import React from 'react';
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import React, { useState } from "react";
+import { AppBar, Box, Toolbar, useTheme } from "@mui/material";
+import { menuItems } from "../../utils/helper";
+import { SidebarMenu } from "../SidebarMenu";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Text } from "../base";
+import { Images } from "../../utils/assets/images";
+import { useHeaderStyle } from "./styles";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const styles = useHeaderStyle({ theme });
 
+  // console.log("========open======", open);
+  // console.log("images object =========", Images);
   return (
     <div>
-      <AppBar
-        position="fixed"
-        sx={{
-          top: 0,
-        }}
-
-      >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', backgroundColor: 'white', color: 'black' }}>
+      <AppBar position="fixed" sx={styles.appBar}>
+        {/* Toolbar  */}
+        <Toolbar sx={styles.toolbar}>
           <div
             sx={{
               marginRight: (theme) => theme.spacing(2),
             }}
           >
-            <img src="logo.png" alt="Logo" />
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <img
+                width={25}
+                height={25}
+                src={Images.churchLogo}
+                style={{
+                  objectFit: "cover",
+                }}
+                alt="Logo"
+              />
+            </Box>
+
+            <SidebarMenu open={open} setOpen={setOpen} />
           </div>
-          <Box sx={{ display: 'flex', gap: '30px', '& >*': { fontSize: '16px', fontWeight: 600 } }}>
-            <Typography>HOME</Typography>
-            <Typography> MINISTRIES</Typography>
-            <Typography>GIVE ONLINE</Typography>
-            <Typography>ABOUT US</Typography>
-            <Typography>CONTACT US</Typography>
-            <Typography>LANGUAGE</Typography>
+
+          <Box sx={styles.menuBox}>
+            {menuItems.map((menu, index) => (
+              <Text sx={styles.menuItem} key={index}>
+                {menu.name}
+              </Text>
+            ))}
           </Box>
+          <MenuIcon
+            size={22}
+            sx={styles.menuIcon}
+            onClick={() => setOpen(true)}
+          />
         </Toolbar>
       </AppBar>
 
       <Toolbar />
-
     </div>
   );
 };
