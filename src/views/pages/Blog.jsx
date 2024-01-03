@@ -66,7 +66,7 @@ const Blog = () => {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            backgroundImage: `url('/main.png')`,
+                            backgroundImage: `url('/img23.png')`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             zIndex: -1,
@@ -93,7 +93,14 @@ const Blog = () => {
 
                     <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
-                        <Typography>Blog</Typography>
+                        <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
+                            BLOGS
+                        </Typography>
+                        <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>
+                            Explore our thought-provoking blogs, where we share inspirational stories, reflections
+                            on faith, and updates on community events. Dive into a rich tapestry of content that
+                            aims to uplift, inspire, and foster a sense of connection within our church family.
+                        </Typography>
 
                     </Box>
                 </Box>
