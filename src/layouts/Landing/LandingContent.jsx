@@ -1,6 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import { Navigate, useNavigate } from "react-router";
 const data = [
   {
     imageSrc: "/img1.png",
@@ -56,7 +55,6 @@ const blogData = [
   },
 ];
 const LandingContent = () => {
-  const navigate = useNavigate()
   return (
     <>
       <Box
@@ -146,7 +144,6 @@ const LandingContent = () => {
             padding: "10px 12px",
             border: "none",
           }}
-          onClick={() => navigate('/live-stream')}
         >
           View All Events
         </button>
@@ -368,7 +365,6 @@ const LandingContent = () => {
                   padding: "10px 12px",
                   border: "none",
                 }}
-                onClick={() => navigate('/sermons')}
               >
                 View all Sermons
               </button>
@@ -486,7 +482,6 @@ const LandingContent = () => {
             padding: "10px 12px",
             border: "none",
           }}
-          onClick={() => navigate('/minister')}
         >
           See all Ministries
         </button>
@@ -608,7 +603,6 @@ const LandingContent = () => {
             padding: "10px 12px",
             border: "none",
           }}
-          onClick={() => navigate('/blog')}
         >
           View All Blogs
         </button>
@@ -670,7 +664,6 @@ const LandingContent = () => {
                     padding: "10px 12px",
                     border: "none",
                   }}
-                  onClick={() => navigate('/contact')}
                 >
                   Contact us
                 </button>

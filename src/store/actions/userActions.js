@@ -62,7 +62,7 @@ export const postPrayRequest = (formData) => async () => {
       formData
     );
     return response;
-  } catch (error) {}
+  } catch (error) { }
 };
 
 
