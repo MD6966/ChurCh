@@ -1,6 +1,6 @@
 import { Box, useTheme } from "@mui/material";
 import React from "react";
-import { Outlet } from "react-router-dom/dist";
+import { Outlet, useNavigate } from "react-router-dom/dist";
 import Body from "./Body";
 import NavBarLinks from "./NavBarLinks";
 import Page from "../../components/page/page";
@@ -14,6 +14,7 @@ import { Text } from "../../components/base";
 const Landing = () => {
   const theme = useTheme();
   const styles = useLandingStyle({ theme });
+  const navigate = useNavigate()
   return (
     <Page title="Welcome To Website">
       <Nav />
@@ -83,6 +84,7 @@ const Landing = () => {
             Join us on a journey of faith, fellowship, and transformation.
           </Text>
           <button
+            onClick={() => navigate('/live-stream')}
             style={{
               backgroundColor: "#E10B0B",
               color: "white",

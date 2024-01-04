@@ -7,25 +7,25 @@ const data = [
         imageSrc: "/img1.png",
         description:
             "Embark on a Heartwarming Journey this Sunday at our Magical Christmas Eve Service! Join us for an enchanting celebration filled cherished memories,uplifting carols, and the joyous spirit of community.Bring the whole family and immerse yourselves in the magic of Christmas, creating moments that will be treasured for years to come!.",
-        buttonText: "Live 10:00 AM",
+        buttonText: "View Event",
     },
     {
         imageSrc: "/img2.png",
         description:
             "Step into the enchanting embrace of Christmas magic this Sunday evening at our special celebration! Join us for a unique blend of joy, reflection, and the spirit of community, making this Christmas Eve an unforgettable experience for you and your loved ones.Together, let is create cherished memories, resonate with the beauty of carols, and revel in the warmth of the holiday season.",
-        buttonText: "Live 11:00 PM",
+        buttonText: "View Event",
     },
     {
         imageSrc: "/img1.png",
         description:
             "Embark on a Heartwarming Journey this Sunday at our Magical Christmas Eve Service! Join us for an enchanting celebration filled cherished memories,uplifting carols, and the joyous spirit of community.Bring the whole family and immerse yourselves in the magic of Christmas, creating moments that will be treasured for years to come!.",
-        buttonText: "Live 10:00 AM",
+        buttonText: "View Event",
     },
     {
         imageSrc: "/img2.png",
         description:
             "Step into the enchanting embrace of Christmas magic this Sunday evening at our special celebration! Join us for a unique blend of joy, reflection, and the spirit of community, making this Christmas Eve an unforgettable experience for you and your loved ones.Together, let is create cherished memories, resonate with the beauty of carols, and revel in the warmth of the holiday season.",
-        buttonText: "Live 11:00 PM",
+        buttonText: "View Event",
     },
 ];
 const LiveStream = () => {

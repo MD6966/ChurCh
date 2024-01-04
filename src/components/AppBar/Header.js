@@ -56,8 +56,6 @@ const Header = () => {
   // console.log("========open======", open);
   // console.log("images object =========", Images);
 
-  // console.log("========open======", open);
-  // console.log("images object =========", Images);
   return (
     <div>
       <AppBar position="fixed" sx={styles.appBar}>

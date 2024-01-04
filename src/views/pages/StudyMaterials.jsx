@@ -5,54 +5,7 @@ import Footer from '../../layouts/Landing/Footer';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { getStudyMaterials } from '../../store/actions/userActions';
-const materialData = [
-    {
-        imageSrc: '/img20.png',
-        description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
-        title: 'Introduction to the Bible'
-    },
-    {
-        imageSrc: '/img21.png',
-        description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
-        title: 'Family and Marriage'
-    },
-    {
-        imageSrc: '/img22.png',
-        title: 'Sermon on the Mount',
-        description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
-    },
-    {
-        imageSrc: '/img20.png',
-        description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
-        title: 'Introduction to the Bible'
-    },
-    {
-        imageSrc: '/img21.png',
-        description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
-        title: 'Family and Marriage'
-    },
-    {
-        imageSrc: '/img22.png',
-        title: 'Sermon on the Mount',
-        description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
-    },
-    {
-        imageSrc: '/img20.png',
-        description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
-        title: 'Introduction to the Bible'
-    },
-    {
-        imageSrc: '/img21.png',
-        description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
-        title: 'Family and Marriage'
-    },
-    {
-        imageSrc: '/img22.png',
-        title: 'Sermon on the Mount',
-        description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
-    },
 
-];
 const StudyMaterials = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -60,8 +13,8 @@ const StudyMaterials = () => {
     const getMaterials = () => {
         dispatch(getStudyMaterials())
             .then((result) => {
-                console.log("========result", result.data.payload);
-                setStudyMaterials(result.data.payload);
+                console.log("========result", result.data.data);
+                setStudyMaterials(result.data.data);
             })
             .catch((err) => {
                 console.log("Error fetching categories:", err);
@@ -71,6 +24,11 @@ const StudyMaterials = () => {
     useEffect(() => {
         getMaterials();
     }, []);
+    const handleStudy = (data) => {
+        const { id, title, description } = data;
+        navigate('/study-intro', { state: { id, title, description } });
+
+    }
     return (
         <>
             <Header />
@@ -183,11 +141,11 @@ const StudyMaterials = () => {
                                 />
                                 <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                     <div>
-                                        <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start' }}>{val.name}</Typography>
+                                        <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start' }}>{val.title}</Typography>
                                         <Typography sx={{ fontSize: '16px', fontWeight: 400, textAlign: 'start' }}>{val.description}</Typography>
                                     </div>
                                     <div>
-                                        <button onClick={() => navigate('/study-intro')} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                                        <button onClick={() => handleStudy(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                                     </div>
                                 </Box>
                             </Box>

@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { Navigate, useNavigate } from "react-router";
 const data = [
   {
     imageSrc: "/img1.png",
@@ -54,7 +55,25 @@ const blogData = [
       "Access summaries or key takeaways from our impactful Sunday sermons.",
   },
 ];
+const materialData = [
+  {
+    imageSrc: '/img20.png',
+    description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
+    title: 'Introduction to the Bible'
+  },
+  {
+    imageSrc: '/img21.png',
+    description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
+    title: 'Family and Marriage'
+  },
+  {
+    imageSrc: '/img22.png',
+    title: 'Sermon on the Mount',
+    description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
+  },
+];
 const LandingContent = () => {
+  const navigate = useNavigate()
   return (
     <>
       <Box
@@ -144,6 +163,7 @@ const LandingContent = () => {
             padding: "10px 12px",
             border: "none",
           }}
+          onClick={() => navigate('/live-stream')}
         >
           View All Events
         </button>
@@ -365,6 +385,7 @@ const LandingContent = () => {
                   padding: "10px 12px",
                   border: "none",
                 }}
+                onClick={() => navigate('/sermons')}
               >
                 View all Sermons
               </button>
@@ -482,9 +503,58 @@ const LandingContent = () => {
             padding: "10px 12px",
             border: "none",
           }}
+          onClick={() => navigate('/minister')}
         >
           See all Ministries
         </button>
+      </Box>
+      <Box sx={{ padding: '40px', backgroundColor: 'black', color: 'white', mb: 5 }}>
+        <Typography
+          sx={{ fontSize: "22px", fontWeight: 600, textAlign: "center" }}
+        >
+          Our Ministries
+        </Typography>
+        <Grid container spacing={5} sx={{ padding: '50px 0px' }}>
+          {materialData.map((val, ind) => (
+            <Grid key={ind} item lg={4} md={6} sm={12} xs={12}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  textAlign: 'center',
+                  alignItems: 'center',
+                  boxShadow: '0px 8px 6px 0px rgba(225, 11, 11, 0.50)',
+                  width: '100%',
+                  overflow: 'hidden',
+                  borderRadius: '16px',
+                  height: '100%',
+                  position: 'relative',
+                  backgroundColor: 'white',
+                  color: 'black'
+
+                }}
+              >
+                <img
+                  src={val.imageSrc}
+                  style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                  alt="abc"
+                />
+                <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div>
+                    <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start' }}>{val.title}</Typography>
+                    <Typography sx={{ fontSize: '16px', fontWeight: 400, textAlign: 'start' }}>{val.description}</Typography>
+                  </div>
+                  <div>
+                    <button onClick={() => navigate('/study-intro')} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                  </div>
+                </Box>
+              </Box>
+
+
+            </Grid>
+          ))}
+
+        </Grid>
       </Box>
       <Box sx={{ backgroundColor: "black", padding: "40px", color: "white" }}>
         <Typography
@@ -603,6 +673,7 @@ const LandingContent = () => {
             padding: "10px 12px",
             border: "none",
           }}
+          onClick={() => navigate('/blog')}
         >
           View All Blogs
         </button>
@@ -664,6 +735,7 @@ const LandingContent = () => {
                     padding: "10px 12px",
                     border: "none",
                   }}
+                  onClick={() => navigate('/contact')}
                 >
                   Contact us
                 </button>
