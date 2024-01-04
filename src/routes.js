@@ -18,6 +18,8 @@ import StudyIntro from "./views/pages/StudyIntro";
 import PrayerRegards from "./views/pages/PrayerRegards";
 import LiveStream from "./views/pages/LiveStream";
 import Sermons from "./views/pages/Sermons";
+import ShowEventVideo from "./views/pages/ShowVideo";
+
 
 export default function Router() {
   let element = useRoutes([
@@ -90,7 +92,12 @@ export default function Router() {
     {
       path: 'sermons',
       element: <Sermons />
-    }
+    },
+    {
+      path: 'eventVideo',
+      element: <ShowEventVideo />
+    },
+
   ]);
   return element;
 }

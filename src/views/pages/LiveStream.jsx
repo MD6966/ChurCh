@@ -1,34 +1,72 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/AppBar/Header'
 import { Box, Grid, Typography } from '@mui/material'
 import Footer from '../../layouts/Landing/Footer';
+import { useDispatch } from 'react-redux';
+import { getlastEvents } from '../../store/actions/userActions';
+import { useNavigate } from 'react-router';
+
+
 const data = [
     {
         imageSrc: "/img1.png",
+        title: 'Purposeful Living',
         description:
             "Embark on a Heartwarming Journey this Sunday at our Magical Christmas Eve Service! Join us for an enchanting celebration filled cherished memories,uplifting carols, and the joyous spirit of community.Bring the whole family and immerse yourselves in the magic of Christmas, creating moments that will be treasured for years to come!.",
         buttonText: "View Event",
     },
     {
         imageSrc: "/img2.png",
+        title: 'Rise and Shine',
         description:
             "Step into the enchanting embrace of Christmas magic this Sunday evening at our special celebration! Join us for a unique blend of joy, reflection, and the spirit of community, making this Christmas Eve an unforgettable experience for you and your loved ones.Together, let is create cherished memories, resonate with the beauty of carols, and revel in the warmth of the holiday season.",
         buttonText: "View Event",
     },
     {
         imageSrc: "/img1.png",
+        title: 'Purposeful Living',
         description:
             "Embark on a Heartwarming Journey this Sunday at our Magical Christmas Eve Service! Join us for an enchanting celebration filled cherished memories,uplifting carols, and the joyous spirit of community.Bring the whole family and immerse yourselves in the magic of Christmas, creating moments that will be treasured for years to come!.",
         buttonText: "View Event",
     },
     {
         imageSrc: "/img2.png",
+        title: 'Rise and Shine',
         description:
             "Step into the enchanting embrace of Christmas magic this Sunday evening at our special celebration! Join us for a unique blend of joy, reflection, and the spirit of community, making this Christmas Eve an unforgettable experience for you and your loved ones.Together, let is create cherished memories, resonate with the beauty of carols, and revel in the warmth of the holiday season.",
         buttonText: "View Event",
     },
 ];
+
 const LiveStream = () => {
+    const dispatch = useDispatch()
+    const [showEvent, setshowEvent] = useState([])
+    const getAllEvents = () => {
+        dispatch(getlastEvents())
+            .then((result) => {
+                // console.log("This is result", result.data.payload.all[0].title);
+                setshowEvent(result.data.payload.all);
+            })
+            .catch((err) => {
+                console.log("Error fetching categories:", err);
+            });
+    };
+
+    useEffect(() => {
+        getAllEvents();
+    }, []);
+    const navigate = useNavigate();
+    const handleViewEventClick = (value1, value2, value3) => {
+        // const { videoId, title, description } = data;
+        // console.log(value3, 'data')
+        navigate('/eventVideo', { state: { value1, value2, value3 } });
+    };
+
+    // const handleStudy = (data) => {
+    //     const { id, title, description } = data;
+    //     navigate('/study-intro', { state: { id, title, description } });
+
+    // }
     return (
         <>
             <Header />
@@ -100,19 +138,18 @@ const LiveStream = () => {
                     Our Last Events
                 </Typography>
                 <Grid container spacing={5}>
-                    {data.map((val, ind) => (
+                    {showEvent.map((val, ind) => (
                         <Grid key={ind} item lg={6}>
                             <Box
                                 sx={{
                                     display: "flex",
                                     flexDirection: "column",
-                                    textAlign: "center",
-                                    alignItems: "center",
+
                                     boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
                                     width: "100%",
                                     overflow: "hidden",
                                     borderRadius: "16px",
-                                    height: "90vh",
+                                    height: "100%",
                                     position: "relative",
                                 }}
                             >
@@ -137,12 +174,21 @@ const LiveStream = () => {
                                 >
                                     <Typography
                                         sx={{
+                                            fontSize: "18px",
+                                            fontWeight: 600,
+                                            textAlign: "start",
+                                        }}
+                                    >
+                                        {showEvent[ind]?.title}
+                                    </Typography>
+                                    <Typography
+                                        sx={{
                                             fontSize: "16px",
                                             fontWeight: 400,
                                             textAlign: "start",
                                         }}
                                     >
-                                        {val.description}
+                                        {showEvent[ind]?.description}
                                     </Typography>
                                     <div>
                                         <button
@@ -155,8 +201,15 @@ const LiveStream = () => {
                                                 border: "1px solid #E10B0B",
                                                 marginTop: "10px",
                                             }}
+                                            onClick={() =>
+                                                handleViewEventClick(
+                                                    showEvent[ind]?.title,
+                                                    showEvent[ind]?.description,
+                                                    showEvent[ind]?.link
+                                                )
+                                            }
                                         >
-                                            {val.buttonText}
+                                            View Event
                                         </button>
                                     </div>
                                 </Box>

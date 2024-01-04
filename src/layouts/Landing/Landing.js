@@ -58,7 +58,7 @@ const Landing = () => {
             color: "white",
             textAlign: "center",
             padding: { xs: "5px", sm: "0px 200px" },
-            gap: "10px",
+            gap: "20px",
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1,
@@ -88,7 +88,8 @@ const Landing = () => {
             style={{
               backgroundColor: "#E10B0B",
               color: "white",
-              fontSize: { xs: "20px", sm: "24px" },
+              fontSize: '22px',
+              // fontSize: { xs: "20px", sm: "24px", lg: '24px' },
               borderRadius: "8px",
               padding: "10px 12px",
               border: "none",

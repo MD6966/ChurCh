@@ -4,12 +4,14 @@ import { Navigate, useNavigate } from "react-router";
 const data = [
   {
     imageSrc: "/img1.png",
+    title: 'Purposeful Living',
     description:
       "Embark on a Heartwarming Journey this Sunday at our Magical Christmas Eve Service! Join us for an enchanting celebration filled cherished memories,uplifting carols, and the joyous spirit of community.Bring the whole family and immerse yourselves in the magic of Christmas, creating moments that will be treasured for years to come!.",
     buttonText: "Live 10:00 AM",
   },
   {
     imageSrc: "/img2.png",
+    title: 'Rise and Shine',
     description:
       "Step into the enchanting embrace of Christmas magic this Sunday evening at our special celebration! Join us for a unique blend of joy, reflection, and the spirit of community, making this Christmas Eve an unforgettable experience for you and your loved ones.Together, let is create cherished memories, resonate with the beauty of carols, and revel in the warmth of the holiday season.",
     buttonText: "Live 11:00 PM",
@@ -208,7 +210,7 @@ const LandingContent = () => {
             flexDirection: "column",
             color: "white",
             textAlign: "center",
-            gap: "10px",
+            gap: '15px',
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1,
@@ -227,6 +229,20 @@ const LandingContent = () => {
             you in this spiritual journey. Together, let's strengthen our faith
             through the power of prayer and communal connection.
           </Typography>
+          <button
+            style={{
+              backgroundColor: "#E10B0B",
+              color: "white",
+              fontSize: "22px",
+              borderRadius: "8px",
+              padding: "10px 12px",
+              border: "none",
+
+            }}
+            onClick={() => navigate('/prayer-request')}
+          >
+            Prayer Request
+          </button>
         </Box>
       </Box>
       <Box sx={{ padding: "30px" }}>
@@ -380,7 +396,7 @@ const LandingContent = () => {
                 style={{
                   backgroundColor: "#E10B0B",
                   color: "white",
-                  fontSize: "24px",
+                  fontSize: "22px",
                   borderRadius: "8px",
                   padding: "10px 12px",
                   border: "none",
@@ -512,7 +528,7 @@ const LandingContent = () => {
         <Typography
           sx={{ fontSize: "22px", fontWeight: 600, textAlign: "center" }}
         >
-          Our Ministries
+          Study Materials
         </Typography>
         <Grid container spacing={5} sx={{ padding: '50px 0px' }}>
           {materialData.map((val, ind) => (
@@ -555,6 +571,20 @@ const LandingContent = () => {
           ))}
 
         </Grid>
+        <button
+          style={{
+            backgroundColor: "#E10B0B",
+            color: "white",
+            fontSize: "22px",
+            borderRadius: "8px",
+            padding: "10px 12px",
+            border: "none",
+
+          }}
+          onClick={() => navigate('/study-materials')}
+        >
+          View All Materials
+        </button>
       </Box>
       <Box sx={{ backgroundColor: "black", padding: "40px", color: "white" }}>
         <Typography

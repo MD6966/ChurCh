@@ -86,3 +86,14 @@ export const PostStudy = (formData) => async () => {
     return response;
   } catch (error) { }
 };
+
+export const getlastEvents = () => async () => {
+  try {
+    const response = await api.get(
+      "https://church.saeedantechpvt.com/api/event"
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

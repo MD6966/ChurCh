@@ -66,7 +66,7 @@ const Blog = () => {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            backgroundImage: `url('/img23.png')`,
+                            backgroundImage: `url('/img32.png')`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             zIndex: -1,
@@ -85,7 +85,7 @@ const Blog = () => {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            backgroundColor: 'rgba(0, 0, 0, 0.70)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.1)',
                             zIndex: 0,
                         }}
                     />

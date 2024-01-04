@@ -144,6 +144,9 @@ const ContactUs = () => {
           </Grid>
         </Grid>
       </Box>
+      <Box sx={{ padding: '50px' }}>
+        <img src="img24.png" alt="" style={{ height: '100%', width: '100%' }} />
+      </Box>
       {/* Contact Us Box Form End */}
       <Footer />
     </>
