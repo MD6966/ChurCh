@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer';
 const popularPost = [
@@ -42,6 +42,9 @@ const content = [
     },
 ]
 const MinistryHousing = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <>
             <Header />
@@ -52,7 +55,7 @@ const MinistryHousing = () => {
                     '&::before': {
                         content: '""',
                         position: 'absolute',
-                        top: 0,
+                        top: -70,
                         left: 0,
                         width: '100%',
                         height: '100%',
@@ -71,7 +74,7 @@ const MinistryHousing = () => {
                 <Box
                     sx={{
                         position: 'absolute',
-                        top: 0,
+                        top: -70,
                         left: 0,
                         width: '100%',
                         height: '100%',

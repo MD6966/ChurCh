@@ -93,8 +93,42 @@ const data5 = [
 const Footer = () => {
   return (
     <>
-      <Box sx={{ backgroundColor: "#C10000", padding: "100px" }}>
-        <Grid container spacing={10}>
+
+      <Box
+        sx={{
+          position: 'relative',
+          minHeight: '500px',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundImage: `url('/img34.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: -1,
+          },
+          // position: 'relative',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(10, 28, 50, 0.95)',
+            zIndex: 0,
+          }}
+        />
+        <Grid container spacing={10} sx={{ zIndex: 2, padding: '0px 50px' }}>
           <Grid item lg={3}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {data1.map((val, index) => (

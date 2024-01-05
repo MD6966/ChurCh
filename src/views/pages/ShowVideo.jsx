@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../components/AppBar/Header';
 import Footer from "../../layouts/Landing/Footer";
 import { useLocation } from 'react-router';
@@ -10,7 +10,9 @@ const ShowEventVideo = () => {
     const { value1, value3 } = location.state;
     console.log(value3, 'sdfd')
     const videoId = extractVideoId(value3);
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <>
             <Header />

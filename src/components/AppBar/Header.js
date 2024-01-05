@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppBar, Box, Toolbar, useTheme } from "@mui/material";
 import { menuItems } from "../../utils/helper";
 import { SidebarMenu } from "../SidebarMenu";
@@ -8,7 +8,7 @@ import { Images } from "../../utils/assets/images";
 import { useHeaderStyle } from "./styles";
 import { useNavigate } from "react-router-dom";
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
-const Header = () => {
+const Header = (props) => {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const styles = useHeaderStyle({ theme });
@@ -53,12 +53,34 @@ const Header = () => {
   const handleMouseLeft = () => {
     setopenLive(false);
   };
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   // console.log("========open======", open);
   // console.log("images object =========", Images);
-
+  const propsStyles = {
+    position: props?.position,
+    marginTop: scrolling ? '0px' : props?.mt,
+    background: 'transparent',
+    backgroundColor: scrolling ? 'white' : 'transparent'
+  }
   return (
     <div>
-      <AppBar position="fixed" sx={styles.appBar}>
+
+      <AppBar elevation={0} sx={props.position ? propsStyles : styles.appBar}>
         {/* Toolbar  */}
         <Toolbar sx={styles.toolbar}>
           <div
@@ -70,17 +92,22 @@ const Header = () => {
               sx={{
                 width: "100%",
                 height: "100%",
+                color: scrolling ? 'black' : 'white',
+                cursor: 'pointer',
+                '&:hover': { color: '#E10B0B' }
               }}
             >
-              <img
+              {/* <img
                 width={25}
                 height={25}
                 src={Images.churchLogo}
                 style={{
+
                   objectFit: "cover",
                 }}
                 alt="Logo"
-              />
+              /> */}
+              Logo
             </Box>
 
             <SidebarMenu open={open} setOpen={setOpen} />
@@ -98,7 +125,7 @@ const Header = () => {
                     <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
                       {menu.name}
                     </Text>
-                    <ExpandMoreOutlinedIcon onClick={handleToggle} />
+                    <ExpandMoreOutlinedIcon onClick={handleToggle} style={{ color: scrolling ? 'black' : 'white', '&:hover': { color: '#E10B0B' } }} />
                     {openDropDown && (
                       <div
                         style={{
@@ -110,7 +137,8 @@ const Header = () => {
                           border: '1px solid #ccc',
                           borderRadius: '9px',
                           zIndex: 10,
-                          textAlign: "start"
+                          textAlign: "start",
+
                         }}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -138,7 +166,7 @@ const Header = () => {
                       <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
                         {menu.name}
                       </Text>
-                      <ExpandMoreOutlinedIcon onClick={handleDrop} />
+                      <ExpandMoreOutlinedIcon onClick={handleDrop} style={{ color: scrolling ? 'black' : 'white' }} />
                       {openLiveDrop && (
                         <div
                           style={{
@@ -187,7 +215,7 @@ const Header = () => {
       </AppBar>
 
       <Toolbar />
-    </div>
+    </div >
   );
 };
 

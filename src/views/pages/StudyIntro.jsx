@@ -46,6 +46,9 @@ const StudyIntro = () => {
             ),
         },
     ]
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <>
             <Header />
@@ -56,7 +59,7 @@ const StudyIntro = () => {
                     '&::before': {
                         content: '""',
                         position: 'absolute',
-                        top: 0,
+                        top: -70,
                         left: 0,
                         width: '100%',
                         height: '100%',
@@ -75,7 +78,7 @@ const StudyIntro = () => {
                 <Box
                     sx={{
                         position: 'absolute',
-                        top: 0,
+                        top: -70,
                         left: 0,
                         width: '100%',
                         height: '100%',

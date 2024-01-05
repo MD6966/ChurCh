@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../../layouts/Landing/Footer';
 import Header from '../../components/AppBar/Header';
 const ministerData = [
@@ -50,7 +50,11 @@ const ministerData = [
     },
 
 ];
+
 const Minister = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <>
             <Header />
@@ -61,7 +65,7 @@ const Minister = () => {
                     '&::before': {
                         content: '""',
                         position: 'absolute',
-                        top: 0,
+                        top: -70,
                         left: 0,
                         width: '100%',
                         height: '100%',
@@ -80,7 +84,7 @@ const Minister = () => {
                 <Box
                     sx={{
                         position: 'absolute',
-                        top: 0,
+                        top: -70,
                         left: 0,
                         width: '100%',
                         height: '100%',
