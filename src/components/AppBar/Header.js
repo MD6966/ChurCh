@@ -55,12 +55,16 @@ const Header = (props) => {
   };
   const [scrolling, setScrolling] = useState(false);
 
+  const [logoImage, setLogoImage] = useState("img39.png");
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setScrolling(true);
+        setLogoImage("img36.png");
       } else {
         setScrolling(false);
+        setLogoImage("img39.png");
       }
     };
 
@@ -97,17 +101,17 @@ const Header = (props) => {
                 '&:hover': { color: '#E10B0B' }
               }}
             >
-              {/* <img
-                width={25}
-                height={25}
-                src={Images.churchLogo}
-                style={{
+              <img
 
+                src={logoImage}
+                style={{
                   objectFit: "cover",
+                  height: '40px',
+                  width: '100%'
                 }}
                 alt="Logo"
-              /> */}
-              Logo
+              />
+
             </Box>
 
             <SidebarMenu open={open} setOpen={setOpen} />
@@ -116,58 +120,34 @@ const Header = (props) => {
           <Box sx={styles.menuBox}>
             {menuItems.map((menu, index) => (
               <React.Fragment key={index}>
-                {menu.name === 'MINISTRIES' ? (
-
-                  <div style={{ display: 'flex', position: 'relative' }}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                {menu.isButton ? (
+                  <button
+                    onClick={() => navigate('/live-stream')}
+                    style={{
+                      backgroundColor: "#E10B0B",
+                      color: "white",
+                      fontSize: '16px',
+                      // fontSize: { xs: "20px", sm: "24px", lg: '24px' },
+                      borderRadius: "8px",
+                      padding: "10px 10px",
+                      border: "none",
+                    }}
                   >
-                    <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
-                      {menu.name}
-                    </Text>
-                    <ExpandMoreOutlinedIcon onClick={handleToggle} style={{ color: scrolling ? 'black' : 'white', '&:hover': { color: '#E10B0B' } }} />
-                    {openDropDown && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '100%',
-                          // left: '47%',
-                          padding: '10px 5px',
-                          backgroundColor: 'white',
-                          border: '1px solid #ccc',
-                          borderRadius: '9px',
-                          zIndex: 10,
-                          textAlign: "start",
-
-                        }}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                      >
-
-                        {dropdownItems.map((item, index) => (
-                          <Text
-                            key={index}
-                            onClick={() => navigate(item.link)}
-                            style={{ padding: '8px', cursor: 'pointer' }}
-                          >
-                            {item.label}
-                          </Text>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                    Donate
+                  </button>
                 ) :
-                  menu.name === 'GO ONLINE' ? (
 
-                    <div style={{ display: 'flex', position: 'relative', padding: '0px 20px' }}
-                      onMouseEnter={handleMouseLive}
-                      onMouseLeave={handleMouseLeft}
+                  menu.name === 'MINISTRIES' ? (
+
+                    <div style={{ display: 'flex', position: 'relative' }}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
                     >
                       <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
                         {menu.name}
                       </Text>
-                      <ExpandMoreOutlinedIcon onClick={handleDrop} style={{ color: scrolling ? 'black' : 'white' }} />
-                      {openLiveDrop && (
+                      <ExpandMoreOutlinedIcon onClick={handleToggle} style={{ color: scrolling ? 'black' : 'white', '&:hover': { color: '#E10B0B' } }} />
+                      {openDropDown && (
                         <div
                           style={{
                             position: 'absolute',
@@ -178,13 +158,14 @@ const Header = (props) => {
                             border: '1px solid #ccc',
                             borderRadius: '9px',
                             zIndex: 10,
-                            textAlign: "start"
+                            textAlign: "start",
+
                           }}
-                          onMouseEnter={handleMouseLive}
-                          onMouseLeave={handleMouseLeft}
+                          onMouseEnter={handleMouseEnter}
+                          onMouseLeave={handleMouseLeave}
                         >
 
-                          {GoLive.map((item, index) => (
+                          {dropdownItems.map((item, index) => (
                             <Text
                               key={index}
                               onClick={() => navigate(item.link)}
@@ -196,12 +177,52 @@ const Header = (props) => {
                         </div>
                       )}
                     </div>
-                  ) : (
+                  ) :
+                    menu.name === 'GO ONLINE' ? (
 
-                    <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
-                      {menu.name}
-                    </Text>
-                  )
+                      <div style={{ display: 'flex', position: 'relative', padding: '0px 20px' }}
+                        onMouseEnter={handleMouseLive}
+                        onMouseLeave={handleMouseLeft}
+                      >
+                        <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
+                          {menu.name}
+                        </Text>
+                        <ExpandMoreOutlinedIcon onClick={handleDrop} style={{ color: scrolling ? 'black' : 'white' }} />
+                        {openLiveDrop && (
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: '100%',
+                              // left: '47%',
+                              padding: '10px 5px',
+                              backgroundColor: 'white',
+                              border: '1px solid #ccc',
+                              borderRadius: '9px',
+                              zIndex: 10,
+                              textAlign: "start"
+                            }}
+                            onMouseEnter={handleMouseLive}
+                            onMouseLeave={handleMouseLeft}
+                          >
+
+                            {GoLive.map((item, index) => (
+                              <Text
+                                key={index}
+                                onClick={() => navigate(item.link)}
+                                style={{ padding: '8px', cursor: 'pointer' }}
+                              >
+                                {item.label}
+                              </Text>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+
+                      <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
+                        {menu.name}
+                      </Text>
+                    )
                 }
               </React.Fragment>
             ))}

@@ -32,7 +32,7 @@ export const useHeaderStyle = ({ theme }) => {
       gap: "30px",
       "& >*": { fontSize: "16px", fontWeight: 600 },
     },
-    menuItem: { display: { xs: "none", lg: "flex" }, cursor: "pointer", color: scrolling ? 'black' : "white", '&:hover': { color: '#' } },
+    menuItem: { display: { xs: "none", lg: "flex", alignItems: 'center', justifyContent: 'center' }, cursor: "pointer", color: scrolling ? 'black' : "white", '&:hover': { color: '#' } },
     menuIcon: {
       display: { xs: "block", lg: "none" },
       cursor: "pointer",

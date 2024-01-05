@@ -641,7 +641,7 @@ const LandingContent = () => {
               <Typography>Shekinah Haitian SDA Church </Typography>
               <Typography>3700 W. Risinger Rd Fort Worth, TX 76123</Typography>
               <Typography>info@shekinahsda.org</Typography>
-              <Typography>https://www.facebook.com/shekinahsda</Typography>
+
 
             </Box>
           </Grid>

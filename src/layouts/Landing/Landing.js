@@ -27,11 +27,14 @@ const Landing = () => {
 
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: "10px", fontSize: '20px', }}>
             <RoomOutlinedIcon sx={{ fontSize: '20px' }} />
-            <Typography> 25 N Grant St, Manheim, PA 17545, USA</Typography>
+            <Typography> 3700 W. Risinger Rd Fort Worth, TX 76123
+            </Typography>
           </Box>
           <Box sx={{ display: 'flex', gap: "30px", paddingRight: '50px' }}>
 
-            <FacebookOutlinedIcon sx={{ fontSize: '20px' }} />
+            <a href="https://www.facebook.com/shekinahsda" target="_blank" rel="noopener noreferrer">
+              <FacebookOutlinedIcon sx={{ fontSize: '20px', color: 'white' }} />
+            </a>
             <Divider layout="vertical" />
             <InstagramIcon sx={{ fontSize: '20px' }} />
             <Divider layout="vertical" />
@@ -47,7 +50,7 @@ const Landing = () => {
           This is Apppbar
         </Toolbar>
       </AppBar> */}
-      <Nav position='fixed' mt={5} />
+      <Nav position='fixed' mt={7} />
       <Box
         sx={{
           position: "relative",
