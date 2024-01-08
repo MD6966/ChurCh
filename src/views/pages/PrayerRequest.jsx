@@ -19,9 +19,6 @@ import { Text } from "../../components/base";
 import { useSnackbar } from "notistack";
 
 const PrayerRequest = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   //   const [selectedCategoryId, setSelectedCategoryId] = useState([]);
   const [requestForm, setRequestForm] = useState({
     first_name: "",
@@ -42,8 +39,8 @@ const PrayerRequest = () => {
   const getPrayerRequest = () => {
     dispatch(getPrayRequest())
       .then((result) => {
-        // console.log("========result", result);
-        setPrayerRequest(result?.data?.data);
+        // console.log("========result", result?.data?.payload);
+        setPrayerRequest(result?.data?.payload);
       })
       .catch((err) => {
         console.log("Error fetching categories:", err);
@@ -55,7 +52,7 @@ const PrayerRequest = () => {
   }, []);
 
   //   console.log("===========prayerRequest===========", prayerRequest);
-  console.log("===========requestForm===========", requestForm);
+  // console.log("===========requestForm===========", requestForm);
 
   const submitPrayRequest = () => {
     if (
@@ -106,7 +103,7 @@ const PrayerRequest = () => {
           "&::before": {
             content: '""',
             position: "absolute",
-            top: -70,
+            top: 0,
             left: 0,
             width: "100%",
             height: "100%",
@@ -123,7 +120,7 @@ const PrayerRequest = () => {
         <Box
           sx={{
             position: "absolute",
-            top: -70,
+            top: 0,
             left: 0,
             width: "100%",
             height: "100%",

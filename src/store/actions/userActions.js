@@ -108,3 +108,14 @@ export const getMinistry = () => async () => {
     throw error
   }
 }
+
+export const getSermons = () => async () => {
+  try {
+    const response = await api.get(
+      "https://church.saeedantechpvt.com/api/sermons/getAll"
+    );
+    return response
+  } catch (error) {
+    throw error
+  }
+}

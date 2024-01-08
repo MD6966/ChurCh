@@ -127,8 +127,6 @@ const ContactUs = () => {
                 name="description"
                 value={contactUsState.description}
                 onChange={(event) => handleChange(event)}
-
-                rows={11}
               ></textarea>
               <div>
                 <button
