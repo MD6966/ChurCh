@@ -16,10 +16,27 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { Divider } from 'primereact/divider';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import Slider from "../../views/pages/Slider";
+// const events = [
+//   {
+//     title: 'Purposeful Living',
+//     description:
+//       'Embark on a Heartwarming Journey this Sunday at 10.00am at our Magical Christmas Eve.',
+//     time: 'Sunday at 10.00am',
+//   },
+//   {
+//     title: 'Purposeful Living',
+//     description:
+//       'Embark on a Heartwarming Journey this Sunday at 10.00am at our Magical Christmas Eve.',
+//     time: 'Sunday at 10.00am',
+//   },
+
+// ];
 const Landing = () => {
   const theme = useTheme();
-  const styles = useLandingStyle({ theme });
+
   const navigate = useNavigate()
+
   return (
     <Page title="Welcome To Website">
       <AppBar elevation={0} sx={{ backgroundColor: 'transparent', }}>
@@ -97,9 +114,9 @@ const Landing = () => {
             gap: "20px",
             justifyContent: "center",
             alignItems: "center",
-
+            marginTop: '90px',
             zIndex: 1,
-            mb: 8
+            // mb: 8
           }}
         >
           <Typography sx={{ color: '#E10B0B', fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
@@ -133,37 +150,32 @@ const Landing = () => {
             Watch Live Sunday
           </button>
         </Box>
-        <Box sx={{ color: 'black', position: 'absolute', bottom: '20px', padding: '0px 30px' }}>
+        {/* <Box sx={{ color: 'black', position: 'absolute', bottom: '20px', padding: '0px 30px' }}>
           <Grid container spacing={5}>
-            <Grid item lg={6} >
-              <Box sx={{ display: 'flex', gap: '30px', padding: '20px', borderRadius: '8px', border: '1px solid #DBD5D5', backgroundColor: 'white', }}>
-                <RoomOutlinedIcon sx={{ color: '#E10B0B', fontSize: '3rem' }} />
+            {events.map((val, ind) => (
+              <Grid item lg={6} >
+                <Box sx={{ display: 'flex', gap: '30px', padding: '20px', borderRadius: '8px', border: '1px solid #DBD5D5', backgroundColor: 'white', }}>
+                  <RoomOutlinedIcon sx={{ color: '#E10B0B', fontSize: '3rem' }} />
 
-                <Box sx={{ textAlign: "start" }}>
-                  <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>Purposeful Living</Typography>
-                  <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this <span style={{ color: '#E10B0B', fontWeight: 700 }}> Sunday at 10.00am </span> at our Magical Christmas Eve. </Typography>
-                  <Typography sx={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B' }}>See Event Detail</Typography>
+                  <Box sx={{ textAlign: "start" }}>
+                    <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>Purposeful Living</Typography>
+                    <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this <span style={{ color: '#E10B0B', fontWeight: 700 }}> Sunday at 10.00am </span> at our Magical Christmas Eve. </Typography>
+                    <Typography sx={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B' }}>See Event Detail</Typography>
+                  </Box>
                 </Box>
-              </Box>
-            </Grid>
-            <Grid item lg={6}>
-              <Box sx={{ display: 'flex', gap: '30px', padding: '20px', borderRadius: '8px', border: '1px solid #DBD5D5', backgroundColor: 'white', }}>
-                <RoomOutlinedIcon sx={{ color: '#E10B0B', fontSize: '3rem' }} />
+              </Grid>
+            ))}
 
-                <Box sx={{ textAlign: "start" }}>
-                  <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>Purposeful Living</Typography>
-                  <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this <span style={{ color: '#E10B0B', fontWeight: 700 }}> Sunday at 10.00am </span> at our Magical Christmas Eve. </Typography>
-                  <Typography sx={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B' }}>See Event Detail</Typography>
-                </Box>
-              </Box>
-            </Grid>
+
           </Grid>
-        </Box>
+        </Box> */}
+        <Slider />
       </Box>
 
       <LandingContent />
       <Footer />
     </Page >
+
   );
 };
 

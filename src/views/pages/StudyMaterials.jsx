@@ -27,7 +27,6 @@ const StudyMaterials = () => {
     const handleStudy = (data) => {
         const { id, title, description } = data;
         navigate('/study-intro', { state: { id, title, description } });
-
     }
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -137,11 +136,11 @@ const StudyMaterials = () => {
 
                                 }}
                             >
-                                <img
+                                {/* <img
                                     src={val.imageSrc}
                                     style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                                     alt="abc"
-                                />
+                                /> */}
                                 <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                     <div>
                                         <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start' }}>{val.title}</Typography>

@@ -1,6 +1,6 @@
 export const menuItems = [
   { name: "HOME", link: "/", componentId: 'events' },
-  { name: "MINISTRIES" },
+  { name: "MINISTRIES", link: '/minister' },
   { name: "GO ONLINE" },
   { name: "CONTACT US", link: "/contact" },
   { name: "ABOUT US" },

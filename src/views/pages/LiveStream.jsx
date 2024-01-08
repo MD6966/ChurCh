@@ -44,8 +44,8 @@ const LiveStream = () => {
     const getAllEvents = () => {
         dispatch(getlastEvents())
             .then((result) => {
-                // console.log("This is result", result.data.payload.all[0].title);
-                setshowEvent(result.data.payload.all);
+                console.log("This is result", result.data.data.title);
+                setshowEvent(result.data.data);
             })
             .catch((err) => {
                 console.log("Error fetching categories:", err);
@@ -157,7 +157,7 @@ const LiveStream = () => {
                                 }}
                             >
                                 <img
-                                    src={val.imageSrc}
+                                    src={val.Image.url}
                                     style={{
                                         width: "100%",
                                         height: "auto",
@@ -182,16 +182,21 @@ const LiveStream = () => {
                                             textAlign: "start",
                                         }}
                                     >
-                                        {showEvent[ind]?.title}
+                                        {showEvent[0]?.title}
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            fontSize: "16px",
+
+                                            fontSize: '16px',
                                             fontWeight: 400,
-                                            textAlign: "start",
+                                            textAlign: 'start',
+                                            display: '-webkit-box',
+                                            WebkitBoxOrient: 'vertical',
+                                            overflow: 'hidden',
+                                            WebkitLineClamp: 3,
                                         }}
                                     >
-                                        {showEvent[ind]?.description}
+                                        {showEvent[0]?.description}
                                     </Typography>
                                     <div>
                                         <button

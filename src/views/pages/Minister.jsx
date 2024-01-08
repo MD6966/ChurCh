@@ -1,7 +1,10 @@
 import { Box, Grid, Typography } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../../layouts/Landing/Footer';
 import Header from '../../components/AppBar/Header';
+import { useDispatch } from 'react-redux';
+import { getMinistry } from '../../store/actions/userActions';
+import { useNavigate } from 'react-router';
 const ministerData = [
     {
         imageSrc: '/img6.png',
@@ -55,6 +58,28 @@ const Minister = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const [showMinistry, setShowMinistry] = useState([])
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const getMinistries = () => {
+        dispatch(getMinistry())
+            .then((result) => {
+                // console.log("========result", result.data.data[0]?.Image.url);
+                setShowMinistry(result.data.data);
+            })
+            .catch((err) => {
+                console.log("Error fetching categories:", err);
+            });
+    };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        getMinistries()
+    }, []);
+    const handleMinistry = (data) => {
+
+        // console.log(data, ' this is dada')
+        navigate('/ministerHousing', { state: data })
+    }
     return (
         <>
             <Header />
@@ -145,7 +170,7 @@ const Minister = () => {
                 </Box>
 
                 <Grid container spacing={5} sx={{ padding: '50px 0px' }}>
-                    {ministerData.map((val, ind) => (
+                    {showMinistry.map((val, ind) => (
                         <Grid key={ind} item lg={4} md={6} sm={12} xs={12}>
                             <Box
                                 sx={{
@@ -163,22 +188,29 @@ const Minister = () => {
                                 }}
                             >
                                 <img
-                                    src={val.imageSrc}
-                                    style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                                    src={val.Image.url}
+                                    style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
                                     alt="abc"
                                 />
                                 <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                     <div>
                                         <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start' }}>{val.title}</Typography>
-                                        <Typography sx={{ fontSize: '16px', fontWeight: 400, textAlign: 'start' }}>{val.description}</Typography>
+                                        <Typography sx={{
+
+                                            fontSize: '16px',
+                                            fontWeight: 400,
+                                            textAlign: 'start',
+                                            display: '-webkit-box',
+                                            WebkitBoxOrient: 'vertical',
+                                            overflow: 'hidden',
+                                            WebkitLineClamp: 3,
+                                        }}>{val.description}</Typography>
                                     </div>
                                     <div>
-                                        <button style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                                        <button onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                                     </div>
                                 </Box>
                             </Box>
-
-
                         </Grid>
                     ))}
 
@@ -188,5 +220,4 @@ const Minister = () => {
         </>
     )
 }
-
 export default Minister

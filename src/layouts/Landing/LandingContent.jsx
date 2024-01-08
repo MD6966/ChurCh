@@ -1,9 +1,11 @@
 import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router";
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
+import { useDispatch } from "react-redux";
+import { getMinistry } from "../../store/actions/userActions";
 const data = [
   {
     imageSrc: "/img1.png",
@@ -77,10 +79,34 @@ const materialData = [
     description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
   },
 ];
+
 const LandingContent = () => {
+  const [showMinistry, setShowMinistry] = useState([])
+
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const getMinistries = () => {
+    dispatch(getMinistry())
+      .then((result) => {
+        // console.log("========result", result.data.data[0]?.Image.url);
+        setShowMinistry(result.data.data);
+      })
+      .catch((err) => {
+        console.log("Error fetching categories:", err);
+      });
+  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    getMinistries()
+  }, []);
+  const handleMinistry = (data) => {
+
+    // console.log(data, ' this is dada')
+    navigate('/ministerHousing', { state: data })
+  }
   return (
     <>
+
       <Box sx={{ padding: "30px" }}>
         <Grid container spacing={3}>
           <Grid item lg={6}>
@@ -167,20 +193,6 @@ const LandingContent = () => {
                   </Box>
                 </Grid>
               </Grid>
-              <button
-                onClick={() => navigate('/study-materials')}
-                style={{
-                  backgroundColor: "#E10B0B",
-                  color: "white",
-                  fontSize: '22px',
-                  // fontSize: { xs: "20px", sm: "24px", lg: '24px' },
-                  borderRadius: "8px",
-                  padding: "10px 15px",
-                  border: "none",
-                }}
-              >
-                Learn More
-              </button>
             </Box>
           </Grid>
         </Grid>
@@ -286,7 +298,7 @@ const LandingContent = () => {
           Our Ministries
         </Typography>
         <Grid container spacing={5}>
-          {data1.map((val, ind) => (
+          {showMinistry.slice(0, 3).map((val, ind) => (
             <Grid key={ind} item lg={4}>
               <Box
                 sx={{
@@ -298,16 +310,16 @@ const LandingContent = () => {
                   width: "100%",
                   overflow: "hidden",
                   borderRadius: "16px",
-                  height: "90vh",
+                  height: "100%",
                   position: "relative",
                 }}
               >
                 <img
-                  src={val.imageSrc}
+                  src={val.Image.url}
                   style={{
                     width: "100%",
-                    height: "auto",
-                    maxHeight: "50vh",
+                    height: "100%",
+                    maxHeight: "40vh",
                     objectFit: "cover",
                   }}
                   alt="abc"
@@ -333,47 +345,28 @@ const LandingContent = () => {
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: "16px",
+
+                        fontSize: '16px',
                         fontWeight: 400,
-                        textAlign: "start",
+                        textAlign: 'start',
+                        display: '-webkit-box',
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        WebkitLineClamp: 3,
                       }}
                     >
                       {val.description}
                     </Typography>
                   </div>
                   <div>
-                    <button
-                      style={{
-                        backgroundColor: "transparent",
-                        color: "#E10B0B",
-                        fontSize: "18px",
-                        borderRadius: "8px",
-                        padding: "10px",
-                        fontWeight: 600,
-                        border: "none",
-                      }}
-                    >
-                      Read More
-                    </button>
+                    <button onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                   </div>
                 </Box>
               </Box>
             </Grid>
           ))}
         </Grid>
-        <button
-          style={{
-            backgroundColor: "#E10B0B",
-            color: "white",
-            fontSize: "24px",
-            borderRadius: "8px",
-            padding: "10px 12px",
-            border: "none",
-          }}
-          onClick={() => navigate('/minister')}
-        >
-          See all Ministries
-        </button>
+
       </Box>
       <Box sx={{ padding: "30px", backgroundColor: "black" }}>
         <Grid container>
@@ -404,7 +397,7 @@ const LandingContent = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                alignItems: "center",
+                // alignItems: "center",
                 color: "white",
                 gap: "20px",
                 padding: "90px 50px",
@@ -419,28 +412,16 @@ const LandingContent = () => {
                   textAlign: "start",
                 }}
               >
-                Latest Sermon;
+                Message from paster:
               </Typography>
-              <Typography>
+              <Typography sx={{ textAlign: 'start' }}>
                 For to us a child is born, to us a son is given; and the
                 government shall be upon his shoulder, and his name shall be
                 called Wonderful Counselor, Mighty God, Everlasting Father,
                 Prince of Peace.
               </Typography>
               <Typography>___Isaiah 9:6</Typography>
-              <button
-                style={{
-                  backgroundColor: "#E10B0B",
-                  color: "white",
-                  fontSize: "22px",
-                  borderRadius: "8px",
-                  padding: "10px 12px",
-                  border: "none",
-                }}
-                onClick={() => navigate('/sermons')}
-              >
-                View all Sermons
-              </button>
+
             </Box>
           </Grid>
         </Grid>
@@ -492,20 +473,6 @@ const LandingContent = () => {
           ))}
 
         </Grid>
-        <button
-          style={{
-            backgroundColor: "#E10B0B",
-            color: "white",
-            fontSize: "22px",
-            borderRadius: "8px",
-            padding: "10px 12px",
-            border: "none",
-
-          }}
-          onClick={() => navigate('/study-materials')}
-        >
-          View All Materials
-        </button>
       </Box>
 
       {/* <Box
@@ -636,7 +603,7 @@ const LandingContent = () => {
         />
         <Grid container sx={{ padding: '0px 50px', zIndex: 1 }} spacing={5}>
           <Grid item lg={4}>
-            <Box sx={{ position: 'absolute', backgroundColor: '#E10B0B', color: 'white', top: -50, padding: '60px 20px 85px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '20px', borderRadius: '8px' }}>
+            <Box sx={{ position: 'absolute', backgroundColor: '#E10B0B', color: 'white', top: -30, padding: '60px 20px 85px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '20px', borderRadius: '8px' }}>
               <PhoneOutlinedIcon />
               <Typography>Shekinah Haitian SDA Church </Typography>
               <Typography>3700 W. Risinger Rd Fort Worth, TX 76123</Typography>
@@ -770,20 +737,8 @@ const LandingContent = () => {
             </Grid>
           ))}
         </Grid>
-        <button
-          style={{
-            backgroundColor: "#E10B0B",
-            color: "white",
-            fontSize: "24px",
-            borderRadius: "8px",
-            padding: "10px 12px",
-            border: "none",
-          }}
-          onClick={() => navigate('/blog')}
-        >
-          View All Blogs
-        </button>
       </Box>
+
 
     </>
   );

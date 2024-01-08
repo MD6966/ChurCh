@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer';
+import { useLocation } from 'react-router';
 const popularPost = [
     {
         img: '/img9.png', title: 'Faith Journeys'
@@ -45,6 +46,8 @@ const MinistryHousing = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const { state } = useLocation()
+    // console.log(state.Image.url, 'hi')
     return (
         <>
             <Header />
@@ -86,9 +89,9 @@ const MinistryHousing = () => {
 
                 <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
-                    <Typography sx={{ fontSize: '32px', fontWeight: 600, }}> Ministry of Housing & Work
+                    <Typography sx={{ fontSize: '32px', fontWeight: 600, }}> {state.title}
                     </Typography>
-                    <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>It appears there might be a confusion or mix-up in the context. The information you provided earlier was related to a church website, and the Ministry of Housing & Work seems unrelated to that context. If you could provide more details or clarify the specific information you're seeking for the Ministry of Housing & Work, I'd be happy to assist you accordingly.
+                    <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>{state.description}
                     </Typography>
 
                 </Box>
@@ -110,12 +113,12 @@ const MinistryHousing = () => {
             </Box>
             <Box sx={{ padding: '50px 100px' }}>
                 <Box>
-                    <img src="img18.png" style={{ width: 'auto', height: '70vh', objectFit: 'contain' }} alt="" />
+                    <img src={state.Image.url} style={{ width: 'auto', height: '70vh', objectFit: 'contain' }} alt="" />
                 </Box>
                 {content.map((val, ind) => (
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                        <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginTop: '10px' }}>{val.title}</Typography>
-                        <Typography sx={{ textAlign: 'start' }}>{val.description}</Typography>
+                        <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginTop: '10px' }}>{state.title}</Typography>
+                        <Typography sx={{ textAlign: 'start' }}>{state.description}</Typography>
                     </Box>
                 ))}
                 <Box sx={{ mt: 3 }}>

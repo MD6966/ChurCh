@@ -26,11 +26,11 @@ const Header = (props) => {
   const handleDrop = () => {
     setopenLive(!openLiveDrop);
   }
-  const dropdownItems = [
-    { label: 'Ministry', link: '/minister' },
-    { label: 'M Housing', link: '/ministerHousing' },
-    { label: 'M Human Rights', link: '/ministerHuman' },
-  ];
+  // const dropdownItems = [
+  //   { label: 'Ministry', link: '/minister' },
+  //   { label: 'M Housing', link: '/ministerHousing' },
+  //   { label: 'M Human Rights', link: '/ministerHuman' },
+  // ];
   const GoLive = [
     { label: 'Study Materials', link: '/study-materials' },
     { label: 'Live Stream', link: '/live-stream' },
@@ -137,17 +137,58 @@ const Header = (props) => {
                   </button>
                 ) :
 
-                  menu.name === 'MINISTRIES' ? (
+                  // menu.name === 'MINISTRIES' ? (
 
-                    <div style={{ display: 'flex', position: 'relative' }}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
+                  //   <div style={{ display: 'flex', position: 'relative', alignItems: 'center', justifyContent: 'center' }}
+                  //     onMouseEnter={handleMouseEnter}
+                  //     onMouseLeave={handleMouseLeave}
+                  //   >
+                  //     <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
+                  //       {menu.name}
+                  //     </Text>
+                  //     <ExpandMoreOutlinedIcon onClick={handleToggle} style={{ color: scrolling ? 'black' : 'white', '&:hover': { color: '#E10B0B' } }} />
+                  //     {openDropDown && (
+                  //       <div
+                  //         style={{
+                  //           position: 'absolute',
+                  //           top: '100%',
+                  //           // left: '47%',
+                  //           padding: '10px 5px',
+                  //           backgroundColor: 'white',
+                  //           border: '1px solid #ccc',
+                  //           borderRadius: '9px',
+                  //           zIndex: 10,
+                  //           textAlign: "start",
+
+                  //         }}
+                  //         onMouseEnter={handleMouseEnter}
+                  //         onMouseLeave={handleMouseLeave}
+                  //       >
+
+                  //         {dropdownItems.map((item, index) => (
+                  //           <Text
+                  //             key={index}
+                  //             onClick={() => navigate(item.link)}
+                  //             style={{ padding: '8px', cursor: 'pointer' }}
+                  //           >
+                  //             {item.label}
+                  //           </Text>
+                  //         ))}
+                  //       </div>
+                  //     )}
+                  //   </div>
+                  // ) :
+                  menu.name === 'GO ONLINE' ? (
+
+                    <div style={{ display: 'flex', position: 'relative', padding: '0px 20px', alignItems: 'center', justifyContent: 'center' }}
+                      onMouseEnter={handleMouseLive}
+                      onMouseLeave={handleMouseLeft}
                     >
                       <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
                         {menu.name}
                       </Text>
-                      <ExpandMoreOutlinedIcon onClick={handleToggle} style={{ color: scrolling ? 'black' : 'white', '&:hover': { color: '#E10B0B' } }} />
-                      {openDropDown && (
+                      <ExpandMoreOutlinedIcon onClick={handleDrop} style={{ color: scrolling ? 'black' : 'white' }} />
+                      {openLiveDrop && (
                         <div
                           style={{
                             position: 'absolute',
@@ -158,14 +199,13 @@ const Header = (props) => {
                             border: '1px solid #ccc',
                             borderRadius: '9px',
                             zIndex: 10,
-                            textAlign: "start",
-
+                            textAlign: "start"
                           }}
-                          onMouseEnter={handleMouseEnter}
-                          onMouseLeave={handleMouseLeave}
+                          onMouseEnter={handleMouseLive}
+                          onMouseLeave={handleMouseLeft}
                         >
 
-                          {dropdownItems.map((item, index) => (
+                          {GoLive.map((item, index) => (
                             <Text
                               key={index}
                               onClick={() => navigate(item.link)}
@@ -177,52 +217,12 @@ const Header = (props) => {
                         </div>
                       )}
                     </div>
-                  ) :
-                    menu.name === 'GO ONLINE' ? (
+                  ) : (
 
-                      <div style={{ display: 'flex', position: 'relative', padding: '0px 20px' }}
-                        onMouseEnter={handleMouseLive}
-                        onMouseLeave={handleMouseLeft}
-                      >
-                        <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
-                          {menu.name}
-                        </Text>
-                        <ExpandMoreOutlinedIcon onClick={handleDrop} style={{ color: scrolling ? 'black' : 'white' }} />
-                        {openLiveDrop && (
-                          <div
-                            style={{
-                              position: 'absolute',
-                              top: '100%',
-                              // left: '47%',
-                              padding: '10px 5px',
-                              backgroundColor: 'white',
-                              border: '1px solid #ccc',
-                              borderRadius: '9px',
-                              zIndex: 10,
-                              textAlign: "start"
-                            }}
-                            onMouseEnter={handleMouseLive}
-                            onMouseLeave={handleMouseLeft}
-                          >
-
-                            {GoLive.map((item, index) => (
-                              <Text
-                                key={index}
-                                onClick={() => navigate(item.link)}
-                                style={{ padding: '8px', cursor: 'pointer' }}
-                              >
-                                {item.label}
-                              </Text>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-
-                      <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
-                        {menu.name}
-                      </Text>
-                    )
+                    <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
+                      {menu.name}
+                    </Text>
+                  )
                 }
               </React.Fragment>
             ))}

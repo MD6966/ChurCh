@@ -12,9 +12,7 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
 // }))
 const data1 = [
-  {
-    heading: "Events",
-  },
+
   {
     heading: "Volunteers",
   },
@@ -131,12 +129,18 @@ const Footer = () => {
         <Grid container spacing={10} sx={{ zIndex: 2, padding: '0px 50px' }}>
           <Grid item lg={3}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Typography sx={{
+                fontSize: "22px",
+                fontWeight: 600,
+                color: "white",
+                textAlign: "start",
+              }}>Events</Typography>
               {data1.map((val, index) => (
                 <Typography
                   key={index}
                   sx={{
-                    fontSize: "22px",
-                    fontWeight: 600,
+                    fontSize: "16px",
+                    fontWeight: 400,
                     color: "white",
                     textAlign: "start",
                   }}

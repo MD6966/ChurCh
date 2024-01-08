@@ -97,3 +97,14 @@ export const getlastEvents = () => async () => {
     throw error;
   }
 };
+
+export const getMinistry = () => async () => {
+  try {
+    const response = await api.get(
+      "https://church.saeedantechpvt.com/api/ministry"
+    );
+    return response
+  } catch (error) {
+    throw error
+  }
+}
