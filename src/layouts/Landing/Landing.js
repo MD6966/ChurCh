@@ -42,10 +42,21 @@ const Landing = () => {
       <AppBar elevation={0} sx={{ backgroundColor: 'transparent', }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: "10px", fontSize: '20px', }}>
+          {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: "10px", fontSize: '20px', }}>
             <RoomOutlinedIcon sx={{ fontSize: '20px' }} />
             <Typography> 3700 W. Risinger Rd Fort Worth, TX 76123
             </Typography>
+          </Box> */}
+          <Box>
+            <img
+              src="img39.png"
+              style={{
+                objectFit: "cover",
+                height: '50px',
+                width: '100%'
+              }}
+              alt="Logo"
+            />
           </Box>
           <Box sx={{ display: 'flex', gap: "30px", paddingRight: '50px' }}>
 

@@ -5,70 +5,58 @@ import Footer from '../../layouts/Landing/Footer';
 import { useDispatch } from 'react-redux';
 import { getSermons } from '../../store/actions/userActions';
 
-// const materialData = [
-//     {
-//         imageSrc: '/img5.png',
-//         description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
-//         title: 'Introduction to the Bible'
-//     },
-//     {
-//         imageSrc: '/img5.png',
-//         description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
-//         title: 'Family and Marriage'
-//     },
-//     {
-//         imageSrc: '/img5.png',
-//         title: 'Sermon on the Mount',
-//         description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
-//     },
-//     {
-//         imageSrc: '/img5.png',
-//         description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
-//         title: 'Introduction to the Bible'
-//     },
-//     {
-//         imageSrc: '/img5.png',
-//         description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
-//         title: 'Family and Marriage'
-//     },
-//     {
-//         imageSrc: '/img5.png',
-//         title: 'Sermon on the Mount',
-//         description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
-//     },
-//     {
-//         imageSrc: '/img5.png',
-//         description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
-//         title: 'Introduction to the Bible'
-//     },
-//     {
-//         imageSrc: '/img5.png',
-//         description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
-//         title: 'Family and Marriage'
-//     },
-//     {
-//         imageSrc: '/img5.png',
-//         title: 'Sermon on the Mount',
-//         description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
-//     },
+const materialData = [
+    {
+        imageSrc: '/img2.png',
+        description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
+        title: 'Introduction to the Bible'
+    },
+    {
+        imageSrc: '/img2.png',
+        description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
+        title: 'Family and Marriage'
+    },
+    {
+        imageSrc: '/img2.png',
+        title: 'Sermon on the Mount',
+        description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
+    },
+    {
+        imageSrc: '/img2.png',
+        description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
+        title: 'Introduction to the Bible'
+    },
+    {
+        imageSrc: '/img2.png',
+        description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
+        title: 'Family and Marriage'
+    },
+    {
+        imageSrc: '/img2.png',
+        title: 'Sermon on the Mount',
+        description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
+    },
+    {
+        imageSrc: '/img2.png',
+        description: 'The Bible is a sacred text in Christianity, divided into the Old and New Testaments.It is considered the inspired word of God, offering guidance, wisdom, and spiritual insight to believers.',
+        title: 'Introduction to the Bible'
+    },
+    {
+        imageSrc: '/img2.png',
+        description: 'Biblical teachings emphasize the sacred nature of family and marriage, rooted in love, commitment, and mutual respect.The covenant of marriage reflects the profound connection between Christ and His Church, guiding us to build strong, God centered families for a life of faith and shared purpose.',
+        title: 'Family and Marriage'
+    },
+    {
+        imageSrc: '/img2.png',
+        title: 'Sermon on the Mount',
+        description: 'Delve into the Sermon on the Mount, a powerful collection of teachings by Jesus found in Matthew is Gospel.These timeless lessons illuminate the path to true happiness emphasizing compassion and humility.',
+    },
 
-// ];
-const Sermons = () => {
+];
+const AllUpcomings = () => {
     const [showSermon, setShowSermon] = useState([])
     const dispatch = useDispatch()
-    const getSermon = () => {
-        dispatch(getSermons()).then((result) => {
-            console.log(result.data.data[2]?.vedio
-                , 'video')
-            setShowSermon(result.data.data)
-        }).catch((err) => {
-            console.log("Error fetching categories:", err);
-        });
-    }
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        getSermon()
-    }, []);
+
     return (
         <>
             <Header />
@@ -111,11 +99,9 @@ const Sermons = () => {
                 <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
                     <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
-                        Sermons
+                        All Upcoming Events
                     </Typography>
-                    <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>Explore our thought-provoking blogs, where we share inspirational stories, reflections
-                        on faith, and updates on community events. Dive into a rich tapestry of content that
-                        aims to uplift, inspire, and foster a sense of connection within our church family.
+                    <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>upcoming events
                     </Typography>
 
                 </Box>
@@ -158,7 +144,7 @@ const Sermons = () => {
                 </Box>
 
                 <Grid container spacing={5} sx={{ padding: '50px 0px' }}>
-                    {showSermon.map((val, ind) => (
+                    {materialData.map((val, ind) => (
                         <Grid key={ind} item lg={4} md={6} sm={12} xs={12}>
                             <Box
                                 sx={{
@@ -176,9 +162,9 @@ const Sermons = () => {
                                 }}
                             >
                                 <img
-                                    src={val.tumbnail
+                                    src={val.imageSrc
                                     }
-                                    style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+                                    style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                                     alt="abc"
                                 />
                                 <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -189,12 +175,7 @@ const Sermons = () => {
                                     <div>
                                         <button style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                                     </div>
-
                                 </Box>
-                                <video width="320" height="240" controls>
-                                    <source src={val.vedio} type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
                             </Box>
 
 
@@ -208,4 +189,4 @@ const Sermons = () => {
     )
 }
 
-export default Sermons
+export default AllUpcomings

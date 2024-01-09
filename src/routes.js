@@ -19,6 +19,9 @@ import PrayerRegards from "./views/pages/PrayerRegards";
 import LiveStream from "./views/pages/LiveStream";
 import Sermons from "./views/pages/Sermons";
 import ShowEventVideo from "./views/pages/ShowVideo";
+import Donate from "./views/pages/Donate";
+import AllUpcomings from "./views/pages/AllUpcomings";
+import EventDetail from "./views/pages/EventDetail";
 
 
 export default function Router() {
@@ -97,6 +100,18 @@ export default function Router() {
       path: 'eventVideo',
       element: <ShowEventVideo />
     },
+    {
+      path: 'donate',
+      element: <Donate />
+    },
+    {
+      path: 'upcomings',
+      element: <AllUpcomings />
+    },
+    {
+      path: 'eventDetail',
+      element: <EventDetail />
+    }
 
   ]);
   return element;

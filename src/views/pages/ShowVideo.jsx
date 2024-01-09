@@ -15,8 +15,8 @@ const ShowEventVideo = () => {
     }, []);
     return (
         <>
-            <Header />
-            <div style={{ padding: '50px 0px' }}>
+            <Header color="000" />
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '50px 0px' }}>
                 <iframe
                     width="80%"
                     height="400"

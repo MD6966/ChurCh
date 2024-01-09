@@ -48,7 +48,7 @@ const Slider = () => {
     }, []);
     const navigate = useNavigate()
     const handleBtn = () => {
-        navigate('/live-stream')
+        navigate('/eventDetail')
     }
     const testimonialTemplate = (showEvent) => {
         return (
@@ -62,7 +62,7 @@ const Slider = () => {
                         <Box sx={{ textAlign: "start" }}>
                             <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>{showEvent.title}</Typography>
                             <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: '#E10B0B', fontWeight: 700 }}> {showEvent.date_time
-                            } </span> at our{showEvent.location} </Typography>
+                            } </span > at our <span style={{ color: '#E10B0B', fontWeight: 700 }}> {showEvent.location}</span> </Typography>
                             <button onClick={handleBtn} style={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B', border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
                         </Box>
                     </Box>

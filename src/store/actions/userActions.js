@@ -69,7 +69,7 @@ export const postPrayRequest = (formData) => async () => {
 export const getStudyMaterials = () => async () => {
   try {
     const response = await api.get(
-      "https://church.saeedantechpvt.com/api/studymaterials"
+      "https://church.saeedantechpvt.com/api/studymaterial"
     );
     return response;
   } catch (error) {

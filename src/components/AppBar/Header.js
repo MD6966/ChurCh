@@ -9,11 +9,13 @@ import { useHeaderStyle } from "./styles";
 import { useNavigate } from "react-router-dom";
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 const Header = (props) => {
+  const { color } = props
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const styles = useHeaderStyle({ theme });
   const navigate = useNavigate();
   const [openDropDown, setOpenDropDown] = useState(false);
+
   const handleToggle = () => {
     setOpenDropDown(!openDropDown);
   }
@@ -37,6 +39,7 @@ const Header = (props) => {
     { label: 'Last Events', link: '/live-stream' },
     { label: 'View All Blogs', link: '/blog' },
     { label: 'Onlne Sermons', link: '/sermons' },
+    { label: 'All events', link: '/upcomings' },
   ];
 
   const handleMouseEnter = () => {
@@ -55,7 +58,7 @@ const Header = (props) => {
   };
   const [scrolling, setScrolling] = useState(false);
 
-  const [logoImage, setLogoImage] = useState("img39.png");
+  const [logoImage, setLogoImage] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +67,7 @@ const Header = (props) => {
         setLogoImage("img36.png");
       } else {
         setScrolling(false);
-        setLogoImage("img39.png");
+        // setLogoImage("img39.png");
       }
     };
 
@@ -79,7 +82,8 @@ const Header = (props) => {
     position: props?.position,
     marginTop: scrolling ? '0px' : props?.mt,
     background: 'transparent',
-    backgroundColor: scrolling ? 'white' : 'transparent'
+    backgroundColor: scrolling ? 'white' : 'transparent',
+    color: color || (scrolling ? 'black' : 'white'),
   }
   return (
     <div>
@@ -96,21 +100,24 @@ const Header = (props) => {
               sx={{
                 width: "100%",
                 height: "100%",
-                color: scrolling ? 'black' : 'white',
+                color: color || (scrolling ? 'black' : 'white'),
                 cursor: 'pointer',
                 '&:hover': { color: '#E10B0B' }
               }}
             >
-              <img
+              {scrolling && (
+                <img
 
-                src={logoImage}
-                style={{
-                  objectFit: "cover",
-                  height: '40px',
-                  width: '100%'
-                }}
-                alt="Logo"
-              />
+                  src={logoImage}
+                  style={{
+                    objectFit: "cover",
+                    height: '40px',
+                    width: '100%'
+                  }}
+                  alt="Logo"
+                />
+              )}
+
 
             </Box>
 
@@ -122,7 +129,7 @@ const Header = (props) => {
               <React.Fragment key={index}>
                 {menu.isButton ? (
                   <button
-                    onClick={() => navigate('/live-stream')}
+                    onClick={() => navigate('/donate')}
                     style={{
                       backgroundColor: "#E10B0B",
                       color: "white",
@@ -184,10 +191,10 @@ const Header = (props) => {
                       onMouseEnter={handleMouseLive}
                       onMouseLeave={handleMouseLeft}
                     >
-                      <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
+                      <Text sx={{ display: { xs: "none", lg: "flex", alignItems: 'center', justifyContent: 'center' }, cursor: "pointer", color: color || (scrolling ? 'black' : 'white'), '&:hover': { color: '#' } }} onClick={() => navigate(menu.link)}>
                         {menu.name}
                       </Text>
-                      <ExpandMoreOutlinedIcon onClick={handleDrop} style={{ color: scrolling ? 'black' : 'white' }} />
+                      <ExpandMoreOutlinedIcon onClick={handleDrop} style={{ color: color || (scrolling ? 'black' : 'white') }} />
                       {openLiveDrop && (
                         <div
                           style={{
@@ -219,7 +226,7 @@ const Header = (props) => {
                     </div>
                   ) : (
 
-                    <Text sx={styles.menuItem} onClick={() => navigate(menu.link)}>
+                    <Text sx={{ display: { xs: "none", lg: "flex", alignItems: 'center', justifyContent: 'center' }, cursor: "pointer", color: color || (scrolling ? 'black' : 'white'), '&:hover': { color: '#' } }} onClick={() => navigate(menu.link)}>
                       {menu.name}
                     </Text>
                   )
