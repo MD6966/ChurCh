@@ -59,7 +59,6 @@ const EventVanue = [
 const EventDetail = () => {
     return (
         <>
-            <Header />
             <Box >
                 <Box
                     sx={{
@@ -145,7 +144,7 @@ const EventDetail = () => {
 
                                     </Box>
                                 </Box>
-                                <Box sx={{ border: '1px solid gray', borderRadius: '0 0 10px 10px' }}>
+                                <Box sx={{ border: '1px solid gray', borderRadius:'0 0 10px 10px'}}>
 
                                     <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'white', backgroundColor: '#E10B0B', textAlign: 'center', padding: '12px 0px' }}>
                                         Event Venue
