@@ -103,7 +103,7 @@ const PrayerRequest = () => {
           "&::before": {
             content: '""',
             position: "absolute",
-            top: 0,
+            top: -70,
             left: 0,
             width: "100%",
             height: "100%",
@@ -120,7 +120,7 @@ const PrayerRequest = () => {
         <Box
           sx={{
             position: "absolute",
-            top: 0,
+            top: -70,
             left: 0,
             width: "100%",
             height: "100%",

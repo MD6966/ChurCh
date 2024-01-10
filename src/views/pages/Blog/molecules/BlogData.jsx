@@ -1,45 +1,45 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useBlogStyle } from "../styles";
 import {
   Box,
   Grid,
-  Card,
-  CardMedia,
-  CardActionArea,
-  CardContent,
   useTheme,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
   Typography,
 } from "@mui/material";
-import React, { useState, useEffect } from "react";
-
-import { getAllNews } from "../../../../store/actions/blogActions";
-import { useDispatch } from "react-redux";
 import { Text } from "../../../../components/base";
-import { useBlogStyle } from "../styles";
+import { getAllBlogs } from "../../../../store/actions/blogActions";
 import { useNavigate } from "react-router";
 
-const PublicNews = () => {
-  const [newsData, setNewsData] = useState([]);
+const BlogData = () => {
+  const navigate = useNavigate()
+  const [blogData, setBlogData] = useState([]);
   const dispatch = useDispatch();
   const theme = useTheme();
   const styles = useBlogStyle({ theme });
 
   useEffect(() => {
-    dispatch(getAllNews())
+    dispatch(getAllBlogs())
       .then((result) => {
-        console.log("========result", result.data.data);
-        setNewsData(result?.data?.data);
+        // console.log("========blog Array", result);
+        setBlogData(result?.data?.data);
       })
       .catch((err) => {
         console.log("Error fetching categories:", err);
       });
-  }, [setNewsData, dispatch]);
-  const navigate = useNavigate()
-  //   console.log("========NewsData=====", newsData);
+  }, [setBlogData, dispatch]);
+
+  // console.log("blog data======", blogData);
   const handleBlogDetail = (data) => {
     navigate('/ministerHousing', { state: data })
   }
   return (
     <Grid container spacing={5} sx={{ padding: '50px 0px' }}>
-      {newsData.map((val, ind) => (
+      {blogData.map((val, ind) => (
         <Grid key={ind} item lg={4} md={6} sm={12} xs={12}>
           <Box
             sx={{
@@ -80,4 +80,27 @@ const PublicNews = () => {
   );
 };
 
-export default PublicNews;
+export default BlogData;
+
+//   <Box sx={styles.blogGridItemImageBox}>
+//     <Box sx={{ width: "100%", height: "50%" }}>
+//       <img
+//         src={val?.Image?.url}
+//         style={styles.blogGridItemImg}
+//         alt="abc"
+//       />
+//     </Box>
+//     <Box sx={styles.blogGridItemTextBox}>
+//       <Stack>
+//         <Text sx={styles.blogGridItemTitleText}>{val.title}</Text>
+//         <Text sx={styles.blogGridItemDescriptionText}>
+//           {val.description}
+//         </Text>
+//       </Stack>
+//       <div>
+//         <button style={styles.blogGirdItemReadMoreLink}>
+//           Read More
+//         </button>
+//       </div>
+//     </Box>
+//   </Box>

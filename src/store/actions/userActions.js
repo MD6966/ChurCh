@@ -119,3 +119,13 @@ export const getSermons = () => async () => {
     throw error
   }
 }
+export const getAllInspirationMessages = () => async () => {
+  try {
+    const response = await api.get(
+      "https://church.saeedantechpvt.com/api/message"
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

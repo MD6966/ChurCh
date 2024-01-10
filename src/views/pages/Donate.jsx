@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer';
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import getStripe from '../../utils/getStripe';
 const headerColor = '000';
 const Donate = () => {
     const [button1Active, setButton1Active] = useState(true);
     const [button2Active, setButton2Active] = useState(false);
-
+    const [selectedAmount, setSelectedAmount] = useState('')
+    const handleAmountButtonClick = (amount) => {
+        setSelectedAmount(amount);
+    };
     const handleButtonClick = (buttonNumber) => {
         if (buttonNumber === 1) {
             setButton1Active(true);
@@ -31,6 +35,23 @@ const Donate = () => {
         width: '115px',
         cursor: 'pointer'
     }
+
+    const placeOrder = async () => {
+        const stripe = await getStripe();
+        const { error } = await stripe.redirectToCheckout({
+            lineItems: [
+                {
+                    price: 'price_1OWzaqFGLFbgVokAiX6QMJcF',
+                    quantity: 1,
+                },
+            ],
+            mode: "subscription",
+            successUrl: `http://localhost:5173/payment-success`,
+            cancelUrl: `http://localhost:5173/payment-cancel`,
+        });
+
+    }
+
     return (
         <>
             <Header color={headerColor} />
@@ -111,11 +132,17 @@ const Donate = () => {
                             </Box>
                             <Box sx={{ display: 'flex', gap: '5px', flexWrap: 'wrap', textAlign: 'center', justifyContent: 'center' }}>
                                 {btnContent.map((val, ind) => (
-                                    <button style={btnStyle}>{val.btn}</button>
+                                    <button onClick={() => handleAmountButtonClick(val.btn)} style={btnStyle}>{val.btn}</button>
                                 ))}
                             </Box>
                             <Box sx={{ padding: '20px 0px' }}>
-                                <TextField id="outlined-size-normal" fullWidth placeholder='$ or other amount' />
+                                <TextField
+                                    id="outlined-size-normal"
+                                    fullWidth
+                                    placeholder="$ or other amount"
+                                    value={selectedAmount} // Display the selected amount
+                                    onChange={(e) => setSelectedAmount(e.target.value)} // Allow manual input as well
+                                />
                             </Box>
                             <div>
                                 <FormControl fullWidth>
@@ -139,6 +166,23 @@ const Donate = () => {
                                     </Select>
                                 </FormControl>
                             </div>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px 0px' }}>
+                                <button
+                                    style={{
+                                        backgroundColor: "#E10B0B",
+                                        color: "white",
+                                        fontSize: "13px",
+                                        borderRadius: "4px",
+                                        padding: "10px 20px",
+                                        border: "none",
+                                        fontWeight: 600
+
+                                    }}
+                                    onClick={placeOrder}
+                                >
+                                    pay
+                                </button>
+                            </Box>
                         </Box>
                     </Grid>
 

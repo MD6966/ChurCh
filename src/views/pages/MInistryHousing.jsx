@@ -96,7 +96,7 @@ const MinistryHousing = () => {
 
                 </Box>
             </Box>
-            <Box sx={{ padding: '50px' }}>
+            {/* <Box sx={{ padding: '50px' }}>
                 <Typography sx={{ fontSize: '22px', fontWeight: 600, textAlign: 'start' }}>Popular Post</Typography>
                 <Grid container spacing={5}>
                     {popularPost.map((val, ind) => (
@@ -110,17 +110,17 @@ const MinistryHousing = () => {
 
 
                 </Grid>
-            </Box>
+            </Box> */}
             <Box sx={{ padding: '50px 100px' }}>
-                <Box>
-                    <img src={state.Image.url} style={{ width: 'auto', height: '70vh', objectFit: 'contain' }} alt="" />
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src={state.Image.url} style={{ width: '100%', height: '80vh', objectFit: 'cover' }} alt="" />
                 </Box>
-                {content.map((val, ind) => (
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                        <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginTop: '10px' }}>{state.title}</Typography>
-                        <Typography sx={{ textAlign: 'start' }}>{state.description}</Typography>
-                    </Box>
-                ))}
+
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                    <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginTop: '10px' }}>{state.title}</Typography>
+                    <Typography sx={{ textAlign: 'start' }}>{state.description}</Typography>
+                </Box>
+
                 <Box sx={{ mt: 3 }}>
                     <Typography sx={{ textAlign: 'start', fontWeight: 600 }}>For more information or to join our Ministry of Human Rights initiatives, please contact <span style={{ color: 'blue' }}> Info@shekinahsda.org.</span></Typography>
                     <br />

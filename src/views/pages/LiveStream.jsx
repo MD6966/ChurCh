@@ -5,6 +5,7 @@ import Footer from '../../layouts/Landing/Footer';
 import { useDispatch } from 'react-redux';
 import { getlastEvents } from '../../store/actions/userActions';
 import { useNavigate } from 'react-router';
+import SideChange from './SideChange';
 
 
 const data = [
@@ -140,91 +141,99 @@ const LiveStream = () => {
                 <Typography sx={{ fontSize: "32px", fontWeight: 800, textAlign: 'start' }}>
                     Our Last Events
                 </Typography>
-                <Grid container spacing={5}>
-                    {showEvent.map((val, ind) => (
-                        <Grid key={ind} item lg={6}>
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-
-                                    boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
-                                    width: "100%",
-                                    overflow: "hidden",
-                                    borderRadius: "16px",
-                                    height: "100%",
-                                    position: "relative",
-                                }}
-                            >
-                                <img
-                                    src={val.Image.url}
-                                    style={{
-                                        width: "100%",
-                                        height: "auto",
-                                        maxHeight: "50vh",
-                                        objectFit: "cover",
-                                    }}
-                                    alt="abc"
-                                />
-                                <Box
-                                    sx={{
-                                        padding: "15px",
-                                        flexGrow: 1,
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        justifyContent: "space-between",
-                                    }}
-                                >
-                                    <Typography
+                <Box sx={{ display: 'flex', gap: '20px' }}>
+                    <Box flex={3}>
+                        <Grid container spacing={5}>
+                            {showEvent.map((val, ind) => (
+                                <Grid key={ind} item lg={6}>
+                                    <Box
                                         sx={{
-                                            fontSize: "18px",
-                                            fontWeight: 600,
-                                            textAlign: "start",
+                                            display: "flex",
+                                            flexDirection: "column",
+
+                                            boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
+                                            width: "100%",
+                                            overflow: "hidden",
+                                            borderRadius: "16px",
+                                            height: "100%",
+                                            position: "relative",
                                         }}
                                     >
-                                        {showEvent[0]?.title}
-                                    </Typography>
-                                    <Typography
-                                        sx={{
-
-                                            fontSize: '16px',
-                                            fontWeight: 400,
-                                            textAlign: 'start',
-                                            display: '-webkit-box',
-                                            WebkitBoxOrient: 'vertical',
-                                            overflow: 'hidden',
-                                            WebkitLineClamp: 3,
-                                        }}
-                                    >
-                                        {showEvent[0]?.description}
-                                    </Typography>
-                                    <div>
-                                        <button
+                                        <img
+                                            src={val.Image.url}
                                             style={{
-                                                backgroundColor: "transparent",
-                                                color: "black",
-                                                fontSize: "18px",
-                                                borderRadius: "8px",
-                                                padding: "10px",
-                                                border: "1px solid #E10B0B",
-                                                marginTop: "10px",
+                                                width: "100%",
+                                                height: "auto",
+                                                maxHeight: "50vh",
+                                                objectFit: "cover",
                                             }}
-                                            onClick={() =>
-                                                handleViewEventClick(
-                                                    showEvent[ind]?.title,
-                                                    showEvent[ind]?.description,
-                                                    showEvent[ind]?.link
-                                                )
-                                            }
+                                            alt="abc"
+                                        />
+                                        <Box
+                                            sx={{
+                                                padding: "15px",
+                                                flexGrow: 1,
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "space-between",
+                                            }}
                                         >
-                                            View Event
-                                        </button>
-                                    </div>
-                                </Box>
-                            </Box>
+                                            <Typography
+                                                sx={{
+                                                    fontSize: "18px",
+                                                    fontWeight: 600,
+                                                    textAlign: "start",
+                                                }}
+                                            >
+                                                {showEvent[0]?.title}
+                                            </Typography>
+                                            <Typography
+                                                sx={{
+
+                                                    fontSize: '16px',
+                                                    fontWeight: 400,
+                                                    textAlign: 'start',
+                                                    display: '-webkit-box',
+                                                    WebkitBoxOrient: 'vertical',
+                                                    overflow: 'hidden',
+                                                    WebkitLineClamp: 3,
+                                                }}
+                                            >
+                                                {showEvent[0]?.description}
+                                            </Typography>
+                                            <div>
+                                                <button
+                                                    style={{
+                                                        backgroundColor: "transparent",
+                                                        color: "black",
+                                                        fontSize: "18px",
+                                                        borderRadius: "8px",
+                                                        padding: "10px",
+                                                        border: "1px solid #E10B0B",
+                                                        marginTop: "10px",
+                                                    }}
+                                                    onClick={() =>
+                                                        handleViewEventClick(
+                                                            showEvent[ind]?.title,
+                                                            showEvent[ind]?.description,
+                                                            showEvent[ind]?.link
+                                                        )
+                                                    }
+                                                >
+                                                    View Event
+                                                </button>
+                                            </div>
+                                        </Box>
+                                    </Box>
+                                </Grid>
+                            ))}
                         </Grid>
-                    ))}
-                </Grid>
+                    </Box>
+                    <Box flex={1}>
+                        <SideChange />
+                    </Box>
+                </Box>
+
 
             </Box>
             <Footer />

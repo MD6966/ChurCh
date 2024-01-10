@@ -8,7 +8,7 @@ import { PostStudy } from '../../store/actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
 const StudyIntro = () => {
     const [selectedValue, setSelectedValue] = useState('');
-    const [questions, setQuestions] = useState('');
+    const [questions, setQuestions] = useState([]);
     const location = useLocation();
     const { id, title, description } = location.state;
     const handleChange = (event) => {
@@ -21,7 +21,7 @@ const StudyIntro = () => {
 
         dispatch(PostStudy(formData))
             .then((response) => {
-                // console.log(response.data.data[0].question)
+                console.log(response.data.data[0].video_or_image)
                 setQuestions(response.data.data);
             })
             .catch((error) => {
@@ -29,23 +29,7 @@ const StudyIntro = () => {
             });
     }, [id]);
 
-    const accordionData = [
-        {
-            title: 'What is Bible',
-            content: (
-                <>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                    <video width="100%" height="250" controls>
-                        <source src="URL_FOR_VIDEO_10" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                </>
-            ),
-        },
-    ]
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -102,12 +86,28 @@ const StudyIntro = () => {
             <Box sx={{ padding: '50px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <Typography sx={{ fontSize: '26px', fontWeight: 700, textAlign: 'start' }}>Introduction to Bible</Typography>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                    {accordionData.map((item, index) => (
+                    {questions.map((item, index) => (
                         <Accordion key={index}>
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                <Typography>{questions[index]?.question}</Typography>
+                                <Typography sx={{ fontWeight: 600 }}>Question:{item.question}</Typography>
                             </AccordionSummary>
-                            <AccordionDetails>{questions[index]?.answer}</AccordionDetails>
+                            <AccordionDetails><span style={{ fontWeight: 600 }}>Answer:</span>{item.answer}</AccordionDetails>
+                            <AccordionDetails>
+                                {item.video_or_image && (
+                                    item.video_or_image.endsWith('.mp4') ? (
+                                        <video style={{ Width: '100%', height: '40vh', objectFit: 'cover' }} autoPlay controls>
+                                            <source src={item.video_or_image} type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    ) : (
+                                        <img
+                                            src={item.video_or_image}
+                                            alt="Content"
+                                            style={{ Width: '100%', height: '40vh', objectFit: 'cover' }}
+                                        />
+                                    )
+                                )}
+                            </AccordionDetails>
                         </Accordion>
                     ))}
                 </div>

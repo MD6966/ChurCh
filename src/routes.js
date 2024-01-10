@@ -8,7 +8,7 @@ import AdminLogin from "./views/Admin/Auth/AdminLogin";
 import ErrorPage from "./components/ErrorBoundary/components/ErrorPage";
 import AdminDashboard from "./layouts/Dashboard/AdminDashboard";
 import ContactUs from "./views/pages/ContactUs";
-import Blog from "./views/pages/Blog";
+
 import Minister from "./views/pages/Minister";
 import MinistryHuman from "./views/pages/MinistryHuman";
 import MinistryHousing from "./views/pages/MInistryHousing";
@@ -22,6 +22,9 @@ import ShowEventVideo from "./views/pages/ShowVideo";
 import Donate from "./views/pages/Donate";
 import AllUpcomings from "./views/pages/AllUpcomings";
 import EventDetail from "./views/pages/EventDetail";
+import SermonDetail from "./views/pages/SermonDetail";
+import Blog from "./views/pages/Blog";
+import AllBlogData from "./views/pages/AllBlogData";
 
 
 export default function Router() {
@@ -111,6 +114,14 @@ export default function Router() {
     {
       path: 'eventDetail',
       element: <EventDetail />
+    },
+    {
+      path: '/sermonDetail',
+      element: <SermonDetail />
+    },
+    {
+      path: '/allBlogDetail',
+      element: <AllBlogData />
     }
 
   ]);
