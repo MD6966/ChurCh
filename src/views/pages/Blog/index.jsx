@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Header from "../../../components/AppBar/Header";
 import Footer from "../../../layouts/Landing/Footer";
 
@@ -76,7 +76,13 @@ const Blog = () => {
           <Box sx={styles.blogAbsoluteBox} />
 
           <Box sx={styles.blogTextBox}>
-            <Text>Blog</Text>
+            <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
+              BLOGS
+            </Typography>
+            <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>Explore our thought-provoking blogs, where we share inspirational stories, reflections
+              on faith, and updates on community events. Dive into a rich tapestry of content that
+              aims to uplift, inspire, and foster a sense of connection within our church family.
+            </Typography>
           </Box>
         </Box>
         <Box sx={{ padding: "50px" }}>

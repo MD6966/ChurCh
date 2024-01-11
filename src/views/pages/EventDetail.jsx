@@ -1,15 +1,17 @@
-import React from 'react'
-import Header from '../../components/AppBar/Header'
+import React, { useEffect, useState } from 'react'
 import Footer from '../../layouts/Landing/Footer'
-import { Box, Divider, Grid, Typography } from '@mui/material'
+import { Box, Button, Divider, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'
+import Header from '../../components/AppBar/Header'
+import { useDispatch } from 'react-redux'
+import { getlastEvents } from '../../store/actions/userActions'
+import { useLocation, useNavigate } from 'react-router'
+import moment from 'moment/moment'
+import { Link } from 'react-router-dom'
+
 
 const Imgs = [
-    { imgSrc: 'img6.png' },
-    { imgSrc: 'img6.png' },
-    { imgSrc: 'img6.png' },
-    { imgSrc: 'img6.png' },
-    { imgSrc: 'img6.png' },
-    { imgSrc: 'img6.png' },
+    {}
+
 ]
 const eventDetail = [
     {
@@ -57,8 +59,48 @@ const EventVanue = [
 ]
 
 const EventDetail = () => {
+    const [formRequest, setFormRequest] = useState([]);
+    const dispatch = useDispatch()
+    const [showEvent, setshowEvent] = useState([])
+    const getAllEvents = () => {
+        dispatch(getlastEvents())
+            .then((result) => {
+                console.log("This is result", result.data.data[0]?.Image.url[0]?.url);
+                setshowEvent(result.data.data);
+            })
+            .catch((err) => {
+                console.log("Error fetching categories:", err);
+            });
+    };
+
+    useEffect(() => {
+        getAllEvents();
+    }, []);
+    const navigate = useNavigate();
+    const { state } = useLocation()
+    // console.log(state, 'this is state')
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        selectOption: '',
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form Data:', formData);
+    };
+
     return (
         <>
+            <Header />
             <Box >
                 <Box
                     sx={{
@@ -108,64 +150,181 @@ const EventDetail = () => {
 
                 </Box>
                 <Box sx={{ padding: '20px 70px' }}>
+
                     <Box sx={{ padding: '20px 0px' }}>
-                        <img src="img6.png" style={{ width: '100%', height: '80vh', objectFit: 'cover' }} alt="eventImg" />
+                        <img src={state.Image.url[1]?.url} style={{ width: '100%', height: '80vh', objectFit: 'cover' }} alt="eventImg" />
                     </Box>
+
                     <Grid container spacing={3}>
+
                         <Grid item lg={8}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                                <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. At deserunt quae unde, cumque iusto repellat distinctio esse modi dicta earum error corporis recusandae animi neque nulla ratione architecto molestiae cum vel? Adipisci, consequuntur.</Typography>
+                                <Typography sx={{ fontSize: '22px', fontWeight: 600, color: '#E10B0B' }}>Event Title</Typography>
+                                <Typography>{state.title}</Typography>
                                 <Typography sx={{ fontSize: '22px', fontWeight: 600, color: '#E10B0B' }}>Event Description</Typography>
-                                <Typography>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, quod excepturi. Doloribus nisi facere deleniti aliquam ipsum impedit magni fuga eveniet eos.</Typography>
+                                <Typography>{state.description}</Typography>
                                 <Typography sx={{ fontSize: '22px', fontWeight: 600, color: '#E10B0B' }}>Event Gallery</Typography>
                                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: "20px", borderRadius: '10px' }}>
-                                    {Imgs.map((val, ind) => (
-                                        <img src={val.imgSrc} style={{ height: '20vh', borderRadius: '10px', }} alt="" />
-                                    ))}
+
+                                    <Grid container spacing={3}>
+
+                                        {state.Image.url.map((url, index) => (
+                                            <Grid item lg={4} key={index}>
+                                                <img src={url?.url} style={{ height: '30vh', width: '100%', borderRadius: '10px', objectFit: 'cover' }} alt={`eventImg-${index}`} />
+                                            </Grid>
+                                        ))}
+
+
+                                    </Grid>
+
+
                                 </Box>
                             </Box>
                         </Grid>
+
                         <Grid item lg={4}>
-                            <Box sx={{ padding: '20px' }}>
+                            <Box sx={{ padding: '20px', }}>
                                 <Box sx={{ border: '1px solid gray', borderRadius: '10px 10px 0 0' }}>
 
                                     <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'white', backgroundColor: '#E10B0B', textAlign: 'center', borderRadius: '10px 10px 0 0', padding: '12px 0px' }}>
                                         Event Detail
                                     </Typography>
                                     <Box sx={{ padding: '20px 20px' }}>
-                                        {eventDetail.map((val, ind) => (
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
 
-                                                <Typography sx={{ fontSize: '18px', fontWeight: 600 }}> {val.title}</Typography>
-                                                <Typography>{val.description}</Typography>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>Organizer:</Typography>
+                                            <Typography>{state.organizer}</Typography>
+                                        </Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>start Date:</Typography>
+                                            <Typography>{moment(state.date_time).format("MMM Do YY")}</Typography>
+                                        </Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}> Time:</Typography>
+                                            <Typography>{moment(state.date_time).format("h:mm:ss a")}</Typography>
+                                        </Box>
 
-                                            </Box>
-                                        ))}
+
+
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}> Cost:</Typography>
+                                            <Typography>{state.cost}</Typography>
+                                        </Box>
+
 
                                     </Box>
                                 </Box>
-                                <Box sx={{ border: '1px solid gray', borderRadius:'0 0 10px 10px'}}>
+                                <Box sx={{ border: '1px solid gray', borderBottom: 'none' }}>
 
                                     <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'white', backgroundColor: '#E10B0B', textAlign: 'center', padding: '12px 0px' }}>
                                         Event Venue
                                     </Typography>
                                     <Box sx={{ padding: '20px 20px' }}>
-                                        {EventVanue.map((val, ind) => (
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
 
-                                                <Typography sx={{ fontSize: '18px', fontWeight: 600 }}> {val.title}</Typography>
-                                                <Typography>{val.description}</Typography>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>Venue:</Typography>
+                                            <Typography>{state.venue}</Typography>
+                                        </Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>Address:</Typography>
+                                            <Typography>{state.address}</Typography>
+                                        </Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>E-mail :</Typography>
+                                            <Typography>{state.email}</Typography>
+                                        </Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>Phone :</Typography>
+                                            <Typography>{state.phone}</Typography>
+                                        </Box>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px', flexWrap: 'wrap' }}>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>Website:</Typography>
 
-                                            </Box>
-                                        ))}
+
+                                            < Link > {state.website}</Link>
+
+                                        </Box>
+                                    </Box>
+                                </Box>
+                                <Box sx={{ border: '1px solid gray', borderRadius: '0 0 10px 10px' }}>
+
+                                    <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'white', backgroundColor: '#E10B0B', textAlign: 'center', padding: '12px 0px' }}>
+                                        Event Registration
+                                    </Typography>
+                                    <Box sx={{ padding: '20px 20px' }}>
+                                        <Box>
+                                            <form onSubmit={handleSubmit}>
+                                                <Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '300px' }}>
+                                                    <TextField
+                                                        label="Name"
+                                                        variant="outlined"
+                                                        name="name"
+                                                        value={formData.name}
+                                                        onChange={handleChange}
+                                                        margin="normal"
+                                                    />
+                                                    <TextField
+                                                        label="Email"
+                                                        variant="outlined"
+                                                        name="email"
+                                                        value={formData.email}
+                                                        onChange={handleChange}
+                                                        margin="normal"
+                                                    />
+                                                    <TextField
+                                                        label="Phone"
+                                                        variant="outlined"
+                                                        name="phone"
+                                                        value={formData.phone}
+                                                        onChange={handleChange}
+                                                        margin="normal"
+                                                    />
+                                                    <InputLabel id="select-label">Select Option</InputLabel>
+                                                    <Select
+                                                        labelId="select-label"
+                                                        id="select"
+                                                        name="selectOption"
+                                                        value={formData.selectOption}
+                                                        onChange={handleChange}
+                                                        variant="outlined"
+                                                        margin="normal"
+                                                    >
+                                                        <MenuItem value="option1">Option 1</MenuItem>
+                                                        <MenuItem value="option2">Option 2</MenuItem>
+                                                        <MenuItem value="option3">Option 3</MenuItem>
+                                                    </Select>
+
+                                                </Box>
+                                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px 0px' }}>
+                                                    <button
+                                                        type='submit'
+                                                        style={{
+                                                            backgroundColor: "#E10B0B",
+                                                            color: "white",
+                                                            fontSize: "16px",
+                                                            borderRadius: "8px",
+                                                            padding: "10px 20px",
+                                                            border: "none",
+
+                                                        }}
+
+                                                    >
+                                                        Submit
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </Box>
+
 
                                     </Box>
                                 </Box>
-
                             </Box>
                         </Grid>
-                    </Grid>
-                </Box>
+
+                    </Grid >
+
+
+                </Box >
                 <Box sx={{ padding: '50px' }}>
                     <img src="img24.png" alt="" style={{ height: '100%', width: '100%' }} />
                 </Box>

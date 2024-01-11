@@ -20,11 +20,14 @@ import LiveStream from "./views/pages/LiveStream";
 import Sermons from "./views/pages/Sermons";
 import ShowEventVideo from "./views/pages/ShowVideo";
 import Donate from "./views/pages/Donate";
-import AllUpcomings from "./views/pages/AllUpcomings";
+import AllUpcomings from "./views/pages/AllEvents";
 import EventDetail from "./views/pages/EventDetail";
 import SermonDetail from "./views/pages/SermonDetail";
 import Blog from "./views/pages/Blog";
 import AllBlogData from "./views/pages/AllBlogData";
+import AboutUs from "./views/pages/AboutUs";
+import AllEvents from "./views/pages/AllEvents";
+import LastEventDetail from "./views/pages/LastEventDetail";
 
 
 export default function Router() {
@@ -108,8 +111,8 @@ export default function Router() {
       element: <Donate />
     },
     {
-      path: 'upcomings',
-      element: <AllUpcomings />
+      path: 'upcoming-event',
+      element: <AllEvents />
     },
     {
       path: 'eventDetail',
@@ -122,7 +125,16 @@ export default function Router() {
     {
       path: '/allBlogDetail',
       element: <AllBlogData />
-    }
+    },
+    {
+      path: '/about-us',
+      element: <AboutUs />
+    },
+
+    {
+      path: 'lastEventDetail',
+      element: <LastEventDetail />
+    },
 
   ]);
   return element;

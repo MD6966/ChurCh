@@ -39,7 +39,7 @@ const Header = (props) => {
     { label: 'Last Events', link: '/live-stream' },
     { label: 'View All Blogs', link: '/blog' },
     { label: 'Onlne Sermons', link: '/sermons' },
-    { label: 'All events', link: '/upcomings' },
+    { label: 'Upcoming events', link: '/upcoming-event' },
   ];
 
   const handleMouseEnter = () => {
@@ -136,7 +136,7 @@ const Header = (props) => {
                       fontSize: '16px',
                       // fontSize: { xs: "20px", sm: "24px", lg: '24px' },
                       borderRadius: "8px",
-                      padding: "10px 10px",
+                      padding: "5px 10px 9px 10px ",
                       border: "none",
                     }}
                   >

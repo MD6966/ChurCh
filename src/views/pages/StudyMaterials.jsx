@@ -95,8 +95,8 @@ const StudyMaterials = () => {
                                         sx={{
                                             display: 'flex',
                                             flexDirection: 'column',
-                                            textAlign: 'center',
-                                            alignItems: 'center',
+                                            // textAlign: 'center',
+                                            // alignItems: 'center',
                                             boxShadow: '0px 8px 6px 0px rgba(225, 11, 11, 0.50)',
                                             width: '100%',
                                             overflow: 'hidden',
@@ -108,15 +108,26 @@ const StudyMaterials = () => {
                                     >
                                         <img
                                             src={val.Image.url}
-                                            style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+                                            style={{ width: '100%', maxHeight: '50vh', objectFit: 'cover' }}
                                             alt="abc"
                                         />
                                         <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                             <div>
                                                 <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start' }}>{val.title}</Typography>
-                                                <Typography sx={{ fontSize: '16px', fontWeight: 400, textAlign: 'start' }}>{val.description}</Typography>
+                                                <Typography sx={{
+                                                    fontSize: '16px',
+                                                    fontWeight: 400,
+                                                    textAlign: 'start',
+                                                    display: '-webkit-box',
+                                                    WebkitBoxOrient: 'vertical',
+                                                    overflow: 'hidden',
+                                                    WebkitLineClamp: 3,
+                                                }}>{val.description}</Typography>
                                             </div>
-                                            <div>
+                                            <div style={{
+                                                display: 'flex', alignItems: 'center', justifyContent
+                                                    : 'center'
+                                            }}>
                                                 <button onClick={() => handleStudy(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                                             </div>
                                         </Box>

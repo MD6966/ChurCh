@@ -36,7 +36,10 @@ const Slider = () => {
         dispatch(getlastEvents())
             .then((result) => {
                 console.log("This is result", result);
-                setshowEvent(result.data.data);
+                const filteredEvents = result.data.data
+                    .filter((event) => new Date(event.date_time) > new Date())
+                    .sort((a, b) => new Date(a.date_time) - new Date(b.date_time));
+                setshowEvent(filteredEvents);
             })
             .catch((err) => {
                 console.log("Error fetching categories:", err);
@@ -47,8 +50,8 @@ const Slider = () => {
         getAllEvents();
     }, []);
     const navigate = useNavigate()
-    const handleBtn = () => {
-        navigate('/eventDetail')
+    const handleBtn = (data) => {
+        navigate('/eventDetail', { state: data })
     }
     const testimonialTemplate = (showEvent) => {
         return (
@@ -63,7 +66,7 @@ const Slider = () => {
                             <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>{showEvent.title}</Typography>
                             <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: '#E10B0B', fontWeight: 700 }}> {showEvent.date_time
                             } </span > at our <span style={{ color: '#E10B0B', fontWeight: 700 }}> {showEvent.location}</span> </Typography>
-                            <button onClick={handleBtn} style={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B', border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
+                            <button onClick={() => handleBtn(showEvent)} style={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B', border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
                         </Box>
                     </Box>
                 </Box>

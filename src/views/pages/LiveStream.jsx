@@ -45,8 +45,11 @@ const LiveStream = () => {
     const getAllEvents = () => {
         dispatch(getlastEvents())
             .then((result) => {
-                console.log("This is result", result.data.data.title);
-                setshowEvent(result.data.data);
+                // console.log("This is result", result.data.data[0]?.Image.url[0]?.url);
+                const filteredEvents = result.data.data
+                    .filter((event) => new Date(event.date_time) < new Date())
+                    .sort((a, b) => new Date(b.date_time) - new Date(a.date_time));
+                setshowEvent(filteredEvents);
             })
             .catch((err) => {
                 console.log("Error fetching categories:", err);
@@ -71,6 +74,9 @@ const LiveStream = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const handleLastEvent = (data) => {
+        navigate('/lastEventDetail', { state: data })
+    }
     return (
         <>
             <Header />
@@ -160,7 +166,7 @@ const LiveStream = () => {
                                         }}
                                     >
                                         <img
-                                            src={val.Image.url}
+                                            src={val.Image.url[1]?.url}
                                             style={{
                                                 width: "100%",
                                                 height: "auto",
@@ -201,27 +207,11 @@ const LiveStream = () => {
                                             >
                                                 {showEvent[0]?.description}
                                             </Typography>
-                                            <div>
-                                                <button
-                                                    style={{
-                                                        backgroundColor: "transparent",
-                                                        color: "black",
-                                                        fontSize: "18px",
-                                                        borderRadius: "8px",
-                                                        padding: "10px",
-                                                        border: "1px solid #E10B0B",
-                                                        marginTop: "10px",
-                                                    }}
-                                                    onClick={() =>
-                                                        handleViewEventClick(
-                                                            showEvent[ind]?.title,
-                                                            showEvent[ind]?.description,
-                                                            showEvent[ind]?.link
-                                                        )
-                                                    }
-                                                >
-                                                    View Event
-                                                </button>
+                                            <div style={{
+                                                display: 'flex', alignItems: 'center', justifyContent
+                                                    : 'center'
+                                            }}>
+                                                <button onClick={() => handleLastEvent(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                                             </div>
                                         </Box>
                                     </Box>

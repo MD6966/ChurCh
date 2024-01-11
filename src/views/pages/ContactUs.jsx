@@ -6,6 +6,7 @@ import {
   InputAdornment,
   TextField,
   TextareaAutosize,
+  Typography,
   useTheme,
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -15,7 +16,31 @@ import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
 import { Text } from "../../components/base";
 import { usePageStyle } from "../pages/styles";
-
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import HeadsetMicOutlinedIcon from '@mui/icons-material/HeadsetMicOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+const data = [
+  {
+    imgSrc: 'main.png',
+    icon: <LocationOnOutlinedIcon sx={{ fontSize: '50px', color: '#E10B0B' }} />,
+    title: 'Our Location',
+    location1: 'Shekinah Haitian SDA Church',
+    location2: '3700 W. Risinger Rd Fort Worth, TX 76123'
+  },
+  {
+    imgSrc: 'main.png',
+    icon: <HeadsetMicOutlinedIcon sx={{ fontSize: '50px', color: '#E10B0B' }} />,
+    title: 'Phone Number',
+    location1: ' (+55) 654 - 545 - 5418',
+    location2: ' (+55) 654 - 545 - 5418',
+  },
+  {
+    imgSrc: 'main.png',
+    icon: <EmailOutlinedIcon sx={{ fontSize: '50px', color: '#E10B0B' }} />,
+    title: 'Email Address',
+    location1: 'info@shekinahsda.org'
+  },
+]
 const ContactUs = () => {
   const [contactUsState, setContactUsState] = useState({
     first_name: "",
@@ -90,6 +115,68 @@ const ContactUs = () => {
         {/* Contact Us Paragraph End */}
       </Box>
       {/* Contact Us Box Form Start */}
+      <Box sx={{ padding: '0px 50px', }}>
+        <Grid container spacing={3}>
+          {data.map((val, ind) => (
+            <Grid item lg={4}>
+              <Box
+                sx={{
+                  position: 'relative',
+                  minHeight: '300px',
+
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: `url(${val.imgSrc})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    zIndex: -1,
+                    borderRadius: '20px',
+                  },
+
+                  position: 'relative',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'rgba(10, 28, 50, 0.95)',
+                    zIndex: 0,
+                    borderRadius: '20px',
+                  }}
+                />
+
+
+                <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, padding: '0px 10px' }}>
+                  {val.icon}
+                  <Typography sx={{ fontSize: '25px', fontWeight: 600 }}>
+                    {val.title}
+                  </Typography>
+                  <Typography sx={{ fontSize: '18px', fontWeight: 400, textAlign: 'center' }}>{val.location1}
+                  </Typography>
+                  <Typography sx={{ fontSize: '18px', fontWeight: 400, textAlign: 'center' }}>{val.location2}
+                  </Typography>
+
+                </Box>
+              </Box>
+            </Grid>
+          ))}
+
+
+        </Grid>
+      </Box>
       <Box sx={{ padding: "50px" }}>
         <Grid container spacing={5} columns={12}>
           <Grid item xs={12} md={12} lg={5}>
@@ -127,6 +214,7 @@ const ContactUs = () => {
                 name="description"
                 value={contactUsState.description}
                 onChange={(event) => handleChange(event)}
+                rows={7}
               ></textarea>
               <div>
                 <button

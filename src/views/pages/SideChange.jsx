@@ -56,7 +56,7 @@ const SideChange = () => {
     }, []);
     return (
         <>
-            <Box>
+            <Box sx={{ position: 'sticky', top: '0' }}>
                 <Grid container sx={{ padding: '50px 0px' }}>
                     <Grid item lg={12} md={6} sm={12} xs={12}>
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '30px' }}>
@@ -108,7 +108,7 @@ const SideChange = () => {
                                 <Typography sx={{ fontSize: '21px', fontWeight: 600 }}>Popular Post</Typography>
                                 {showEvent.map((val, ind) => (
                                     <Box sx={{ display: 'flex', gap: '30px', marginTop: '20px' }}>
-                                        <img src={val.Image.url} style={{ height: '100%', width: '40%', borderRadius: '10px' }} alt="" />
+                                        <img src={val.Image.url[0].url} style={{ height: '10vh', width: '40%', borderRadius: '10px', objectFit: 'cover' }} alt="" />
                                         <Box >
                                             <Typography sx={{ fontSize: '13px', fontWeight: 600 }}>{val.title}</Typography>
                                             <Typography sx={{ fontSize: '13px' }}>{val.description}</Typography>

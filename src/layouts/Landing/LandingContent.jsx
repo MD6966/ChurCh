@@ -141,6 +141,9 @@ const LandingContent = () => {
   const handleBlogDetail = (data) => {
     navigate('/ministerHousing', { state: data })
   }
+  const handleStudyMaterial = (data) => {
+    navigate('/study-intro', { state: data })
+  }
   return (
     <>
 
@@ -208,7 +211,22 @@ const LandingContent = () => {
                       yourself in a sanctuary of divinity, piety,
                       goodness, and steadfast faith.
                     </Typography>
+                    <Box sx={{ padding: '10px 0px' }}>
+                      <button
+                        style={{
+                          backgroundColor: "#E10B0B",
+                          color: "white",
+                          fontSize: "20px",
+                          borderRadius: "8px",
+                          padding: "10px 12px",
+                          border: "none",
 
+                        }}
+                        onClick={() => navigate('/about-us')}
+                      >
+                        Learn More
+                      </button>
+                    </Box>
                   </Box>
                 </Grid>
                 <Grid item lg={6}>
@@ -314,26 +332,13 @@ const LandingContent = () => {
           display: "flex",
           flexDirection: "column",
           padding: "40px",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: "start",
+          alignItems: "start",
           gap: "20px",
         }}
       >
-        <Typography
-          sx={{
-            fontSize: "26px",
-            fontWeight: 800,
-            color: "#FB5F5F",
-            textAlign: "center",
-          }}
-        >
-          MINISTRIES
-        </Typography>
-        <Typography
-          sx={{ fontSize: "22px", fontWeight: 600, textAlign: "center" }}
-        >
-          Our Ministries
-        </Typography>
+        <Typography sx={{ fontSize: '22px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Ministries</Typography>
+        <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', }}>Our Ministries</Typography>
         <Grid container spacing={5}>
           {showMinistry.slice(0, 3).map((val, ind) => (
             <Grid key={ind} item lg={4}>
@@ -341,13 +346,13 @@ const LandingContent = () => {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  textAlign: "center",
-                  alignItems: "center",
+                  // textAlign: "start",
+                  // alignItems: "start",
                   boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
                   width: "100%",
                   overflow: "hidden",
                   borderRadius: "16px",
-                  height: "100%",
+                  // height: "100%",
                   position: "relative",
                 }}
               >
@@ -356,7 +361,7 @@ const LandingContent = () => {
                   style={{
                     width: "100%",
                     height: "100%",
-                    maxHeight: "40vh",
+                    maxHeight: "50vh",
                     objectFit: "cover",
                   }}
                   alt="abc"
@@ -368,6 +373,7 @@ const LandingContent = () => {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
+
                   }}
                 >
                   <div>
@@ -390,20 +396,44 @@ const LandingContent = () => {
                         WebkitBoxOrient: 'vertical',
                         overflow: 'hidden',
                         WebkitLineClamp: 3,
+
                       }}
                     >
                       {val.description}
                     </Typography>
                   </div>
-                  <div>
-                    <button onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
-                  </div>
+                  <Box sx={{
+                    display: 'flex', alignItems: 'center', justifyContent
+                      : 'center'
+                  }}>
+                    < button onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                  </Box>
                 </Box>
               </Box>
-            </Grid>
+            </Grid >
           ))}
-        </Grid>
+        </Grid >
 
+      </Box >
+      <Box sx={{
+        display: 'flex', alignItems: 'center', justifyContent
+          : 'center',
+        paddingBottom: '30px'
+      }}>
+        <button
+          style={{
+            backgroundColor: "#E10B0B",
+            color: "white",
+            fontSize: "20px",
+            borderRadius: "8px",
+            padding: "10px 12px",
+            border: "none",
+
+          }}
+          onClick={() => navigate('/minister')}
+        >
+          See All Ministries
+        </button>
       </Box>
       <Box sx={{ padding: "30px", backgroundColor: "black" }}>
         <Grid container>
@@ -464,20 +494,17 @@ const LandingContent = () => {
         </Grid>
       </Box>
       <Box sx={{ padding: '40px', mb: 5 }}>
-        <Typography
-          sx={{ fontSize: "22px", fontWeight: 600, textAlign: "center" }}
-        >
-          Study Materials
-        </Typography>
-        <Grid container spacing={5} sx={{ padding: '50px 0px' }}>
+        <Typography sx={{ fontSize: '22px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Study Materials</Typography>
+        <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', padding: '10px 0px 0px 0px' }}>Our Study Materials</Typography>
+        <Grid container spacing={5} sx={{ padding: '30px 0px' }}>
           {studyMaterials.slice(0, 3).map((val, ind) => (
             <Grid key={ind} item lg={4} md={6} sm={12} xs={12}>
               <Box
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  textAlign: 'center',
-                  alignItems: 'center',
+                  // textAlign: 'center',
+                  // alignItems: 'center',
                   boxShadow: '0px 8px 6px 0px rgba(225, 11, 11, 0.50)',
                   width: '100%',
                   overflow: 'hidden',
@@ -491,16 +518,27 @@ const LandingContent = () => {
               >
                 <img
                   src={val.Image.url}
-                  style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+                  style={{ width: '100%', maxHeight: '50vh', objectFit: 'cover' }}
                   alt="abc"
                 />
                 <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start' }}>{val.title}</Typography>
-                    <Typography sx={{ fontSize: '16px', fontWeight: 400, textAlign: 'start' }}>{val.description}</Typography>
+                    <Typography sx={{
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      textAlign: 'start',
+                      display: '-webkit-box',
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      WebkitLineClamp: 3,
+                    }}>{val.description}</Typography>
                   </div>
-                  <div>
-                    <button onClick={() => handleBlogDetail(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                  <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent
+                      : 'center'
+                  }}>
+                    <button onClick={() => handleStudyMaterial(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                   </div>
                 </Box>
               </Box>
@@ -682,36 +720,24 @@ const LandingContent = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          padding: "40px 40px 80px 40px",
+          padding: "40px",
           justifyContent: "center",
           alignItems: "center",
-          gap: "30px",
+          // gap: "30px",
         }}
       >
-        <Typography
-          sx={{
-            fontSize: "26px",
-            fontWeight: 800,
-            color: "#FB5F5F",
-            textAlign: "center",
-          }}
-        >
-          Blogs
-        </Typography>
-        <Typography
-          sx={{ fontSize: "22px", fontWeight: 600, textAlign: "center" }}
-        >
-          Our Latest Blogs
-        </Typography>
-        <Grid container spacing={5} sx={{ padding: '20px 0px' }}>
+
+        <Typography sx={{ fontSize: '22px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Blogs</Typography>
+        <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', padding: '10px 0px' }}>Our Latest Blogs</Typography>
+        <Grid container spacing={5} sx={{ padding: '30px 0px' }}>
           {blogData.map((val, ind) => (
             <Grid key={ind} item lg={4} md={6} sm={12} xs={12}>
               <Box
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  textAlign: 'center',
-                  alignItems: 'center',
+                  // textAlign: 'center',
+                  // alignItems: 'center',
                   boxShadow: '0px 8px 6px 0px rgba(225, 11, 11, 0.50)',
                   width: '100%',
                   overflow: 'hidden',
@@ -729,10 +755,21 @@ const LandingContent = () => {
                 <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                   <div>
                     <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start' }}>{val.title}</Typography>
-                    <Typography sx={{ fontSize: '16px', fontWeight: 400, textAlign: 'start' }}>{val.description}</Typography>
+                    <Typography sx={{
+                      fontSize: '16px',
+                      fontWeight: 400,
+                      textAlign: 'start',
+                      display: '-webkit-box',
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      WebkitLineClamp: 3,
+                    }}>{val.description}</Typography>
                   </div>
-                  <div>
-                    <button onClick={() => handleStudy(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                  <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent
+                      : 'center'
+                  }}>
+                    <button onClick={() => handleBlogDetail(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                   </div>
                 </Box>
               </Box>
@@ -742,6 +779,20 @@ const LandingContent = () => {
           ))}
 
         </Grid>
+        <button
+          style={{
+            backgroundColor: "#E10B0B",
+            color: "white",
+            fontSize: "22px",
+            borderRadius: "8px",
+            padding: "10px 12px",
+            border: "none",
+
+          }}
+          onClick={() => navigate('/blog')}
+        >
+          See All Blog
+        </button>
       </Box>
 
 
