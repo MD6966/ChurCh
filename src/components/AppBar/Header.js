@@ -38,7 +38,7 @@ const Header = (props) => {
     { label: 'Live Stream', link: '/live-stream' },
     { label: 'Last Events', link: '/live-stream' },
     { label: 'View All Blogs', link: '/blog' },
-    { label: 'Onlne Sermons', link: '/sermons' },
+    { label: 'Online Sermons', link: '/sermons' },
     { label: 'Upcoming events', link: '/upcoming-event' },
   ];
 

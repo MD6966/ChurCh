@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/AppBar/Header'
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, CircularProgress, Grid, Typography } from '@mui/material'
 import Footer from '../../layouts/Landing/Footer';
 import { useDispatch } from 'react-redux';
 import { getlastEvents } from '../../store/actions/userActions';
@@ -41,6 +41,7 @@ const data = [
 
 const LiveStream = () => {
     const dispatch = useDispatch()
+    const [loading, setLoading] = useState(true);
     const [showEvent, setshowEvent] = useState([])
     const getAllEvents = () => {
         dispatch(getlastEvents())
@@ -53,6 +54,8 @@ const LiveStream = () => {
             })
             .catch((err) => {
                 console.log("Error fetching categories:", err);
+            }).finally(() => {
+                setLoading(false);
             });
     };
 
@@ -149,75 +152,79 @@ const LiveStream = () => {
                 </Typography>
                 <Box sx={{ display: 'flex', gap: '20px' }}>
                     <Box flex={3}>
-                        <Grid container spacing={5}>
-                            {showEvent.map((val, ind) => (
-                                <Grid key={ind} item lg={6}>
-                                    <Box
-                                        sx={{
-                                            display: "flex",
-                                            flexDirection: "column",
-
-                                            boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
-                                            width: "100%",
-                                            overflow: "hidden",
-                                            borderRadius: "16px",
-                                            height: "100%",
-                                            position: "relative",
-                                        }}
-                                    >
-                                        <img
-                                            src={val.Image.url[1]?.url}
-                                            style={{
-                                                width: "100%",
-                                                height: "auto",
-                                                maxHeight: "50vh",
-                                                objectFit: "cover",
-                                            }}
-                                            alt="abc"
-                                        />
+                        {loading ? (
+                            <CircularProgress sx={{ display: 'block', margin: 'auto', color: "#E10B0B" }} />
+                        ) : (
+                            <Grid container spacing={5}>
+                                {showEvent.map((val, ind) => (
+                                    <Grid key={ind} item lg={6}>
                                         <Box
                                             sx={{
-                                                padding: "15px",
-                                                flexGrow: 1,
                                                 display: "flex",
                                                 flexDirection: "column",
-                                                justifyContent: "space-between",
+
+                                                boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
+                                                width: "100%",
+                                                overflow: "hidden",
+                                                borderRadius: "16px",
+                                                height: "100%",
+                                                position: "relative",
                                             }}
                                         >
-                                            <Typography
+                                            <img
+                                                src={val.Image.url[1]?.url}
+                                                style={{
+                                                    width: "100%",
+                                                    height: "auto",
+                                                    maxHeight: "50vh",
+                                                    objectFit: "cover",
+                                                }}
+                                                alt="abc"
+                                            />
+                                            <Box
                                                 sx={{
-                                                    fontSize: "18px",
-                                                    fontWeight: 600,
-                                                    textAlign: "start",
+                                                    padding: "15px",
+                                                    flexGrow: 1,
+                                                    display: "flex",
+                                                    flexDirection: "column",
+                                                    justifyContent: "space-between",
                                                 }}
                                             >
-                                                {showEvent[0]?.title}
-                                            </Typography>
-                                            <Typography
-                                                sx={{
+                                                <Typography
+                                                    sx={{
+                                                        fontSize: "18px",
+                                                        fontWeight: 600,
+                                                        textAlign: "start",
+                                                    }}
+                                                >
+                                                    {showEvent[0]?.title}
+                                                </Typography>
+                                                <Typography
+                                                    sx={{
 
-                                                    fontSize: '16px',
-                                                    fontWeight: 400,
-                                                    textAlign: 'start',
-                                                    display: '-webkit-box',
-                                                    WebkitBoxOrient: 'vertical',
-                                                    overflow: 'hidden',
-                                                    WebkitLineClamp: 3,
-                                                }}
-                                            >
-                                                {showEvent[0]?.description}
-                                            </Typography>
-                                            <div style={{
-                                                display: 'flex', alignItems: 'center', justifyContent
-                                                    : 'center'
-                                            }}>
-                                                <button onClick={() => handleLastEvent(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
-                                            </div>
+                                                        fontSize: '16px',
+                                                        fontWeight: 400,
+                                                        textAlign: 'start',
+                                                        display: '-webkit-box',
+                                                        WebkitBoxOrient: 'vertical',
+                                                        overflow: 'hidden',
+                                                        WebkitLineClamp: 3,
+                                                    }}
+                                                >
+                                                    {showEvent[0]?.description}
+                                                </Typography>
+                                                <div style={{
+                                                    display: 'flex', alignItems: 'center', justifyContent
+                                                        : 'center'
+                                                }}>
+                                                    <button onClick={() => handleLastEvent(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                                                </div>
+                                            </Box>
                                         </Box>
-                                    </Box>
-                                </Grid>
-                            ))}
-                        </Grid>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        )}
                     </Box>
                     <Box flex={1}>
                         <SideChange />

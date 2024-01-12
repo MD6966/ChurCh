@@ -67,9 +67,14 @@ const LastEventDetail = () => {
                     <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
                         <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
-                            Last Events
+                            {state.title}
                         </Typography>
-                        <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>our last event
+                        <Typography sx={{
+                            fontSize: '20px', fontWeight: 400, textAlign: 'center', display: '-webkit-box',
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden',
+                            WebkitLineClamp: 3,
+                        }}>{state.description}
                         </Typography>
 
                     </Box>

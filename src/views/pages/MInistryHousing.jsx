@@ -91,7 +91,12 @@ const MinistryHousing = () => {
 
                     <Typography sx={{ fontSize: '32px', fontWeight: 600, }}> {state.title}
                     </Typography>
-                    <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>{state.description}
+                    <Typography sx={{
+                        fontSize: '20px', fontWeight: 400, textAlign: 'center', display: '-webkit-box',
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        WebkitLineClamp: 3,
+                    }}>{state.description}
                     </Typography>
 
                 </Box>
@@ -117,7 +122,7 @@ const MinistryHousing = () => {
                 </Box>
 
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                    <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginTop: '10px' }}>{state.title}</Typography>
+                    <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginTop: '10px', }}>{state.title}</Typography>
                     <Typography sx={{ textAlign: 'start' }}>{state.description}</Typography>
                 </Box>
 

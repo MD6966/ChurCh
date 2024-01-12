@@ -77,14 +77,19 @@ const StudyIntro = () => {
                     <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
                         {title}
                     </Typography>
-                    <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>
+                    <Typography sx={{
+                        fontSize: '20px', fontWeight: 400, textAlign: 'center', display: '-webkit-box',
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        WebkitLineClamp: 4,
+                    }}>
                         {description}
                     </Typography>
 
                 </Box>
             </Box>
             <Box sx={{ padding: '50px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <Typography sx={{ fontSize: '26px', fontWeight: 700, textAlign: 'start' }}>Introduction to Bible</Typography>
+                {/* <Typography sx={{ fontSize: '26px', fontWeight: 700, textAlign: 'start' }}>Introduction to Bible</Typography> */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                     {questions.map((item, index) => (
                         <Accordion key={index}>

@@ -65,7 +65,7 @@ const EventDetail = () => {
     const getAllEvents = () => {
         dispatch(getlastEvents())
             .then((result) => {
-                console.log("This is result", result.data.data[0]?.Image.url[0]?.url);
+                // console.log("This is result", result.data.data[0]?.Image.url[0]?.url);
                 setshowEvent(result.data.data);
             })
             .catch((err) => {
@@ -141,9 +141,14 @@ const EventDetail = () => {
                     <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
                         <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
-                            Upcoming Events
+                            {state.title}
                         </Typography>
-                        <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>Upcoming event
+                        <Typography sx={{
+                            fontSize: '20px', fontWeight: 400, textAlign: 'center', display: '-webkit-box',
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden',
+                            WebkitLineClamp: 3,
+                        }}>{state.description}
                         </Typography>
 
                     </Box>
