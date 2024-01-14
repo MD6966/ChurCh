@@ -77,7 +77,7 @@ const Slider = () => {
         //     )}
         // </div>
         <>
-            <Box sx={{ position: 'absolute', bottom: 0 }}>
+            <Box sx={{ position: 'absolute', bottom: 30 }}>
                 <Grid container spacing={3}>
                     {loading ? (
                         <CircularProgress sx={{ display: 'block', color: "#E10B0B" }} />

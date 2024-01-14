@@ -90,7 +90,7 @@ const Landing = () => {
             top: -120,
             left: 0,
             width: "100%",
-            height: "110vh",
+            height: "120vh",
             backgroundImage: `url('/main.png')`,
             // backgroundSize: "cover",
             backgroundPosition: "center",
@@ -128,7 +128,7 @@ const Landing = () => {
             // marginTop: '90px',
             // paddingBottom: '70px',
             zIndex: 1,
-            mb: isSmall ? '200px' : '50px'
+            mb: isSmall ? '235px' : '50px'
           }}
         >
           <Typography sx={{ color: '#E10B0B', fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
