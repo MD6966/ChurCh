@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../../layouts/Landing/Footer'
-import { Box, Button, Divider, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material'
+import { Box, Button, Divider, Grid, InputLabel, MenuItem, Select, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
 import Header from '../../components/AppBar/Header'
 import { useDispatch } from 'react-redux'
 import { getlastEvents } from '../../store/actions/userActions'
@@ -59,6 +59,9 @@ const EventVanue = [
 ]
 
 const EventDetail = () => {
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMedium = useMediaQuery(theme.breakpoints.down('md'))
     const [formRequest, setFormRequest] = useState([]);
     const dispatch = useDispatch()
     const [showEvent, setshowEvent] = useState([])
@@ -138,9 +141,9 @@ const EventDetail = () => {
                     />
 
 
-                    <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: isSmall ? '30px' : isMedium ? '50px' : "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
-                        <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
+                        <Typography sx={{ fontSize: isSmall ? '27px' : '32px', fontWeight: 600 }}>
                             {state.title}
                         </Typography>
                         <Typography sx={{
@@ -154,7 +157,7 @@ const EventDetail = () => {
                     </Box>
 
                 </Box>
-                <Box sx={{ padding: '20px 70px' }}>
+                <Box sx={{ padding: isSmall ? '30px' : isMedium ? '50px' : '20px 70px' }}>
 
                     <Box sx={{ padding: '20px 0px' }}>
                         <img src={state.Image.url[1]?.url} style={{ width: '100%', height: '80vh', objectFit: 'cover' }} alt="eventImg" />
@@ -162,7 +165,7 @@ const EventDetail = () => {
 
                     <Grid container spacing={3}>
 
-                        <Grid item lg={8}>
+                        <Grid item lg={8} sm={12} xs={12} md={12}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                                 <Typography sx={{ fontSize: '22px', fontWeight: 600, color: '#E10B0B' }}>Event Title</Typography>
                                 <Typography>{state.title}</Typography>
@@ -174,7 +177,7 @@ const EventDetail = () => {
                                     <Grid container spacing={3}>
 
                                         {state.Image.url.map((url, index) => (
-                                            <Grid item lg={4} key={index}>
+                                            <Grid item lg={4} sm={12} xs={12} md={6} key={index}>
                                                 <img src={url?.url} style={{ height: '30vh', width: '100%', borderRadius: '10px', objectFit: 'cover' }} alt={`eventImg-${index}`} />
                                             </Grid>
                                         ))}
@@ -187,8 +190,8 @@ const EventDetail = () => {
                             </Box>
                         </Grid>
 
-                        <Grid item lg={4}>
-                            <Box sx={{ padding: '20px', }}>
+                        <Grid item lg={4} sm={12} xs={12} md={12}>
+                            <Box sx={{ padding: isSmall ? '0px' : '20px', }}>
                                 <Box sx={{ border: '1px solid gray', borderRadius: '10px 10px 0 0' }}>
 
                                     <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'white', backgroundColor: '#E10B0B', textAlign: 'center', borderRadius: '10px 10px 0 0', padding: '12px 0px' }}>
@@ -235,20 +238,18 @@ const EventDetail = () => {
                                             <Typography>{state.address}</Typography>
                                         </Box>
                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
-                                            <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>E-mail :</Typography>
-                                            <Typography>{state.email}</Typography>
+                                            <Typography sx={{ fontSize: '18px', fontWeight: 600, }}>E-mail :</Typography>
+                                            <Typography sx={{ overflow: 'hidden' }}>{state.email}</Typography>
                                         </Box>
                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px' }}>
                                             <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>Phone :</Typography>
                                             <Typography>{state.phone}</Typography>
                                         </Box>
-                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px', flexWrap: 'wrap' }}>
+                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid gray', padding: '20px 0px', flexWrap: 'wrap', overflow: 'hidden' }}>
                                             <Typography sx={{ fontSize: '18px', fontWeight: 600 }}>Website:</Typography>
-
-
-                                            < Link > {state.website}</Link>
-
+                                            <Link sx={{ wordWrap: 'break-word', overflow: 'hidden' }}>{state.website}</Link>
                                         </Box>
+
                                     </Box>
                                 </Box>
                                 <Box sx={{ border: '1px solid gray', borderRadius: '0 0 10px 10px' }}>
@@ -330,7 +331,7 @@ const EventDetail = () => {
 
 
                 </Box >
-                <Box sx={{ padding: '50px' }}>
+                <Box sx={{ padding: isSmall ? '30px' : '50px' }}>
                     <img src="img24.png" alt="" style={{ height: '100%', width: '100%' }} />
                 </Box>
             </Box >
