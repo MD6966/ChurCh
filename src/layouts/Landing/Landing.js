@@ -128,7 +128,7 @@ const Landing = () => {
             // marginTop: '90px',
             // paddingBottom: '70px',
             zIndex: 1,
-            mb: isSmall ? '300px' : '50px'
+            mb: isSmall ? '200px' : '50px'
           }}
         >
           <Typography sx={{ color: '#E10B0B', fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
