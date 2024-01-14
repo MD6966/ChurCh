@@ -7,6 +7,7 @@ import {
   TextField,
   TextareaAutosize,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -49,6 +50,9 @@ const ContactUs = () => {
     description: "",
   });
   const theme = useTheme();
+
+  const isMedium = useMediaQuery(theme.breakpoints.down('md'))
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
   const styles = usePageStyle({ theme });
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
@@ -105,7 +109,13 @@ const ContactUs = () => {
         {/* Contact Us Paragraph Start */}
         <Box sx={styles.contactBoxTextParagraph}>
           <Text sx={styles.contactUsText}>Contact Us</Text>
-          <Text sx={styles.contactUsParagraph}>
+          <Text sx={{
+            fontSize: isSmall ? '17px' : '22px',
+            fontWeight: 400,
+            textAlign: "center",
+            padding: isSmall ? '0px  30px' : isMedium ? '0px 50px' : '0px 200px',
+            paddingBottom: '50px'
+          }}>
             Reach out to Shekinah Haitian SDA Church through our 'Contact Us'
             page. Find our contact details, including address and phone number,
             and use the convenient form for inquiries or prayer requests. We're
@@ -118,7 +128,7 @@ const ContactUs = () => {
       <Box sx={{ padding: '0px 50px', }}>
         <Grid container spacing={3}>
           {data.map((val, ind) => (
-            <Grid item lg={4}>
+            <Grid item lg={4} sm={12} xs={12} md={6}>
               <Box
                 sx={{
                   position: 'relative',

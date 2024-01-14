@@ -28,20 +28,20 @@ export const useHeaderStyle = ({ theme }) => {
 
     },
     menuBox: {
-      display: { xs: "none", lg: "flex" },
+      display: 'flex',
       gap: "30px",
       "& >*": { fontSize: "16px", fontWeight: 600 },
     },
     // menuItem: ,
-    menuIcon: {
-      display: { xs: "block", lg: "none" },
-      cursor: "pointer",
-      transform: () => "scaleY(1)",
-      transition: "transform 0.3s ease-in-out",
-      "&:hover": {
-        transform: () => "scaleY(1.2)",
-      },
-    },
+    // menuIcon: {
+    //   display: { xs: "block", lg: "none" },
+    //   cursor: "pointer",
+    //   transform: () => "scaleY(1)",
+    //   transition: "transform 0.3s ease-in-out",
+    //   "&:hover": {
+    //     transform: () => "scaleY(1.2)",
+    //   },
+    // },
   };
 
   return style;

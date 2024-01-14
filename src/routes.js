@@ -90,10 +90,10 @@ export default function Router() {
       path: "study-materials",
       element: <StudyMaterials />,
     },
-    {
-      path: "study-intro",
-      element: <StudyIntro />,
-    },
+    // {
+    //   path: "study-intro",
+    //   element: <StudyIntro />,
+    // },
     {
       path: 'live-stream',
       element: <LiveStream />

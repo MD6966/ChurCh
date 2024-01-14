@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router";
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
@@ -82,6 +82,10 @@ const materialData = [
 ];
 
 const LandingContent = () => {
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+
+  const isMedium = useMediaQuery(theme.breakpoints.down('md'))
   const [showMinistry, setShowMinistry] = useState([])
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate()
@@ -153,9 +157,9 @@ const LandingContent = () => {
   return (
     <>
 
-      <Box sx={{ padding: "30px" }}>
+      <Box sx={{ padding: isSmall ? '20px' : "30px" }}>
         <Grid container spacing={3}>
-          <Grid item lg={6}>
+          <Grid item lg={6} md={12} sm={12} xs={12}>
             <Box
               sx={{
                 maxWidth: "100%",
@@ -170,7 +174,7 @@ const LandingContent = () => {
                 alt=""
                 style={{
                   maxWidth: "100%",
-                  maxHeight: "100%",
+                  height: "100%",
                   objectFit: "contain",
                 }}
               />
@@ -202,7 +206,7 @@ const LandingContent = () => {
                 In the refuge of the Lord's name, the righteous find strength and safety, a steadfast tower in times of need.
               </Typography>
               <Grid container>
-                <Grid item lg={6}>
+                <Grid item lg={6} md={12} sm={12} xs={12}>
                   <Box>
                     <Box sx={{ borderRadius: '50%', display: 'flex', alignItems: 'center', gap: '20px' }}>
                       <Box sx={{ backgroundColor: '#E10B0B', height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -217,23 +221,9 @@ const LandingContent = () => {
                       yourself in a sanctuary of divinity, piety,
                       goodness, and steadfast faith.
                     </Typography>
-                    <Box sx={{ padding: '10px 0px' }}>
-                      <button
-                        style={{
-                          backgroundColor: "#E10B0B",
-                          color: "white",
-                          fontSize: "20px",
-                          borderRadius: "8px",
-                          padding: "10px 12px",
-                          border: "none",
 
-                        }}
-                        onClick={() => navigate('/about-us')}
-                      >
-                        Learn More
-                      </button>
-                    </Box>
                   </Box>
+
                 </Grid>
                 <Grid item lg={6}>
                   <Box>
@@ -253,6 +243,22 @@ const LandingContent = () => {
 
                   </Box>
                 </Grid>
+                <Box sx={{ padding: '10px 0px' }}>
+                  <button
+                    style={{
+                      backgroundColor: "#E10B0B",
+                      color: "white",
+                      fontSize: isSmall ? '17px' : "20px",
+                      borderRadius: "8px",
+                      padding: "10px 12px",
+                      border: "none",
+
+                    }}
+                    onClick={() => navigate('/about-us')}
+                  >
+                    Learn More
+                  </button>
+                </Box>
               </Grid>
             </Box>
           </Grid>
@@ -304,13 +310,13 @@ const LandingContent = () => {
             zIndex: 1,
           }}
         >
-          <Typography sx={{ fontSize: "32px", fontWeight: 600 }}>
+          <Typography sx={{ fontSize: isSmall ? '22px' : "32px", fontWeight: 600 }}>
             {" "}
             {/* Ensure text is on top */}
             Prayer Partnerships for Spiritual Connection
           </Typography>
           <Typography
-            sx={{ fontSize: "20px", fontWeight: 400, textAlign: "center", padding: '0px 50px' }}
+            sx={{ fontSize: isSmall ? '18px' : "20px", fontWeight: 400, textAlign: "center", padding: isSmall ? '0 20px' : '0px 50px' }}
           >
             Engage in Prayer, Listen to God's Voice! While you can seek this
             sacred connection alone, consider finding a fellow believer to join
@@ -321,7 +327,7 @@ const LandingContent = () => {
             style={{
               backgroundColor: "#E10B0B",
               color: "white",
-              fontSize: "22px",
+              fontSize: isSmall ? '17px' : "22px",
               borderRadius: "8px",
               padding: "10px 12px",
               border: "none",
@@ -337,7 +343,7 @@ const LandingContent = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          padding: "40px",
+          padding: isSmall ? '20px' : "40px",
           justifyContent: "center",
           alignItems: "center",
           gap: "20px",
@@ -350,7 +356,7 @@ const LandingContent = () => {
         ) : (
           <Grid container spacing={5}>
             {showMinistry.slice(0, 3).map((val, ind) => (
-              <Grid key={ind} item lg={4}>
+              <Grid key={ind} item lg={4} md={6} sm={12} xs={12}>
                 <Box
                   sx={{
                     display: "flex",
@@ -361,7 +367,7 @@ const LandingContent = () => {
                     width: "100%",
                     overflow: "hidden",
                     borderRadius: "16px",
-                    // height: "100%",
+                    height: "100%",
                     position: "relative",
                   }}
                 >
@@ -370,7 +376,7 @@ const LandingContent = () => {
                     style={{
                       width: "100%",
                       height: "100%",
-                      maxHeight: "50vh",
+                      height: "50vh",
                       objectFit: "cover",
                     }}
                     alt="abc"
@@ -424,7 +430,7 @@ const LandingContent = () => {
           </Grid >
         )}
       </Box >
-      <Box sx={{
+      {/* <Box sx={{
         display: 'flex', alignItems: 'center', justifyContent
           : 'center',
         paddingBottom: '30px'
@@ -443,11 +449,11 @@ const LandingContent = () => {
         >
           See All Ministries
         </button>
-      </Box>
+      </Box> */}
       <Box sx={{ padding: "30px", backgroundColor: "black" }}>
 
         <Grid container>
-          <Grid item lg={6}>
+          <Grid item lg={6} sm={12} xs={12} md={6}>
             <Box
               sx={{
                 maxWidth: "100%",
@@ -462,13 +468,13 @@ const LandingContent = () => {
                 alt=""
                 style={{
                   maxWidth: "100%",
-                  maxHeight: "100%",
+                  height: "100%",
                   objectFit: "contain",
                 }}
               />
             </Box>
           </Grid>
-          <Grid item lg={6}>
+          <Grid item lg={6} sm={12} xs={12} md={6}>
             <Box
               sx={{
                 display: "flex",
@@ -503,7 +509,7 @@ const LandingContent = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{ padding: '40px', mb: 5 }}>
+      {/* <Box sx={{ padding: '40px', mb: 5 }}>
         <Typography sx={{ fontSize: '22px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Study Materials</Typography>
         <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', padding: '10px 0px 0px 0px' }}>Our Study Materials</Typography>
         {loading ? (
@@ -531,7 +537,7 @@ const LandingContent = () => {
                 >
                   <img
                     src={val.Image.url}
-                    style={{ width: '100%', maxHeight: '50vh', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
                     alt="abc"
                   />
                   <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -562,7 +568,7 @@ const LandingContent = () => {
 
           </Grid>
         )}
-      </Box>
+      </Box> */}
 
       {/* <Box
         sx={{
@@ -599,7 +605,7 @@ const LandingContent = () => {
                   style={{
                     width: "100%",
                     height: "auto",
-                    maxHeight: "50vh",
+                    height: "50vh",
                     objectFit: "cover",
                   }}
                   alt="abc"
@@ -656,85 +662,12 @@ const LandingContent = () => {
           View All Events
         </button>
       </Box> */}
-      <Box
-        sx={{
-          position: "relative",
-          minHeight: "400px",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundImage: `url('/img19.png')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            zIndex: -1,
 
-          },
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(10, 28, 50, 0.50)",
-            zIndex: 0,
-          }}
-        />
-        <Grid container sx={{ padding: '0px 50px', zIndex: 1 }} spacing={5}>
-          <Grid item lg={4}>
-            <Box sx={{ position: 'absolute', backgroundColor: '#E10B0B', color: 'white', top: -30, padding: '60px 20px 85px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '20px', borderRadius: '8px' }}>
-              <PhoneOutlinedIcon />
-              <Typography>Shekinah Haitian SDA Church </Typography>
-              <Typography>3700 W. Risinger Rd Fort Worth, TX 76123</Typography>
-              <Typography>info@shekinahsda.org</Typography>
-
-
-            </Box>
-          </Grid>
-          <Grid item lg={8}>
-            <Box sx={{ color: 'white', display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'start', justifyContent: 'start', marginBottom: '30px' }}>
-              <Typography sx={{ fontSize: '35px', fontWeight: 700 }}>Get in touch</Typography>
-              <Typography sx={{ fontSize: '35px', fontWeight: 700 }}>Don't hesitate Contact Us</Typography>
-              <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'start', padding: '0px 50px 0px 0px' }}>Feel free to Contact Us. Shekinah Haitian SDA Church WP Theme comes with sermons, ministries, events, testimonies, staff members, church locations short codes to enhance your website.</Typography>
-              <Box>
-                <button
-                  style={{
-                    backgroundColor: "#E10B0B",
-                    color: "white",
-                    fontSize: "22px",
-                    borderRadius: "8px",
-                    padding: "10px 12px",
-                    border: "none",
-
-                  }}
-                  onClick={() => navigate('/contact')}
-                >
-                  Contact us
-                </button>
-              </Box>
-            </Box>
-          </Grid>
-        </Grid>
-
-
-
-
-      </Box>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          padding: "40px",
+          padding: isSmall ? '20px' : "40px",
           justifyContent: "center",
           alignItems: "center",
           // gap: "30px",
@@ -801,7 +734,7 @@ const LandingContent = () => {
           style={{
             backgroundColor: "#E10B0B",
             color: "white",
-            fontSize: "22px",
+            fontSize: isSmall ? '17px' : "22px",
             borderRadius: "8px",
             padding: "10px 12px",
             border: "none",
@@ -812,7 +745,82 @@ const LandingContent = () => {
           See All Blog
         </button>
       </Box>
+      <Box
+        sx={{
+          position: "relative",
+          minHeight: "400px",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: `url('/img19.png')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            zIndex: -1,
 
+          },
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(10, 28, 50, 0.50)",
+            zIndex: 0,
+          }}
+        />
+        <Grid container sx={{ padding: isSmall ? '25px' : '0px 50px', zIndex: 1 }} spacing={5}>
+          <Grid item lg={4} sm={12} md={6} xs={12}>
+            <Box sx={{
+              position: 'absolute', backgroundColor: '#E10B0B', color: 'white', top: -30, padding: isSmall ? '20px' : '60px 20px 85px 20px', display: isSmall ? 'none' : isMedium ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '20px', borderRadius: '8px'
+            }}>
+              <PhoneOutlinedIcon />
+              <Typography>Shekinah Haitian SDA Church </Typography>
+              <Typography>3700 W. Risinger Rd Fort Worth, TX 76123</Typography>
+              <Typography>info@shekinahsda.org</Typography>
+
+
+            </Box>
+          </Grid>
+          <Grid item lg={8} sm={12} md={6} xs={12}>
+            <Box sx={{ color: 'white', display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'start', justifyContent: 'start', marginBottom: '30px' }}>
+              <Typography sx={{ fontSize: '35px', fontWeight: 700 }}>Get in touch</Typography>
+              <Typography sx={{ fontSize: '35px', fontWeight: 700 }}>Don't hesitate Contact Us</Typography>
+              <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'start', padding: '0px 50px 0px 0px' }}>Feel free to Contact Us. Shekinah Haitian SDA Church WP Theme comes with sermons, ministries, events, testimonies, staff members, church locations short codes to enhance your website.</Typography>
+              <Box>
+                <button
+                  style={{
+                    backgroundColor: "#E10B0B",
+                    color: "white",
+                    fontSize: isSmall ? '17px' : "22px",
+                    borderRadius: "8px",
+                    padding: "10px 12px",
+                    border: "none",
+
+                  }}
+                  onClick={() => navigate('/contact')}
+                >
+                  Contact us
+                </button>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+
+
+
+
+      </Box >
 
 
     </>

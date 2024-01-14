@@ -151,85 +151,85 @@ const LiveStream = () => {
                     Our Last Events
                 </Typography>
                 <Box sx={{ display: 'flex', gap: '20px' }}>
-                    <Box flex={3}>
-                        {loading ? (
-                            <CircularProgress sx={{ display: 'block', margin: 'auto', color: "#E10B0B" }} />
-                        ) : (
-                            <Grid container spacing={5}>
-                                {showEvent.map((val, ind) => (
-                                    <Grid key={ind} item lg={6}>
+                    {/* <Box flex={3}> */}
+                    {loading ? (
+                        <CircularProgress sx={{ display: 'block', margin: 'auto', color: "#E10B0B" }} />
+                    ) : (
+                        <Grid container spacing={5}>
+                            {showEvent.map((val, ind) => (
+                                <Grid key={ind} item lg={4}>
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            flexDirection: "column",
+
+                                            boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
+                                            width: "100%",
+                                            overflow: "hidden",
+                                            borderRadius: "16px",
+                                            height: "100%",
+                                            position: "relative",
+                                        }}
+                                    >
+                                        <img
+                                            src={val.Image.url[1]?.url}
+                                            style={{
+                                                width: "100%",
+                                                height: "auto",
+                                                height: "50vh",
+                                                objectFit: "cover",
+                                            }}
+                                            alt="abc"
+                                        />
                                         <Box
                                             sx={{
+                                                padding: "15px",
+                                                flexGrow: 1,
                                                 display: "flex",
                                                 flexDirection: "column",
-
-                                                boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
-                                                width: "100%",
-                                                overflow: "hidden",
-                                                borderRadius: "16px",
-                                                height: "100%",
-                                                position: "relative",
+                                                justifyContent: "space-between",
                                             }}
                                         >
-                                            <img
-                                                src={val.Image.url[1]?.url}
-                                                style={{
-                                                    width: "100%",
-                                                    height: "auto",
-                                                    maxHeight: "50vh",
-                                                    objectFit: "cover",
-                                                }}
-                                                alt="abc"
-                                            />
-                                            <Box
+                                            <Typography
                                                 sx={{
-                                                    padding: "15px",
-                                                    flexGrow: 1,
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    justifyContent: "space-between",
+                                                    fontSize: "18px",
+                                                    fontWeight: 600,
+                                                    textAlign: "start",
                                                 }}
                                             >
-                                                <Typography
-                                                    sx={{
-                                                        fontSize: "18px",
-                                                        fontWeight: 600,
-                                                        textAlign: "start",
-                                                    }}
-                                                >
-                                                    {showEvent[0]?.title}
-                                                </Typography>
-                                                <Typography
-                                                    sx={{
+                                                {showEvent[0]?.title}
+                                            </Typography>
+                                            <Typography
+                                                sx={{
 
-                                                        fontSize: '16px',
-                                                        fontWeight: 400,
-                                                        textAlign: 'start',
-                                                        display: '-webkit-box',
-                                                        WebkitBoxOrient: 'vertical',
-                                                        overflow: 'hidden',
-                                                        WebkitLineClamp: 3,
-                                                    }}
-                                                >
-                                                    {showEvent[0]?.description}
-                                                </Typography>
-                                                <div style={{
-                                                    display: 'flex', alignItems: 'center', justifyContent
-                                                        : 'center'
-                                                }}>
-                                                    <button onClick={() => handleLastEvent(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
-                                                </div>
-                                            </Box>
+                                                    fontSize: '16px',
+                                                    fontWeight: 400,
+                                                    textAlign: 'start',
+                                                    display: '-webkit-box',
+                                                    WebkitBoxOrient: 'vertical',
+                                                    overflow: 'hidden',
+                                                    WebkitLineClamp: 3,
+                                                }}
+                                            >
+                                                {showEvent[0]?.description}
+                                            </Typography>
+                                            <div style={{
+                                                display: 'flex', alignItems: 'center', justifyContent
+                                                    : 'center'
+                                            }}>
+                                                <button onClick={() => handleLastEvent(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                                            </div>
                                         </Box>
-                                    </Grid>
-                                ))}
-                            </Grid>
-                        )}
-                    </Box>
-                    <Box flex={1}>
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    )}
+                </Box>
+                {/* <Box flex={1}>
                         <SideChange />
                     </Box>
-                </Box>
+                </Box> */}
 
 
             </Box>

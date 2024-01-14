@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Grid, Toolbar, Typography, useTheme } from "@mui/material";
+import { AppBar, Box, Button, Grid, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom/dist";
 import Body from "./Body";
@@ -34,7 +34,9 @@ import Slider from "../../views/pages/Slider";
 // ];
 const Landing = () => {
   const theme = useTheme();
-
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+  const isDsmall = useMediaQuery(theme.breakpoints.down('xs'))
+  const isMedium = useMediaQuery(theme.breakpoints.down('md'))
   const navigate = useNavigate()
 
   return (
@@ -52,24 +54,22 @@ const Landing = () => {
               src="img39.png"
               style={{
                 objectFit: "cover",
-                height: '50px',
+                height: isSmall ? '30px' : '60px',
                 width: '100%'
               }}
               alt="Logo"
             />
           </Box>
-          <Box sx={{ display: 'flex', gap: "30px", paddingRight: '50px' }}>
-
+          <Box sx={{ display: 'flex', gap: isSmall ? '12px' : "30px", paddingRight: isSmall ? '25px' : '50px', justifyContent: 'center', alignItems: 'center' }}>
             <a href="https://www.facebook.com/shekinahsda" target="_blank" rel="noopener noreferrer">
               <FacebookOutlinedIcon sx={{ fontSize: '20px', color: 'white' }} />
             </a>
-            <Divider layout="vertical" />
+            <div className={`border-r ${isSmall ? 'mx-0' : 'mx-2'} h-6 text-white`}></div>
             <InstagramIcon sx={{ fontSize: '20px' }} />
-            <Divider layout="vertical" />
+            <div className={`border-r ${isSmall ? 'mx-0' : 'mx-2'} h-6 text-white`}></div>
             <TwitterIcon sx={{ fontSize: '20px' }} />
-            <Divider layout="vertical" />
+            <div className={`border-r ${isSmall ? 'mx-0' : 'mx-2'} h-6 text-white`}></div>
             <SearchOutlinedIcon sx={{ fontSize: '20px' }} />
-
           </Box>
         </Toolbar>
       </AppBar>
@@ -121,17 +121,18 @@ const Landing = () => {
             flexDirection: "column",
             color: "white",
             textAlign: "center",
-            padding: { xs: "5px", sm: "0px 200px" },
-            gap: "20px",
+            // padding: { xs: "5px", sm: "0px 200px" },
+            gap: isSmall ? '10px' : "20px",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: '90px',
+            // marginTop: '90px',
+            // paddingBottom: '70px',
             zIndex: 1,
-            // mb: 8
+            mb: isSmall ? '200px' : isDsmall ? '300px' : '50px'
           }}
         >
           <Typography sx={{ color: '#E10B0B', fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
-          <Text sx={{ fontSize: { xs: "16px", sm: "32px" }, fontWeight: 600 }}>
+          <Text sx={{ fontSize: isSmall ? '24px' : '32px', fontWeight: 600, padding: '0px 5px' }}>
 
             A Place of Worship, Community, and Spiritual Growth.
           </Text>
@@ -140,6 +141,7 @@ const Landing = () => {
               fontSize: { xs: "16px", sm: "20px" },
               fontWeight: 400,
               textAlign: "center",
+              padding: isSmall ? '0 20px' : isMedium ? '0 50px' : '0 200px'
             }}
           >
             {" "}
@@ -151,7 +153,7 @@ const Landing = () => {
             style={{
               backgroundColor: "#E10B0B",
               color: "white",
-              fontSize: '22px',
+              fontSize: isSmall ? '17px' : '22px',
               // fontSize: { xs: "20px", sm: "24px", lg: '24px' },
               borderRadius: "8px",
               padding: "10px 12px",
@@ -160,6 +162,7 @@ const Landing = () => {
           >
             Watch Live Sunday
           </button>
+          <Slider />
         </Box>
         {/* <Box sx={{ color: 'black', position: 'absolute', bottom: '20px', padding: '0px 30px' }}>
           <Grid container spacing={5}>
@@ -180,7 +183,8 @@ const Landing = () => {
 
           </Grid>
         </Box> */}
-        <Slider />
+
+
       </Box>
 
       <LandingContent />

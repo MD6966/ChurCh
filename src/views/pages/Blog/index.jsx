@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Header from "../../../components/AppBar/Header";
 import Footer from "../../../layouts/Landing/Footer";
 
@@ -66,6 +66,8 @@ import BlogData from "./molecules/BlogData";
 
 const Blog = () => {
   const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+  const isMedium = useMediaQuery(theme.breakpoints.down('md'))
   const styles = useBlogStyle({ theme });
 
   return (
@@ -75,7 +77,18 @@ const Blog = () => {
         <Box sx={styles.blogRelativeBox}>
           <Box sx={styles.blogAbsoluteBox} />
 
-          <Box sx={styles.blogTextBox}>
+          <Box sx={{
+            display: "flex",
+            flexDirection: "column",
+            color: "white",
+            textAlign: "center",
+            padding: isSmall ? '30px' : isMedium ? '50px' : "0px 200px",
+            marginBottom: '50px',
+            gap: "10px",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1,
+          }}>
             <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
               BLOGS
             </Typography>
@@ -85,9 +98,10 @@ const Blog = () => {
             </Typography>
           </Box>
         </Box>
-        <Box sx={{ padding: "50px" }}>
+        {/* <Box sx={{ padding: "50px" }}>
           <CategoriesTabs />
-        </Box>
+        </Box> */}
+        <BlogData />
       </Box>
       <Footer />
     </>

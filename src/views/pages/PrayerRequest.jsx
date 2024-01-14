@@ -5,6 +5,8 @@ import {
   MenuItem,
   Select,
   Stack,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Header from "../../components/AppBar/Header";
@@ -19,6 +21,9 @@ import { Text } from "../../components/base";
 import { useSnackbar } from "notistack";
 
 const PrayerRequest = () => {
+  const theme = useTheme();
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+  const isMedium = useMediaQuery(theme.breakpoints.down('md'))
   //   const [selectedCategoryId, setSelectedCategoryId] = useState([]);
   const [requestForm, setRequestForm] = useState({
     first_name: "",
@@ -146,7 +151,7 @@ const PrayerRequest = () => {
             {" "}
             Prayer Request
           </Text>
-          <Text sx={{ paddingX: 5 }}>
+          <Text sx={{ paddingX: isSmall ? 5 : 10, mb: 5, fontSize: isSmall ? '17px' : '20px' }}>
             Share your prayer requests with us. At Shekinah Haitian SDA Church,
             we stand together in faith, supporting one another through the power
             of prayer. Your concerns matter to us, and our community is here for
@@ -202,7 +207,7 @@ const PrayerRequest = () => {
             />
             <input
               type="text"
-              placeholder="Last Name"
+              placeholder="Full Name"
               style={{
                 border: "none",
                 backgroundColor: "#EDE8E8",
@@ -217,7 +222,7 @@ const PrayerRequest = () => {
             />
           </Box>
 
-          <select
+          {/* <select
             style={{
               width: "100%",
               padding: " 15px 20px",
@@ -242,9 +247,10 @@ const PrayerRequest = () => {
                 {request?.name}
               </option>
             ))}
-          </select>
+          </select> */}
 
           <textarea
+            rows={6}
             placeholder="Write Your Prayers"
             style={{
               border: "none",

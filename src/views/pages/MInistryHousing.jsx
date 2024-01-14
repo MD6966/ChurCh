@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { useEffect } from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer';
@@ -43,6 +43,9 @@ const content = [
     },
 ]
 const MinistryHousing = () => {
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMedium = useMediaQuery(theme.breakpoints.down('md'))
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -87,7 +90,7 @@ const MinistryHousing = () => {
                 />
 
 
-                <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: isSmall ? '50px' : "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
                     <Typography sx={{ fontSize: '32px', fontWeight: 600, }}> {state.title}
                     </Typography>
@@ -116,9 +119,9 @@ const MinistryHousing = () => {
 
                 </Grid>
             </Box> */}
-            <Box sx={{ padding: '50px 100px' }}>
+            <Box sx={{ padding: isSmall ? '20px' : isMedium ? '40px' : '50px 100px' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={state.Image.url} style={{ width: '100%', height: '80vh', objectFit: 'cover' }} alt="" />
+                    <img src={state.Image.url} style={{ width: '100%', height: isSmall ? '50vh' : '80vh', objectFit: 'cover' }} alt="" />
                 </Box>
 
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>

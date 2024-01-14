@@ -126,7 +126,7 @@ const Footer = () => {
             zIndex: 0,
           }}
         />
-        <Grid container spacing={10} sx={{ zIndex: 2, padding: '0px 50px' }}>
+        <Grid container spacing={10} sx={{ zIndex: 2, padding: '50px 50px' }}>
           <Grid item lg={3}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <Typography sx={{

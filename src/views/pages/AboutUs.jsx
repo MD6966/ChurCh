@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer'
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
 
@@ -29,13 +29,17 @@ const product = [
     },
 ]
 const AboutUs = () => {
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMedium = useMediaQuery(theme.breakpoints.down('md'))
+    const carouselKey = isSmall ? 'small' : isMedium ? 'medium' : 'large';
     return (
         <>
             <Header color='000' />
             <Box>
-                <Box sx={{ padding: "30px 60px" }}>
+                <Box sx={{ padding: isSmall ? '20px' : "30px 60px" }}>
                     <Grid container spacing={3}>
-                        <Grid item lg={6}>
+                        <Grid item lg={6} sm={12} xs={12} md={12}>
                             <Box
                                 sx={{
                                     maxWidth: "100%",
@@ -50,7 +54,7 @@ const AboutUs = () => {
                                     alt=""
                                     style={{
                                         maxWidth: "100%",
-                                        maxHeight: "100%",
+                                        height: "100%",
                                         objectFit: "contain",
                                     }}
                                 />
@@ -129,13 +133,13 @@ const AboutUs = () => {
                     <Typography sx={{ fontSize: '18px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Our Team</Typography>
                     <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', padding: '10px 0px' }}>Church Pastors</Typography>
                     <Carousel
+                        key={carouselKey}
                         value={product}
-                        numVisible={3}
+                        numVisible={isSmall ? 1 : isMedium ? 2 : 3}
                         autoplayInterval={3000}
                         numScroll={3}
                         itemTemplate={productTemplate}
                         showNavigators
-
                     />
 
                 </Box>

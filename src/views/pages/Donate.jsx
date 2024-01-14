@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer';
-import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import getStripe from '../../utils/getStripe';
 const headerColor = '000';
 const Donate = () => {
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMedium = useMediaQuery(theme.breakpoints.down('md'))
     const [button1Active, setButton1Active] = useState(true);
     const [button2Active, setButton2Active] = useState(false);
     const [selectedAmount, setSelectedAmount] = useState('')
@@ -55,11 +58,11 @@ const Donate = () => {
     return (
         <>
             <Header color={headerColor} />
-            <Box sx={{ padding: '50px' }}>
+            <Box sx={{ padding: isSmall ? '20px' : '50px' }}>
                 <Grid container spacing={5}>
                     <Grid item lg={8}>
                         <Box>
-                            <Typography sx={{ fontSize: '36px', fontWeight: 600, color: 'black', textAlign: 'start' }}>Donate Online</Typography>
+                            <Typography sx={{ fontSize: isSmall ? '27px' : '36px', fontWeight: 600, color: 'black', textAlign: 'start' }}>Donate Online</Typography>
                             <Box>
                                 <img src="img40.png" style={{ height: '100%', width: '100%', objectFit: 'cover' }} alt="donateImage" />
                             </Box>
@@ -83,12 +86,12 @@ const Donate = () => {
                             </Box>
                         </Box>
                     </Grid>
-                    <Grid item lg={4}>
-                        <Box sx={{ padding: '150px 60px' }}>
+                    <Grid item lg={4} md={12} sm={12} xs={12}>
+                        <Box sx={{ padding: isSmall ? '20px' : isMedium ? '30px' : '150px 60px' }}>
                             <Typography sx={{ fontSize: '18px', fontWeight: 500, p: '20px 0', }}>
                                 Make a Donation
                             </Typography>
-                            <div style={{ display: 'flex', gap: '2px', textAlign: 'center', justifyContent: 'center' }}>
+                            <div style={{ display: 'flex', gap: '2px', textAlign: 'center', justifyContent: isSmall ? 'left' : 'center' }}>
                                 <button
 
                                     onClick={() => handleButtonClick(1)}
@@ -130,7 +133,7 @@ const Donate = () => {
                                     <Typography sx={{ p: '20px 0', fontSize: '14px', fontWeight: 600 }}>Choose an amount to give monthly</Typography>
                                 )}
                             </Box>
-                            <Box sx={{ display: 'flex', gap: '5px', flexWrap: 'wrap', textAlign: 'center', justifyContent: 'center' }}>
+                            <Box sx={{ display: 'flex', gap: '5px', flexWrap: 'wrap', textAlign: 'center', justifyContent: isSmall ? 'left' : 'center' }}>
                                 {btnContent.map((val, ind) => (
                                     <button onClick={() => handleAmountButtonClick(val.btn)} style={btnStyle}>{val.btn}</button>
                                 ))}

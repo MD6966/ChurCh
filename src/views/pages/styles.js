@@ -33,7 +33,7 @@ export const usePageStyle = ({ theme }) => {
       flexDirection: "column",
       color: "white",
       textAlign: "center",
-      gap: "10px",
+      gap: { sm: '5px', lg: '10px' },
       justifyContent: "center",
       alignItems: "center",
       zIndex: 1,
@@ -43,7 +43,7 @@ export const usePageStyle = ({ theme }) => {
       fontSize: { xs: "16px", sm: "20px" },
       fontWeight: 400,
       textAlign: "center",
-      paddingX: { xs: 4, sm: 5, md: 6 },
+
     },
     contactUsFormText: {
       fontSize: "24px",
@@ -80,7 +80,7 @@ export const usePageStyle = ({ theme }) => {
       justifyContent: "center",
       alignItems: "center",
     },
-    contactUsImg: { maxWidth: "100%", maxHeight: "100%", objectFit: "contain" },
+    contactUsImg: { maxWidth: "100%", height: "100%", objectFit: "contain" },
   };
   return style;
 };
