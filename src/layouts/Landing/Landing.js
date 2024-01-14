@@ -83,7 +83,7 @@ const Landing = () => {
         sx={{
           position: "relative",
           // minHeight: "700px",
-          minHeight: "100vh",
+          minHeight: "110vh",
           "&::before": {
             content: '""',
             position: "absolute",
@@ -128,7 +128,7 @@ const Landing = () => {
             // marginTop: '90px',
             // paddingBottom: '70px',
             zIndex: 1,
-            mb: isSmall ? '200px' : isDsmall ? '300px' : '50px'
+            mb: isSmall ? '300px' : '50px'
           }}
         >
           <Typography sx={{ color: '#E10B0B', fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
