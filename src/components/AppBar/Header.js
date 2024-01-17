@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { menuItems } from "../../utils/helper";
 
 const Header = (props) => {
-  const { color } = props;
+  const { color, logo } = props;
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const styles = useHeaderStyle({ theme });
@@ -37,7 +37,7 @@ const Header = (props) => {
         setLogoImage("img36.png");
       } else {
         setScrolling(false);
-        // setLogoImage("img39.png");
+        // setLogoImage(logo || "img39.png");
       }
     };
 
@@ -79,6 +79,7 @@ const Header = (props) => {
     <div>
       <AppBar elevation={0} sx={props.position ? propsStyles : styles.appBar}>
         <Toolbar sx={styles.toolbar}>
+
           {isSmall && (
             <IconButton
               aria-label="open drawer"

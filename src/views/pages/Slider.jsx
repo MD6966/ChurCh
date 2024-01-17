@@ -90,8 +90,9 @@ const Slider = () => {
                                             <RoomOutlinedIcon sx={{ color: '#E10B0B', fontSize: '3rem' }} />
                                             <Box sx={{ textAlign: "start" }}>
                                                 <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>{val.title}</Typography>
-                                                <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: '#E10B0B', fontWeight: 700 }}> {val.date_time} </span > at our <span style={{ color: '#E10B0B', fontWeight: 700 }}> {val.location}</span> </Typography>
-                                                <button onClick={() => handleBtn(val)} style={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B', border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
+                                                <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: '#E10B0B', fontWeight: 700 }}> {val.date_time} </span > at our <span style={{ color: '#E10B0B', fontWeight: 700 }}> {val.address
+                                                }</span> </Typography>
+                                                <button className="animated-button" onClick={() => handleBtn(val)} style={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B', border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
                                             </Box>
                                         </Box>
                                     </Box>

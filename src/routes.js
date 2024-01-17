@@ -28,114 +28,135 @@ import AllBlogData from "./views/pages/AllBlogData";
 import AboutUs from "./views/pages/AboutUs";
 import AllEvents from "./views/pages/AllEvents";
 import LastEventDetail from "./views/pages/LastEventDetail";
+import { useTheme } from "@mui/material";
+import { useState } from "react";
+import LoadingBar from "react-top-loading-bar";
+import BlogData from "./views/pages/Blog/molecules/BlogData";
+
 
 
 export default function Router() {
-  let element = useRoutes([
-    {
-      path: "/",
-      element: <Landing />,
-    },
-    {
-      path: "admin",
-      element: <AdminDashboard />,
-      children: [],
-    },
-    {
-      path: "auth",
-      element: <AuthLayout />,
-      children: [
-        { path: "login", element: <Login /> },
-        { path: "register", element: <SignUp /> },
-      ],
-    },
-    {
-      path: "/home",
-      element: <Home />,
-    },
-    {
-      path: "/admin-login",
-      element: <AdminLogin />,
-    },
-    {
-      path: "*",
-      element: <ErrorPage />,
-    },
-    {
-      path: "/contact",
-      element: <ContactUs />,
-    },
-    {
-      path: "/blog",
-      element: <Blog />,
-    },
-    { path: "/prayer-regards", element: <PrayerRegards /> },
-    {
-      path: "minister",
-      element: <Minister />,
-    },
-    {
-      path: "ministerHuman",
-      element: <MinistryHuman />,
-    },
-    {
-      path: "ministerHousing",
-      element: <MinistryHousing />,
-    },
-    {
-      path: "prayer-request",
-      element: <PrayerRequest />,
-    },
-    {
-      path: "study-materials",
-      element: <StudyMaterials />,
-    },
-    // {
-    //   path: "study-intro",
-    //   element: <StudyIntro />,
-    // },
-    {
-      path: 'live-stream',
-      element: <LiveStream />
-    },
-    {
-      path: 'sermons',
-      element: <Sermons />
-    },
-    {
-      path: 'eventVideo',
-      element: <ShowEventVideo />
-    },
-    {
-      path: 'donate',
-      element: <Donate />
-    },
-    {
-      path: 'upcoming-event',
-      element: <AllEvents />
-    },
-    {
-      path: 'eventDetail',
-      element: <EventDetail />
-    },
-    {
-      path: '/sermonDetail',
-      element: <SermonDetail />
-    },
-    {
-      path: '/allBlogDetail',
-      element: <AllBlogData />
-    },
-    {
-      path: '/about-us',
-      element: <AboutUs />
-    },
+  const theme = useTheme()
+  const [progress, setProgress] = useState(0)
 
-    {
-      path: 'lastEventDetail',
-      element: <LastEventDetail />
-    },
+  return (
+    <>
+      <LoadingBar
+        style={{
+          color: '#E10B0B'
+        }}
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
+      {useRoutes([
+        {
+          path: "/",
+          element: <Landing setProgress={setProgress} />,
+        },
+        {
+          path: "admin",
+          element: <AdminDashboard />,
+          children: [],
+        },
+        {
+          path: "auth",
+          element: <AuthLayout />,
+          children: [
+            { path: "login", element: <Login /> },
+            { path: "register", element: <SignUp /> },
+          ],
+        },
+        {
+          path: "/home",
+          element: <Home />,
+        },
+        {
+          path: "/admin-login",
+          element: <AdminLogin />,
+        },
+        {
+          path: "*",
+          element: <ErrorPage />,
+        },
+        {
+          path: "/contact",
+          element: <ContactUs setProgress={setProgress} />,
+        },
+        {
+          path: "/blog",
+          element: <Blog setProgress={setProgress} />,
+        },
+        { path: "/prayer-regards", element: <PrayerRegards setProgress={setProgress} /> },
+        {
+          path: "minister",
+          element: <Minister setProgress={setProgress} />,
+        },
+        {
+          path: "ministerHuman",
+          element: <MinistryHuman />,
+        },
+        {
+          path: "ministerHousing",
+          element: <MinistryHousing setProgress={setProgress} />,
+        },
+        {
+          path: "prayer-request",
+          element: <PrayerRequest setProgress={setProgress} />,
+        },
+        {
+          path: "study-materials",
+          element: <StudyMaterials setProgress={setProgress} />,
+        },
+        // {
+        //   path: "study-intro",
+        //   element: <StudyIntro />,
+        // },
+        {
+          path: 'live-stream',
+          element: <LiveStream setProgress={setProgress} />
+        },
+        {
+          path: 'sermons',
+          element: <Sermons setProgress={setProgress} />
+        },
+        {
+          path: 'eventVideo',
+          element: <ShowEventVideo setProgress={setProgress} />
+        },
+        {
+          path: 'donate',
+          element: <Donate setProgress={setProgress} />
+        },
+        {
+          path: 'upcoming-event',
+          element: <AllEvents setProgress={setProgress} />
+        },
+        {
+          path: 'eventDetail',
+          element: <EventDetail setProgress={setProgress} />
+        },
+        {
+          path: '/sermonDetail',
+          element: <SermonDetail setProgress={setProgress} />
+        },
+        {
+          path: '/allBlogDetail',
+          element: <AllBlogData setProgress={setProgress} />
+        },
+        {
+          path: '/about-us',
+          element: <AboutUs setProgress={setProgress} />
+        },
 
-  ]);
-  return element;
+        {
+          path: 'lastEventDetail',
+          element: <LastEventDetail setProgress={setProgress} />
+        },
+        {
+          path: 'blog_data',
+          element: <BlogData setProgress={setProgress} />
+        },
+      ])}
+    </>
+  )
 }

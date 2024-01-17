@@ -1,10 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer';
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import getStripe from '../../utils/getStripe';
 const headerColor = '000';
-const Donate = () => {
+const Donate = ({ setProgress }) => {
+
+    useEffect(() => {
+        setProgress(20)
+        setTimeout(() => {
+            setProgress(100)
+        }, 1000)
+    }, [])
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
     const isMedium = useMediaQuery(theme.breakpoints.down('md'))

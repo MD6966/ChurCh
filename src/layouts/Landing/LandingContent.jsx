@@ -245,6 +245,7 @@ const LandingContent = () => {
                 </Grid>
                 <Box sx={{ padding: '10px 0px' }}>
                   <button
+                    className="animated-button"
                     style={{
                       backgroundColor: "#E10B0B",
                       color: "white",
@@ -324,6 +325,7 @@ const LandingContent = () => {
             through the power of prayer and communal connection.
           </Typography>
           <button
+            className="animated-button"
             style={{
               backgroundColor: "#E10B0B",
               color: "white",
@@ -421,7 +423,7 @@ const LandingContent = () => {
                       display: 'flex', alignItems: 'center', justifyContent
                         : 'center'
                     }}>
-                      < button onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                      < button className="animated-button" onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                     </Box>
                   </Box>
                 </Box>
@@ -450,7 +452,7 @@ const LandingContent = () => {
           See All Ministries
         </button>
       </Box> */}
-      <Box sx={{ padding: "30px", backgroundColor: "black" }}>
+      <Box sx={{ padding: isSmall ? '20px' : "30px", backgroundColor: "black" }}>
 
         <Grid container>
           <Grid item lg={6} sm={12} xs={12} md={6}>
@@ -483,21 +485,21 @@ const LandingContent = () => {
                 // alignItems: "center",
                 color: "white",
                 gap: "20px",
-                padding: "90px 50px",
+                padding: isSmall ? '20px' : "90px 50px",
               }}
             >
               <Typography
                 sx={{
-                  fontSize: "32px",
+                  fontSize: isSmall ? '27px' : "32px",
                   fontWeight: 800,
                   color: "#FB5F5F",
                   fontFamily: "Roboto",
-                  textAlign: "start",
+                  textAlign: isSmall ? 'center' : 'start'
                 }}
               >
                 Message from paster:
               </Typography>
-              <Typography sx={{ textAlign: 'start' }}>
+              <Typography sx={{ textAlign: isSmall ? 'center' : 'start' }}>
                 For to us a child is born, to us a son is given; and the
                 government shall be upon his shoulder, and his name shall be
                 called Wonderful Counselor, Mighty God, Everlasting Father,
@@ -719,7 +721,7 @@ const LandingContent = () => {
                       display: 'flex', alignItems: 'center', justifyContent
                         : 'center'
                     }}>
-                      <button onClick={() => handleBlogDetail(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                      <button className="animated-button" onClick={() => handleBlogDetail(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                     </div>
                   </Box>
                 </Box>
@@ -731,6 +733,7 @@ const LandingContent = () => {
           </Grid>
         )}
         <button
+          className="animated-button"
           style={{
             backgroundColor: "#E10B0B",
             color: "white",
@@ -740,7 +743,7 @@ const LandingContent = () => {
             border: "none",
 
           }}
-          onClick={() => navigate('/blog')}
+          onClick={() => navigate('/blog_data')}
         >
           See All Blog
         </button>
@@ -793,12 +796,13 @@ const LandingContent = () => {
             </Box>
           </Grid>
           <Grid item lg={8} sm={12} md={6} xs={12}>
-            <Box sx={{ color: 'white', display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'start', justifyContent: 'start', marginBottom: '30px' }}>
-              <Typography sx={{ fontSize: '35px', fontWeight: 700 }}>Get in touch</Typography>
-              <Typography sx={{ fontSize: '35px', fontWeight: 700 }}>Don't hesitate Contact Us</Typography>
-              <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'start', padding: '0px 50px 0px 0px' }}>Feel free to Contact Us. Shekinah Haitian SDA Church WP Theme comes with sermons, ministries, events, testimonies, staff members, church locations short codes to enhance your website.</Typography>
+            <Box sx={{ color: 'white', display: 'flex', flexDirection: 'column', gap: '5px', alignItems: isSmall ? 'center' : 'start', justifyContent: isSmall ? 'center' : 'start', marginBottom: '30px' }}>
+              <Typography sx={{ fontSize: isSmall ? '27px' : '35px', fontWeight: 700 }}>Get in touch</Typography>
+              <Typography sx={{ fontSize: isSmall ? '27px' : '35px', fontWeight: 700, textAlign: isSmall ? 'center' : 'start' }}>Don't hesitate Contact Us</Typography>
+              <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: isSmall ? 'center' : 'start', padding: isSmall ? '10px' : '0px 50px 0px 0px' }}>Feel free to Contact Us. Shekinah Haitian SDA Church WP Theme comes with sermons, ministries, events, testimonies, staff members, church locations short codes to enhance your website.</Typography>
               <Box>
                 <button
+                  className="animated-button"
                   style={{
                     backgroundColor: "#E10B0B",
                     color: "white",

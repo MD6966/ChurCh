@@ -57,7 +57,14 @@ const ministerData = [
 
 ];
 
-const Minister = () => {
+const Minister = ({ setProgress }) => {
+    useEffect(() => {
+        setProgress(20)
+        setTimeout(() => {
+            setProgress(100)
+        }, 1000)
+    }, [])
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -90,9 +97,10 @@ const Minister = () => {
         // console.log(data, ' this is dada')
         navigate('/ministerHousing', { state: data })
     }
+    const logo = 'img39.png'
     return (
         <>
-            <Header />
+            <Header logo={logo} />
             <Box
                 sx={{
                     position: 'relative',
@@ -196,7 +204,7 @@ const Minister = () => {
                                                 display: 'flex', alignItems: 'center', justifyContent
                                                     : 'center'
                                             }}>
-                                                <button onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                                                <button className="animated-button" onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                                             </div>
                                         </Box>
                                     </Box>

@@ -64,15 +64,9 @@ export const usePageStyle = ({ theme }) => {
       padding: " 15px 20px",
       borderRadius: "8px",
     },
-    contactUsButton: {
-      backgroundColor: "#E10B0B",
-      color: "white",
-      fontSize: "24px",
-      borderRadius: "8px",
-      padding: "10px 40px",
-      border: "none",
-      marginTop: { xs: "20px", sm: "25px", md: "30px" },
-    },
+    // contactUsButton: {
+     
+    // },
     contactUsImageBox: {
       maxWidth: "100%",
       height: "100%",

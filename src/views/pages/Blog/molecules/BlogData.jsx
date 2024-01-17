@@ -16,10 +16,19 @@ import {
 import { Text } from "../../../../components/base";
 import { getAllBlogs } from "../../../../store/actions/blogActions";
 import { useNavigate } from "react-router";
+import Header from "../../../../components/AppBar/Header";
 
-const BlogData = () => {
+const BlogData = ({ setProgress }) => {
 
-
+  useEffect(() => {
+    setProgress(20)
+    setTimeout(() => {
+      setProgress(100)
+    }, 1000)
+  }, [])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate()
   const [blogData, setBlogData] = useState([]);
   const dispatch = useDispatch();
@@ -48,6 +57,55 @@ const BlogData = () => {
   }
   return (
     <>
+      <Header />
+      <Box
+        sx={{
+          position: 'relative',
+          minHeight: '400px',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: -70,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundImage: `url('/img15.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            zIndex: -1,
+          },
+          position: 'relative',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -70,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            zIndex: 0,
+          }}
+        />
+
+
+        <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
+
+          <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
+            BLOGS
+          </Typography>
+          <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>Explore our thought-provoking blogs, where we share inspirational stories, reflections
+            on faith, and updates on community events. Dive into a rich tapestry of content that
+            aims to uplift, inspire, and foster a sense of connection within our church family.
+          </Typography>
+
+        </Box>
+      </Box>
       <Box sx={{ padding: isSmall ? '20px' : '0px 50px 50px 50px' }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography sx={{ fontSize: '32px', fontWeight: 700, textAlign: "start", padding: '0px 0px 20px 0px' }}>Our Latest Blogs</Typography>

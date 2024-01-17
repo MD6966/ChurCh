@@ -129,3 +129,24 @@ export const getAllInspirationMessages = () => async () => {
     throw error;
   }
 };
+
+export const postEventRegistration = (formData) => async () => {
+  try {
+    const response = await api.post(
+      "https://church.saeedantechpvt.com/api/eventregistrations",
+      formData
+    );
+    return response;
+  } catch (error) { }
+};
+
+export const getPators = () => async () => {
+  try {
+    const response = await api.get(
+      "https://church.saeedantechpvt.com/api/church/pastors"
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

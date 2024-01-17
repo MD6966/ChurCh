@@ -1,25 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/AppBar/Header";
-import {
-  Box,
-  Grid,
-  InputAdornment,
-  TextField,
-  TextareaAutosize,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Footer from "../../layouts/Landing/Footer";
+import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import HeadsetMicOutlinedIcon from '@mui/icons-material/HeadsetMicOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import { contactUs } from "../../store/actions/userActions";
 import { useDispatch } from "react-redux";
 import { useSnackbar } from "notistack";
 import { Text } from "../../components/base";
 import { usePageStyle } from "../pages/styles";
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import HeadsetMicOutlinedIcon from '@mui/icons-material/HeadsetMicOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import Footer from "../../layouts/Landing/Footer";
+
 const data = [
   {
     imgSrc: 'main.png',
@@ -41,22 +32,25 @@ const data = [
     title: 'Email Address',
     location1: 'info@shekinahsda.org'
   },
-]
-const ContactUs = () => {
+];
+
+const ContactUs = ({ setProgress }) => {
   const [contactUsState, setContactUsState] = useState({
     first_name: "",
     last_name: "",
     email: "",
     description: "",
   });
-  const theme = useTheme();
 
-  const isMedium = useMediaQuery(theme.breakpoints.down('md'))
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+  const [loading, setLoading] = useState(false);
+
+  const theme = useTheme();
+  const isMedium = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
   const styles = usePageStyle({ theme });
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  //   console.log("contactUs values=========", contactUsState);
+
   const handleChange = (event) => {
     setContactUsState({
       ...contactUsState,
@@ -65,19 +59,20 @@ const ContactUs = () => {
   };
 
   const contactUsSubmission = () => {
-    // console.log("in submission funciton");
     if (
       contactUsState.first_name.length &&
       contactUsState.last_name.length &&
       contactUsState.email.length &&
       contactUsState.description.length
     ) {
-      //   console.log("in if statement");
+      setLoading(true); // Start loader
+
       const formData = new FormData();
       formData.append("first_name", contactUsState.first_name);
       formData.append("last_name", contactUsState.last_name);
       formData.append("email", contactUsState.email);
       formData.append("description", contactUsState.description);
+
       dispatch(contactUs(formData))
         .then((result) => {
           setContactUsState({
@@ -93,13 +88,24 @@ const ContactUs = () => {
         })
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+          setLoading(false); // Stop loader regardless of success or failure
         });
     } else {
-      alert("fill all the inputs");
+      alert("Fill in all the inputs");
     }
   };
+
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    setProgress(20);
+    setTimeout(() => {
+      setProgress(100);
+    }, 1000);
   }, []);
   return (
     <>
@@ -125,7 +131,7 @@ const ContactUs = () => {
         {/* Contact Us Paragraph End */}
       </Box>
       {/* Contact Us Box Form Start */}
-      <Box sx={{ padding: '0px 50px', }}>
+      <Box sx={{ padding: isSmall ? '20px' : '0px 50px', }}>
         <Grid container spacing={3}>
           {data.map((val, ind) => (
             <Grid item lg={4} sm={12} xs={12} md={6}>
@@ -187,9 +193,9 @@ const ContactUs = () => {
 
         </Grid>
       </Box>
-      <Box sx={{ padding: "50px" }}>
+      <Box sx={{ padding: isSmall ? '20px' : "50px" }}>
         <Grid container spacing={5} columns={12}>
-          <Grid item xs={12} md={12} lg={5}>
+          <Grid item xs={12} md={12} lg={6}>
             <Text sx={styles.contactUsFormText}>Contact Us</Text>
             <Box sx={styles.inputsBox}>
               <input
@@ -228,27 +234,50 @@ const ContactUs = () => {
               ></textarea>
               <div>
                 <button
-                  style={styles.contactUsButton}
+                  style={{
+                    backgroundColor: "#E10B0B",
+                    color: "white",
+                    fontSize: isSmall ? '17px' : "24px",
+                    borderRadius: "8px",
+                    padding: "10px 40px",
+                    border: "none",
+                    marginTop: '',
+                    position: 'relative',
+                  }}
                   onClick={contactUsSubmission}
+                  disabled={loading}
                 >
-                  Contact Us
+                  {loading && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                      }}
+                    >
+
+
+                    </div>
+                  )}
+                  {loading ? 'wait...' : 'Contact Us'}
                 </button>
               </div>
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={12} lg={7}>
+          <Grid item xs={12} md={12} lg={6} display={isSmall ? 'none' : isMedium ? 'none' : ''}>
             <Box sx={styles.contactUsImageBox}>
               <img src="/img14.png" alt="" style={styles.contactUsImg} />
             </Box>
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{ padding: '50px' }}>
+      <Box sx={{ padding: isSmall ? '20px' : '50px' }}>
         <img src="img24.png" alt="" style={{ height: '100%', width: '100%' }} />
-      </Box>
+      </Box >
       {/* Contact Us Box Form End */}
-      <Footer />
+      < Footer />
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { AppBar, Box, Button, Grid, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom/dist";
 import Body from "./Body";
 import NavBarLinks from "./NavBarLinks";
@@ -32,12 +32,18 @@ import Slider from "../../views/pages/Slider";
 //   },
 
 // ];
-const Landing = () => {
+const Landing = ({ setProgress }) => {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
   const isDsmall = useMediaQuery(theme.breakpoints.down('xs'))
   const isMedium = useMediaQuery(theme.breakpoints.down('md'))
   const navigate = useNavigate()
+  useEffect(() => {
+    setProgress(20)
+    setTimeout(() => {
+      setProgress(100)
+    }, 1000)
+  }, [])
 
   return (
     <Page title="Welcome To Website">
@@ -128,7 +134,7 @@ const Landing = () => {
             // marginTop: '90px',
             // paddingBottom: '70px',
             zIndex: 1,
-            mb: isSmall ? '235px' : '50px'
+            mb: isSmall ? '300px' : '100px'
           }}
         >
           <Typography sx={{ color: '#E10B0B', fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
@@ -150,6 +156,7 @@ const Landing = () => {
           </Text>
           <button
             onClick={() => navigate('/live-stream')}
+            className="animated-button"
             style={{
               backgroundColor: "#E10B0B",
               color: "white",

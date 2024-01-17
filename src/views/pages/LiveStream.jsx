@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/AppBar/Header'
-import { Box, CircularProgress, Grid, Typography } from '@mui/material'
+import { Box, CircularProgress, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
 import Footer from '../../layouts/Landing/Footer';
 import { useDispatch } from 'react-redux';
 import { getlastEvents } from '../../store/actions/userActions';
@@ -39,7 +39,17 @@ const data = [
     },
 ];
 
-const LiveStream = () => {
+const LiveStream = ({ setProgress }) => {
+    useEffect(() => {
+        setProgress(20)
+        setTimeout(() => {
+            setProgress(100)
+        }, 1000)
+    }, [])
+
+    const theme = useTheme()
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMedium = useMediaQuery(theme.breakpoints.down('md'))
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(true);
     const [showEvent, setshowEvent] = useState([])
@@ -119,12 +129,12 @@ const LiveStream = () => {
                 />
 
 
-                <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: isSmall ? '20px' : isMedium ? '40px' : "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
                     <Typography sx={{ fontSize: '32px', fontWeight: 600 }}>
                         Join Our Worship Online
                     </Typography>
-                    <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: 'center' }}>
+                    <Typography sx={{ fontSize: isSmall ? '15px' : '20px', fontWeight: 400, textAlign: 'center', paddingBottom: isSmall ? '50px' : '' }}>
                         Experience the joy of worship from anywhere with our live streaming services. Join our online community
                         for a spiritually uplifting and immersive worship experience. Connect with us in real-time as we come
                         together to celebrate faith, fellowship, and the transformative power of community.
@@ -132,7 +142,7 @@ const LiveStream = () => {
 
                 </Box>
             </Box>
-            <Box sx={{ padding: '70px' }}>
+            <Box sx={{ padding: isSmall ? '20px' : isMedium ? '40px' : "0px 200px", }}>
                 <video width="100%" height="500" controls>
                     <source src="URL_FOR_VIDEO_10" type="video/mp4" />
                     Your browser does not support the video tag.
@@ -142,12 +152,12 @@ const LiveStream = () => {
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    padding: "40px",
+                    padding: isSmall ? '20px' : "40px",
 
                     gap: "40px",
                 }}
             >
-                <Typography sx={{ fontSize: "32px", fontWeight: 800, textAlign: 'start' }}>
+                <Typography sx={{ fontSize: "32px", fontWeight: 800, textAlign: isSmall ? 'center' : 'start' }}>
                     Our Last Events
                 </Typography>
                 <Box sx={{ display: 'flex', gap: '20px' }}>
@@ -157,7 +167,7 @@ const LiveStream = () => {
                     ) : (
                         <Grid container spacing={5}>
                             {showEvent.map((val, ind) => (
-                                <Grid key={ind} item lg={4}>
+                                <Grid key={ind} item lg={4} sm={12} xs={12} md={6}>
                                     <Box
                                         sx={{
                                             display: "flex",

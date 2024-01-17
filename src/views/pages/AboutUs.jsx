@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer'
 import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
@@ -6,6 +6,8 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
 
 import { Carousel } from 'primereact/carousel';
+import { useDispatch } from 'react-redux';
+import { getPators } from '../../store/actions/userActions';
 const product = [
     {
         name: 'moaz',
@@ -28,11 +30,38 @@ const product = [
         price: 'ahmad'
     },
 ]
-const AboutUs = () => {
+const AboutUs = ({ setProgress }) => {
+    const [pators, setPastors] = useState([])
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
     const isMedium = useMediaQuery(theme.breakpoints.down('md'))
     const carouselKey = isSmall ? 'small' : isMedium ? 'medium' : 'large';
+    const dispatch = useDispatch()
+    useEffect(() => {
+        setProgress(20)
+        setTimeout(() => {
+            setProgress(100)
+        }, 1000)
+    }, [])
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    const getAllPastors = () => {
+        dispatch(getPators())
+            .then((result) => {
+                console.log("========result", result.data.data
+                );
+                setPastors(result.data.data);
+            })
+            .catch((err) => {
+                console.log("Error fetching categories:", err);
+            })
+    }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        getAllPastors()
+    }, []);
     return (
         <>
             <Header color='000' />
@@ -129,12 +158,12 @@ const AboutUs = () => {
                 </Box >
                 {/* Slider */}
 
-                <Box sx={{ padding: '30px 40px' }}>
+                <Box sx={{ padding: isSmall ? '20px' : '30px 40px' }}>
                     <Typography sx={{ fontSize: '18px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Our Team</Typography>
                     <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', padding: '10px 0px' }}>Church Pastors</Typography>
                     <Carousel
                         key={carouselKey}
-                        value={product}
+                        value={pators}
                         numVisible={isSmall ? 1 : isMedium ? 2 : 3}
                         autoplayInterval={3000}
                         numScroll={3}
@@ -150,7 +179,7 @@ const AboutUs = () => {
         </>
     )
 };
-const productTemplate = (product) => {
+const productTemplate = (pators) => {
     return (
 
         <Box sx={{
@@ -161,13 +190,13 @@ const productTemplate = (product) => {
 
         }}>
             <Box >
-                <img src={product.image} style={{
-                    width: '100%', height: '60vh', objectFit: 'cover',
-                }} alt={product.name} />
+                <img src={pators.image} style={{
+                    width: '100%', height: '50vh', objectFit: 'cover',
+                }} alt={pators.name} />
             </Box>
             <Box sx={{ padding: '15px 0px', backgroundColor: '#E10B0B', color: 'white', fontWeight: 600 }}>
-                <Typography sx={{ fontWeight: 600, fontSize: '22px' }}>{product.name}</Typography>
-                <Typography >${product.price}</Typography>
+                <Typography sx={{ fontWeight: 600, fontSize: '22px' }}>{pators.name}</Typography>
+                <Typography >{pators.title}</Typography>
             </Box>
         </Box>
     );

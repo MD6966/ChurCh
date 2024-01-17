@@ -1,93 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import Footer from '../../layouts/Landing/Footer'
-import { Box, Button, Divider, Grid, InputLabel, MenuItem, Select, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
-import Header from '../../components/AppBar/Header'
-import { useDispatch } from 'react-redux'
-import { getlastEvents } from '../../store/actions/userActions'
-import { useLocation, useNavigate } from 'react-router'
-import moment from 'moment/moment'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import Footer from '../../layouts/Landing/Footer';
+import { Box, Button, Grid, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import Header from '../../components/AppBar/Header';
+import { useDispatch } from 'react-redux';
+import { getlastEvents, postEventRegistration } from '../../store/actions/userActions';
+import { useLocation, useNavigate } from 'react-router';
+import moment from 'moment/moment';
+import { Link } from 'react-router-dom';
+import { enqueueSnackbar } from 'notistack';
 
-
-const Imgs = [
-    {}
-
-]
-const eventDetail = [
-    {
-        title: 'Organizer:',
-        description: 'Zegen Church Team'
-    },
-    {
-        title: 'start Date:',
-        description: 'Feb 12'
-    },
-    {
-        title: 'End Date:',
-        description: 'Feb 12'
-    },
-    {
-        title: 'Time:',
-        description: '7:00 am'
-    },
-    {
-        title: 'Cost:',
-        description: 'Free'
-    },
-]
-const EventVanue = [
-    {
-        title: 'Venue:',
-        description: 'Zegen Church'
-    },
-    {
-        title: 'Address:',
-        description: '12, Victoria Street, Australia'
-    },
-    {
-        title: 'E-mail : ',
-        description: 'zegen@admin.com'
-    },
-    {
-        title: 'Phone :',
-        description: '+1 (541) 754-3010'
-    },
-    {
-        title: 'Website : ',
-        description: 'https://zozothemes.com/'
-    },
-]
-
-const EventDetail = () => {
-    const theme = useTheme();
-    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
-    const isMedium = useMediaQuery(theme.breakpoints.down('md'))
-    const [formRequest, setFormRequest] = useState([]);
-    const dispatch = useDispatch()
-    const [showEvent, setshowEvent] = useState([])
-    const getAllEvents = () => {
-        dispatch(getlastEvents())
-            .then((result) => {
-                // console.log("This is result", result.data.data[0]?.Image.url[0]?.url);
-                setshowEvent(result.data.data);
-            })
-            .catch((err) => {
-                console.log("Error fetching categories:", err);
-            });
-    };
+const EventDetail = ({ setProgress }) => {
+    useEffect(() => {
+        setProgress(20);
+        setTimeout(() => {
+            setProgress(100);
+        }, 1000);
+    }, []);
 
     useEffect(() => {
-        getAllEvents();
+        window.scrollTo(0, 0);
     }, []);
-    const navigate = useNavigate();
-    const { state } = useLocation()
-    // console.log(state, 'this is state')
+
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMedium = useMediaQuery(theme.breakpoints.down('md'));
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
-        selectOption: '',
+        eventId: '',
     });
+
+    const [loading, setLoading] = useState(false);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { state } = useLocation();
 
     const handleChange = (e) => {
         setFormData({
@@ -98,8 +46,35 @@ const EventDetail = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form Data:', formData);
+        setLoading(true); // Start loader
+
+        const formDataObject = new FormData();
+        formDataObject.append('name', formData.name);
+        formDataObject.append('email', formData.email);
+        formDataObject.append('phone', formData.phone);
+        formDataObject.append('event_id', state.id);
+
+        dispatch(postEventRegistration(formDataObject))
+            .then((result) => {
+                setFormData({
+                    ...formData,
+                    name: '',
+                    email: '',
+                    phone: '',
+                });
+                enqueueSnackbar(result.data.message, {
+                    variant: "success",
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
+
+
 
     return (
         <>
@@ -262,6 +237,7 @@ const EventDetail = () => {
                                             <form onSubmit={handleSubmit}>
                                                 <Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '300px' }}>
                                                     <TextField
+                                                        required
                                                         label="Name"
                                                         variant="outlined"
                                                         name="name"
@@ -270,6 +246,7 @@ const EventDetail = () => {
                                                         margin="normal"
                                                     />
                                                     <TextField
+                                                        required
                                                         label="Email"
                                                         variant="outlined"
                                                         name="email"
@@ -278,6 +255,7 @@ const EventDetail = () => {
                                                         margin="normal"
                                                     />
                                                     <TextField
+                                                        required
                                                         label="Phone"
                                                         variant="outlined"
                                                         name="phone"
@@ -285,7 +263,7 @@ const EventDetail = () => {
                                                         onChange={handleChange}
                                                         margin="normal"
                                                     />
-                                                    <InputLabel id="select-label">Select Option</InputLabel>
+                                                    {/* <InputLabel id="select-label">Select Option</InputLabel>
                                                     <Select
                                                         labelId="select-label"
                                                         id="select"
@@ -298,25 +276,24 @@ const EventDetail = () => {
                                                         <MenuItem value="option1">Option 1</MenuItem>
                                                         <MenuItem value="option2">Option 2</MenuItem>
                                                         <MenuItem value="option3">Option 3</MenuItem>
-                                                    </Select>
+                                                    </Select> */}
 
                                                 </Box>
                                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px 0px' }}>
-                                                    <button
-                                                        type='submit'
+                                                    <Button
+                                                        type="submit"
                                                         style={{
-                                                            backgroundColor: "#E10B0B",
-                                                            color: "white",
-                                                            fontSize: "16px",
-                                                            borderRadius: "8px",
-                                                            padding: "10px 20px",
-                                                            border: "none",
-
+                                                            backgroundColor: '#E10B0B',
+                                                            color: 'white',
+                                                            fontSize: '16px',
+                                                            borderRadius: '8px',
+                                                            padding: '10px 20px',
+                                                            border: 'none',
                                                         }}
-
+                                                        disabled={loading}
                                                     >
-                                                        Submit
-                                                    </button>
+                                                        {loading ? 'Submitting...' : 'Submit'}
+                                                    </Button>
                                                 </div>
                                             </form>
                                         </Box>

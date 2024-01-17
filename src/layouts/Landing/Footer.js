@@ -292,7 +292,7 @@ const Footer = () => {
               >
                 GET THE NEWSLETTER
               </Typography>
-              <Box sx={{ display: "flex" }}>
+              <Box sx={{ display: "flex", flexWrap: 'wrap', gap: '10px' }}>
                 <input
                   style={{
                     border: "none",
@@ -304,10 +304,11 @@ const Footer = () => {
                 ></input>
                 <button
                   style={{
-                    backgroundColor: "white",
+                    backgroundColor: "#E10B0B",
                     padding: "5px 10px ",
                     border: "none",
                     borderRadius: "8px",
+                    color: 'white'
                   }}
                 >
                   submit

@@ -42,13 +42,20 @@ const content = [
         description: 'Become an active participant in creating positive change within our community. Whether you are passionate about housing advocacy, job training, or community development, there are various ways you can contribute.',
     },
 ]
-const MinistryHousing = () => {
-    const theme = useTheme();
-    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
-    const isMedium = useMediaQuery(theme.breakpoints.down('md'))
+const MinistryHousing = ({ setProgress }) => {
+    useEffect(() => {
+        setProgress(20)
+        setTimeout(() => {
+            setProgress(100)
+        }, 1000)
+    }, [])
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMedium = useMediaQuery(theme.breakpoints.down('md'))
+
     const { state } = useLocation()
     // console.log(state.Image.url, 'hi')
     return (
