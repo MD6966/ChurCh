@@ -275,14 +275,15 @@ const PrayerRequest = ({ setProgress }) => {
               )}
               <button
                 style={{
-                  backgroundColor: "#E10B0B",
-                  color: "white",
+                  backgroundColor: theme.palette.primary.main,
+                  color: "black",
                   fontSize: isSmall ? '17px' : "24px",
                   borderRadius: "8px",
                   padding: "10px 40px",
                   border: "none",
                   marginTop: '',
                   position: 'relative',
+                  fontWeight: 600,
                   zIndex: 1000, // Make sure the button is above the overlay
                 }}
                 onClick={submitPrayRequest}

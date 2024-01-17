@@ -39,7 +39,7 @@ const Landing = ({ setProgress }) => {
   const isMedium = useMediaQuery(theme.breakpoints.down('md'))
   const navigate = useNavigate()
   useEffect(() => {
-    setProgress(20)
+    setProgress(30)
     setTimeout(() => {
       setProgress(100)
     }, 1000)
@@ -66,7 +66,7 @@ const Landing = ({ setProgress }) => {
               alt="Logo"
             />
           </Box>
-          <Box sx={{ display: 'flex', gap: isSmall ? '12px' : "30px", paddingRight: isSmall ? '25px' : '50px', justifyContent: 'center', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', gap: isSmall ? '12px' : "30px", paddingRight: isSmall ? '25px' : '50px', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
             <a href="https://www.facebook.com/shekinahsda" target="_blank" rel="noopener noreferrer">
               <FacebookOutlinedIcon sx={{ fontSize: '20px', color: 'white' }} />
             </a>
@@ -135,9 +135,10 @@ const Landing = ({ setProgress }) => {
             // paddingBottom: '70px',
             zIndex: 1,
             mb: isSmall ? '300px' : '100px'
+
           }}
         >
-          <Typography sx={{ color: '#E10B0B', fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
+          <Typography sx={{ color: theme.palette.primary.main, fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
           <Text sx={{ fontSize: isSmall ? '24px' : '32px', fontWeight: 600, padding: '0px 5px' }}>
 
             A Place of Worship, Community, and Spiritual Growth.
@@ -158,13 +159,15 @@ const Landing = ({ setProgress }) => {
             onClick={() => navigate('/live-stream')}
             className="animated-button"
             style={{
-              backgroundColor: "#E10B0B",
-              color: "white",
+              backgroundColor: theme.palette.primary.main,
+              color: "black",
               fontSize: isSmall ? '17px' : '22px',
               // fontSize: { xs: "20px", sm: "24px", lg: '24px' },
               borderRadius: "8px",
               padding: "10px 12px",
               border: "none",
+              fontWeight: 600,
+              zIndex: 100000
             }}
           >
             Watch Live Sunday

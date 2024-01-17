@@ -191,7 +191,7 @@ const LandingContent = () => {
                 gap: '15px'
               }}
             >
-              <Typography sx={{ fontSize: "20px", fontWeight: 600, color: '#E10B0B' }}>
+              <Typography sx={{ fontSize: "20px", fontWeight: 600, color: theme.palette.secondary.main }}>
                 About us
               </Typography>
               <Typography sx={{
@@ -209,7 +209,7 @@ const LandingContent = () => {
                 <Grid item lg={6} md={12} sm={12} xs={12}>
                   <Box>
                     <Box sx={{ borderRadius: '50%', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                      <Box sx={{ backgroundColor: '#E10B0B', height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Box sx={{ backgroundColor: theme.palette.secondary.main, height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <FavoriteOutlinedIcon sx={{ color: 'white', }} />
                       </Box>
                       <Box>
@@ -228,7 +228,7 @@ const LandingContent = () => {
                 <Grid item lg={6}>
                   <Box>
                     <Box sx={{ borderRadius: '50%', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                      <Box sx={{ backgroundColor: '#E10B0B', height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Box sx={{ backgroundColor: theme.palette.secondary.main, height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <LocalLibraryOutlinedIcon sx={{ color: 'white', }} />
                       </Box>
                       <Box>
@@ -247,12 +247,13 @@ const LandingContent = () => {
                   <button
                     className="animated-button"
                     style={{
-                      backgroundColor: "#E10B0B",
-                      color: "white",
+                      backgroundColor: theme.palette.primary.main,
+                      color: "black",
                       fontSize: isSmall ? '17px' : "20px",
                       borderRadius: "8px",
                       padding: "10px 12px",
                       border: "none",
+                      fontWeight: 600
 
                     }}
                     onClick={() => navigate('/about-us')}
@@ -327,12 +328,13 @@ const LandingContent = () => {
           <button
             className="animated-button"
             style={{
-              backgroundColor: "#E10B0B",
-              color: "white",
+              backgroundColor: theme.palette.primary.main,
+              color: "black",
               fontSize: isSmall ? '17px' : "22px",
               borderRadius: "8px",
               padding: "10px 12px",
               border: "none",
+              fontWeight: 600
 
             }}
             onClick={() => navigate('/prayer-request')}
@@ -351,10 +353,10 @@ const LandingContent = () => {
           gap: "20px",
         }}
       >
-        <Typography sx={{ fontSize: '22px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Ministries</Typography>
+        <Typography sx={{ fontSize: '22px', color: theme.palette.secondary.main, textAlign: 'center', fontWeight: '550' }}>Ministries</Typography>
         <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', }}>Our Ministries</Typography>
         {loading ? (
-          <CircularProgress sx={{ display: 'block', margin: 'auto', color: "#E10B0B" }} />
+          <CircularProgress sx={{ display: 'block', margin: 'auto', color: theme.palette.secondary.main }} />
         ) : (
           <Grid container spacing={5}>
             {showMinistry.slice(0, 3).map((val, ind) => (
@@ -365,7 +367,8 @@ const LandingContent = () => {
                     flexDirection: "column",
                     // textAlign: "start",
                     // alignItems: "start",
-                    boxShadow: "0px 8px 6px 0px rgba(225, 11, 11, 0.50)",
+                    boxShadow: "0px 8px 6px 0px rgba(61, 101, 20, 0.50)",
+
                     width: "100%",
                     overflow: "hidden",
                     borderRadius: "16px",
@@ -423,7 +426,7 @@ const LandingContent = () => {
                       display: 'flex', alignItems: 'center', justifyContent
                         : 'center'
                     }}>
-                      < button className="animated-button" onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                      < button className="animated-button" onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: theme.palette.secondary.main, fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                     </Box>
                   </Box>
                 </Box>
@@ -492,7 +495,7 @@ const LandingContent = () => {
                 sx={{
                   fontSize: isSmall ? '27px' : "32px",
                   fontWeight: 800,
-                  color: "#FB5F5F",
+                  color: theme.palette.primary.main,
                   fontFamily: "Roboto",
                   textAlign: isSmall ? 'center' : 'start'
                 }}
@@ -676,10 +679,10 @@ const LandingContent = () => {
         }}
       >
 
-        <Typography sx={{ fontSize: '22px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Blogs</Typography>
+        <Typography sx={{ fontSize: '22px', color: theme.palette.secondary.main, textAlign: 'center', fontWeight: '550' }}>Blogs</Typography>
         <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', padding: '10px 0px' }}>Our Latest Blogs</Typography>
         {loading ? (
-          <CircularProgress sx={{ display: 'block', margin: 'auto', color: "#E10B0B" }} />
+          <CircularProgress sx={{ display: 'block', margin: 'auto', color: theme.palette.secondary.main }} />
         ) : (
           <Grid container spacing={5} sx={{ padding: '30px 0px' }}>
             {blogData.map((val, ind) => (
@@ -690,7 +693,7 @@ const LandingContent = () => {
                     flexDirection: 'column',
                     // textAlign: 'center',
                     // alignItems: 'center',
-                    boxShadow: '0px 8px 6px 0px rgba(225, 11, 11, 0.50)',
+                    boxShadow: "0px 8px 6px 0px rgba(61, 101, 20, 0.50)",
                     width: '100%',
                     overflow: 'hidden',
                     borderRadius: '16px',
@@ -721,7 +724,7 @@ const LandingContent = () => {
                       display: 'flex', alignItems: 'center', justifyContent
                         : 'center'
                     }}>
-                      <button className="animated-button" onClick={() => handleBlogDetail(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                      <button className="animated-button" onClick={() => handleBlogDetail(val)} style={{ backgroundColor: 'transparent', color: theme.palette.secondary.main, fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                     </div>
                   </Box>
                 </Box>
@@ -735,8 +738,9 @@ const LandingContent = () => {
         <button
           className="animated-button"
           style={{
-            backgroundColor: "#E10B0B",
-            color: "white",
+            backgroundColor: theme.palette.primary.main,
+            color: "black",
+            fontWeight: 600,
             fontSize: isSmall ? '17px' : "22px",
             borderRadius: "8px",
             padding: "10px 12px",
@@ -747,7 +751,7 @@ const LandingContent = () => {
         >
           See All Blog
         </button>
-      </Box>
+      </Box >
       <Box
         sx={{
           position: "relative",
@@ -783,19 +787,8 @@ const LandingContent = () => {
           }}
         />
         <Grid container sx={{ padding: isSmall ? '25px' : '0px 50px', zIndex: 1 }} spacing={5}>
-          <Grid item lg={4} sm={12} md={6} xs={12}>
-            <Box sx={{
-              position: 'absolute', backgroundColor: '#E10B0B', color: 'white', top: -30, padding: isSmall ? '20px' : '60px 20px 85px 20px', display: isSmall ? 'none' : isMedium ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '20px', borderRadius: '8px'
-            }}>
-              <PhoneOutlinedIcon />
-              <Typography>Shekinah Haitian SDA Church </Typography>
-              <Typography>3700 W. Risinger Rd Fort Worth, TX 76123</Typography>
-              <Typography>info@shekinahsda.org</Typography>
 
-
-            </Box>
-          </Grid>
-          <Grid item lg={8} sm={12} md={6} xs={12}>
+          <Grid item lg={12} sm={12} md={6} xs={12}>
             <Box sx={{ color: 'white', display: 'flex', flexDirection: 'column', gap: '5px', alignItems: isSmall ? 'center' : 'start', justifyContent: isSmall ? 'center' : 'start', marginBottom: '30px' }}>
               <Typography sx={{ fontSize: isSmall ? '27px' : '35px', fontWeight: 700 }}>Get in touch</Typography>
               <Typography sx={{ fontSize: isSmall ? '27px' : '35px', fontWeight: 700, textAlign: isSmall ? 'center' : 'start' }}>Don't hesitate Contact Us</Typography>
@@ -804,8 +797,9 @@ const LandingContent = () => {
                 <button
                   className="animated-button"
                   style={{
-                    backgroundColor: "#E10B0B",
-                    color: "white",
+                    backgroundColor: theme.palette.primary.main,
+                    color: "black",
+                    fontWeight: 600,
                     fontSize: isSmall ? '17px' : "22px",
                     borderRadius: "8px",
                     padding: "10px 12px",

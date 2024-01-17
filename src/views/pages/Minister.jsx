@@ -131,7 +131,7 @@ const Minister = ({ setProgress }) => {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                        backgroundColor: 'rgba(10, 28, 50, 0.6)',
                         zIndex: 0,
                     }}
                 />
@@ -160,7 +160,7 @@ const Minister = ({ setProgress }) => {
                 <Box sx={{ display: 'flex', gap: '20px' }}>
                     {/* <Box flex={3} > */}
                     {loading ? (
-                        <CircularProgress sx={{ display: 'block', margin: 'auto', color: "#E10B0B" }} />
+                        <CircularProgress sx={{ display: 'block', margin: 'auto', color: theme.palette.secondary.main }} />
                     ) : (
                         <Grid container spacing={5} sx={{ padding: '0px 0px 50px 0px' }}>
                             {showMinistry.map((val, ind) => (
@@ -172,7 +172,7 @@ const Minister = ({ setProgress }) => {
                                             flexDirection: 'column',
                                             // textAlign: 'center',
                                             // alignItems: 'center',
-                                            boxShadow: '0px 8px 6px 0px rgba(225, 11, 11, 0.50)',
+                                            boxShadow: "0px 8px 6px 0px rgba(61, 101, 20, 0.50)",
                                             width: '100%',
                                             overflow: 'hidden',
                                             borderRadius: '16px',
@@ -204,7 +204,7 @@ const Minister = ({ setProgress }) => {
                                                 display: 'flex', alignItems: 'center', justifyContent
                                                     : 'center'
                                             }}>
-                                                <button className="animated-button" onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                                                <button className="animated-button" onClick={() => handleMinistry(val)} style={{ backgroundColor: 'transparent', color: theme.palette.secondary.main, fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                                             </div>
                                         </Box>
                                     </Box>

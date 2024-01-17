@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, styled } from "@mui/material";
+import { Box, Grid, Typography, styled, useTheme, } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -89,6 +89,7 @@ const data5 = [
   },
 ];
 const Footer = () => {
+  const theme = useTheme()
   return (
     <>
 
@@ -304,11 +305,12 @@ const Footer = () => {
                 ></input>
                 <button
                   style={{
-                    backgroundColor: "#E10B0B",
+                    backgroundColor: theme.palette.primary.main,
                     padding: "5px 10px ",
                     border: "none",
                     borderRadius: "8px",
-                    color: 'white'
+                    color: 'black',
+                    fontWeight: 600
                   }}
                 >
                   submit

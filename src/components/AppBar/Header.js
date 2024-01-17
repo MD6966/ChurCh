@@ -126,7 +126,7 @@ const Header = (props) => {
                   <button
                     onClick={() => navigate("/donate")}
                     style={{
-                      backgroundColor: "#E10B0B",
+                      backgroundColor: theme.palette.secondary.main,
                       color: "white",
                       fontSize: "16px",
                       borderRadius: "8px",
@@ -192,9 +192,9 @@ const Header = (props) => {
           "& .MuiDrawer-paper": {
             width: "100%",
             padding: '30px 0px',
-            backgroundColor: '#D7111D',
-            color: 'white',
-            fontWeight: 600,
+            backgroundColor: theme.palette.primary.main,
+            color: 'black',
+            fontWeight: 800,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -206,7 +206,7 @@ const Header = (props) => {
           aria-label="close drawer"
           edge="end"
           onClick={handleDrawerClose}
-          sx={{ color: 'white', position: 'absolute', top: '10px', right: '10px' }}
+          sx={{ color: 'black', position: 'absolute', top: '10px', right: '10px' }}
         >
           <CloseIcon />
         </IconButton>

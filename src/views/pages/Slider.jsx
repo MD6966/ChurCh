@@ -28,7 +28,7 @@ const Slider = () => {
                 console.log("Error fetching categories:", err);
             })
             .finally(() => {
-                setLoading(false); // Set loading to false regardless of success or failure
+                setLoading(false);
             });
     };
 
@@ -80,29 +80,60 @@ const Slider = () => {
             <Box sx={{ position: 'absolute', bottom: 30 }}>
                 <Grid container spacing={3}>
                     {loading ? (
-                        <CircularProgress sx={{ display: 'block', color: "#E10B0B" }} />
+                        <CircularProgress sx={{ display: 'block', color: theme.palette.secondary.main }} />
                     ) : (
-                        showEvent.slice(0, 2).map((val, ind) => (
-                            <Grid item lg={6} md={6} sm={12} xs={12} key={ind}>
-                                <Card>
-                                    <Box sx={{ color: 'black', padding: isSmall ? '0 15px' : '0px 30px', zIndex: 1 }}>
-                                        <Box sx={{ display: 'flex', gap: isSmall ? '5px' : '30px', padding: isSmall ? '8px' : '20px', borderRadius: '8px', border: '1px solid #DBD5D5', backgroundColor: 'white', height: '100%' }}>
-                                            <RoomOutlinedIcon sx={{ color: '#E10B0B', fontSize: '3rem' }} />
-                                            <Box sx={{ textAlign: "start" }}>
-                                                <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>{val.title}</Typography>
-                                                <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: '#E10B0B', fontWeight: 700 }}> {val.date_time} </span > at our <span style={{ color: '#E10B0B', fontWeight: 700 }}> {val.address
-                                                }</span> </Typography>
-                                                <button className="animated-button" onClick={() => handleBtn(val)} style={{ fontSize: '16px', fontWeight: 700, color: '#E10B0B', border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
+                        showEvent.length > 0 ? (
+                            showEvent.map((val, ind) => (
+                                <Grid item lg={6} md={6} sm={12} xs={12} key={ind}>
+                                    <Card>
+                                        <Box sx={{ color: 'black', padding: isSmall ? '0 15px' : '0px 30px', zIndex: 1 }}>
+                                            <Box sx={{ display: 'flex', gap: isSmall ? '5px' : '30px', padding: isSmall ? '8px' : '20px', borderRadius: '8px', border: '1px solid #DBD5D5', backgroundColor: 'white', height: '100%' }}>
+                                                <RoomOutlinedIcon sx={{ color: theme.palette.secondary.main, fontSize: '3rem' }} />
+                                                <Box sx={{ textAlign: "start" }}>
+                                                    <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>{val.title}</Typography>
+                                                    <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: theme.palette.secondary.main, fontWeight: 700 }}> {val.date_time} </span > at our <span style={{ color: theme.palette.secondary.main, fontWeight: 700 }}> {val.address
+                                                    }</span> </Typography>
+                                                    <button className="animated-button" onClick={() => handleBtn(val)} style={{ fontSize: '16px', fontWeight: 700, color: theme.palette.secondary.main, border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
+                                                </Box>
                                             </Box>
                                         </Box>
-                                    </Box>
-                                </Card>
-                            </Grid>
-                        ))
+                                    </Card>
+                                </Grid>
+                            ))
+                        ) : (
+                            <Typography variant="subtitle1">No events available</Typography>
+                        )
                     )}
                 </Grid>
             </Box>
         </>
+        // <>
+        //     <Box sx={{ position: 'absolute', bottom: 30 }}>
+        //         <Grid container spacing={3}>
+        //             {loading ? (
+        //                 <CircularProgress sx={{ display: 'block', color: "#E10B0B" }} />
+        //             ) : (
+        //                 showEvent.slice(0, 2).map((val, ind) => (
+        //                     <Grid item lg={6} md={6} sm={12} xs={12} key={ind}>
+        //                         <Card>
+        //                             <Box sx={{ color: 'black', padding: isSmall ? '0 15px' : '0px 30px', zIndex: 1 }}>
+        //                                 <Box sx={{ display: 'flex', gap: isSmall ? '5px' : '30px', padding: isSmall ? '8px' : '20px', borderRadius: '8px', border: '1px solid #DBD5D5', backgroundColor: 'white', height: '100%' }}>
+        //                                     <RoomOutlinedIcon sx={{ color: theme.palette.secondary.main, fontSize: '3rem' }} />
+        //                                     <Box sx={{ textAlign: "start" }}>
+        //                                         <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>{val.title}</Typography>
+        //                                         <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: theme.palette.secondary.main, fontWeight: 700 }}> {val.date_time} </span > at our <span style={{ color: theme.palette.secondary.main, fontWeight: 700 }}> {val.address
+        //                                         }</span> </Typography>
+        //                                         <button className="animated-button" onClick={() => handleBtn(val)} style={{ fontSize: '16px', fontWeight: 700, color: theme.palette.secondary.main, border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
+        //                                     </Box>
+        //                                 </Box>
+        //                             </Box>
+        //                         </Card>
+        //                     </Grid>
+        //                 ))
+        //             )}
+        //         </Grid>
+        //     </Box>
+        // </>
     );
 };
 

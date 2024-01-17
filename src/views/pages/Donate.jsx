@@ -106,8 +106,8 @@ const Donate = ({ setProgress }) => {
 
                                     onClick={() => handleButtonClick(1)}
                                     style={{
-                                        backgroundColor: button1Active ? 'transparent' : '#D7111D',
-                                        color: button1Active ? 'black' : 'white',
+                                        backgroundColor: button1Active ? 'transparent' : theme.palette.primary.main,
+                                        color: button1Active ? 'black' : 'black',
                                         padding: '10px 18px',
                                         borderRadius: '5px',
                                         border: button1Active ? '1px solid gray' : 'none',
@@ -122,8 +122,8 @@ const Donate = ({ setProgress }) => {
 
                                     onClick={() => handleButtonClick(2)}
                                     style={{
-                                        backgroundColor: button2Active ? 'transparent' : '#D7111D',
-                                        color: button2Active ? 'black' : 'white',
+                                        backgroundColor: button2Active ? 'transparent' : theme.palette.primary.main,
+                                        color: button2Active ? 'black' : 'black',
                                         padding: '10px 26px',
                                         borderRadius: '5px',
                                         border: button2Active ? '1px solid gray' : 'none',
@@ -182,8 +182,8 @@ const Donate = ({ setProgress }) => {
                             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px 0px' }}>
                                 <button
                                     style={{
-                                        backgroundColor: "#E10B0B",
-                                        color: "white",
+                                        backgroundColor: theme.palette.primary.main,
+                                        color: "black",
                                         fontSize: "13px",
                                         borderRadius: "4px",
                                         padding: "10px 20px",

@@ -100,7 +100,7 @@ const AboutUs = ({ setProgress }) => {
                                     gap: '15px'
                                 }}
                             >
-                                <Typography sx={{ fontSize: "20px", fontWeight: 600, color: '#E10B0B' }}>
+                                <Typography sx={{ fontSize: "20px", fontWeight: 600, color: theme.palette.secondary.main }}>
                                     About us
                                 </Typography>
                                 <Typography sx={{
@@ -118,7 +118,7 @@ const AboutUs = ({ setProgress }) => {
                                     <Grid item lg={6}>
                                         <Box>
                                             <Box sx={{ borderRadius: '50%', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                                                <Box sx={{ backgroundColor: '#E10B0B', height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                <Box sx={{ backgroundColor: theme.palette.secondary.main, height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                                     <FavoriteOutlinedIcon sx={{ color: 'white', }} />
                                                 </Box>
                                                 <Box>
@@ -136,7 +136,7 @@ const AboutUs = ({ setProgress }) => {
                                     <Grid item lg={6}>
                                         <Box>
                                             <Box sx={{ borderRadius: '50%', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                                                <Box sx={{ backgroundColor: '#E10B0B', height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                <Box sx={{ backgroundColor: theme.palette.secondary.main, height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                                     <LocalLibraryOutlinedIcon sx={{ color: 'white', }} />
                                                 </Box>
                                                 <Box>
@@ -159,7 +159,7 @@ const AboutUs = ({ setProgress }) => {
                 {/* Slider */}
 
                 <Box sx={{ padding: isSmall ? '20px' : '30px 40px' }}>
-                    <Typography sx={{ fontSize: '18px', color: '#E10B0B', textAlign: 'center', fontWeight: '550' }}>Our Team</Typography>
+                    <Typography sx={{ fontSize: '18px', color: theme.palette.secondary.main, textAlign: 'center', fontWeight: '550' }}>Our Team</Typography>
                     <Typography sx={{ fontSize: '28px', textAlign: 'center', fontWeight: '600', padding: '10px 0px' }}>Church Pastors</Typography>
                     <Carousel
                         key={carouselKey}
@@ -194,7 +194,7 @@ const productTemplate = (pators) => {
                     width: '100%', height: '50vh', objectFit: 'cover',
                 }} alt={pators.name} />
             </Box>
-            <Box sx={{ padding: '15px 0px', backgroundColor: '#E10B0B', color: 'white', fontWeight: 600 }}>
+            <Box sx={{ padding: '15px 0px', backgroundColor: '#CA9922', color: 'black', fontWeight: 700 }}>
                 <Typography sx={{ fontWeight: 600, fontSize: '22px' }}>{pators.name}</Typography>
                 <Typography >{pators.title}</Typography>
             </Box>

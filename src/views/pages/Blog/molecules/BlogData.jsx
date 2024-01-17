@@ -17,6 +17,7 @@ import { Text } from "../../../../components/base";
 import { getAllBlogs } from "../../../../store/actions/blogActions";
 import { useNavigate } from "react-router";
 import Header from "../../../../components/AppBar/Header";
+import Footer from "../../../../layouts/Landing/Footer";
 
 const BlogData = ({ setProgress }) => {
 
@@ -112,7 +113,7 @@ const BlogData = ({ setProgress }) => {
 
         </Box>
         {loading ? (
-          <CircularProgress sx={{ display: 'block', margin: 'auto', color: "#E10B0B" }} />
+          <CircularProgress sx={{ display: 'block', margin: 'auto', color: theme.palette.secondary.main }} />
         ) : (
 
           <Grid container spacing={5} >
@@ -125,7 +126,8 @@ const BlogData = ({ setProgress }) => {
                     flexDirection: 'column',
                     // textAlign: 'center',
                     // alignItems: 'center',
-                    boxShadow: '0px 8px 6px 0px rgba(225, 11, 11, 0.50)',
+                    boxShadow: "0px 8px 6px 0px rgba(61, 101, 20, 0.50)",
+
                     width: '100%',
                     overflow: 'hidden',
                     borderRadius: '16px',
@@ -156,7 +158,7 @@ const BlogData = ({ setProgress }) => {
                       display: 'flex', alignItems: 'center', justifyContent
                         : 'center'
                     }}>
-                      <button onClick={() => handleBlogDetail(val)} style={{ backgroundColor: 'transparent', color: '#E10B0B', fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
+                      <button onClick={() => handleBlogDetail(val)} style={{ backgroundColor: 'transparent', color: theme.palette.secondary.main, fontSize: '18px', borderRadius: '8px', padding: '10px', fontWeight: 600, border: 'none' }}>Read More</button>
                     </div>
                   </Box>
                 </Box>
@@ -168,6 +170,7 @@ const BlogData = ({ setProgress }) => {
           </Grid>
         )}
       </Box>
+      <Footer />
     </>
   );
 };

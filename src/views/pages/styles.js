@@ -25,7 +25,7 @@ export const usePageStyle = ({ theme }) => {
       left: 0,
       width: "100%",
       height: "100%",
-      backgroundColor: "rgba(0, 0, 0, 0.2)",
+      backgroundColor: "rgba(10, 28, 50, 0.6)",
       zIndex: 0,
     },
     contactBoxTextParagraph: {
@@ -65,7 +65,7 @@ export const usePageStyle = ({ theme }) => {
       borderRadius: "8px",
     },
     // contactUsButton: {
-     
+
     // },
     contactUsImageBox: {
       maxWidth: "100%",

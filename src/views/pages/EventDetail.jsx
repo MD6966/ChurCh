@@ -110,7 +110,7 @@ const EventDetail = ({ setProgress }) => {
                             left: 0,
                             width: '100%',
                             height: '100%',
-                            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                            backgroundColor: 'rgba(10, 28, 50, 0.9)',
                             zIndex: 0,
                         }}
                     />
@@ -142,11 +142,11 @@ const EventDetail = ({ setProgress }) => {
 
                         <Grid item lg={8} sm={12} xs={12} md={12}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                                <Typography sx={{ fontSize: '22px', fontWeight: 600, color: '#E10B0B' }}>Event Title</Typography>
+                                <Typography sx={{ fontSize: '22px', fontWeight: 600, color: theme.palette.secondary.main }}>Event Title</Typography>
                                 <Typography>{state.title}</Typography>
-                                <Typography sx={{ fontSize: '22px', fontWeight: 600, color: '#E10B0B' }}>Event Description</Typography>
+                                <Typography sx={{ fontSize: '22px', fontWeight: 600, color: theme.palette.secondary.main }}>Event Description</Typography>
                                 <Typography>{state.description}</Typography>
-                                <Typography sx={{ fontSize: '22px', fontWeight: 600, color: '#E10B0B' }}>Event Gallery</Typography>
+                                <Typography sx={{ fontSize: '22px', fontWeight: 600, color: theme.palette.secondary.main }}>Event Gallery</Typography>
                                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: "20px", borderRadius: '10px' }}>
 
                                     <Grid container spacing={3}>
@@ -169,7 +169,7 @@ const EventDetail = ({ setProgress }) => {
                             <Box sx={{ padding: isSmall ? '0px' : '20px', }}>
                                 <Box sx={{ border: '1px solid gray', borderRadius: '10px 10px 0 0' }}>
 
-                                    <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'white', backgroundColor: '#E10B0B', textAlign: 'center', borderRadius: '10px 10px 0 0', padding: '12px 0px' }}>
+                                    <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'black', backgroundColor: theme.palette.primary.main, textAlign: 'center', borderRadius: '10px 10px 0 0', padding: '12px 0px' }}>
                                         Event Detail
                                     </Typography>
                                     <Box sx={{ padding: '20px 20px' }}>
@@ -199,7 +199,7 @@ const EventDetail = ({ setProgress }) => {
                                 </Box>
                                 <Box sx={{ border: '1px solid gray', borderBottom: 'none' }}>
 
-                                    <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'white', backgroundColor: '#E10B0B', textAlign: 'center', padding: '12px 0px' }}>
+                                    <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'black', backgroundColor: theme.palette.primary.main, textAlign: 'center', padding: '12px 0px' }}>
                                         Event Venue
                                     </Typography>
                                     <Box sx={{ padding: '20px 20px' }}>
@@ -229,7 +229,7 @@ const EventDetail = ({ setProgress }) => {
                                 </Box>
                                 <Box sx={{ border: '1px solid gray', borderRadius: '0 0 10px 10px' }}>
 
-                                    <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'white', backgroundColor: '#E10B0B', textAlign: 'center', padding: '12px 0px' }}>
+                                    <Typography sx={{ fontSize: '22px', fontWeight: 600, color: 'black', backgroundColor: theme.palette.primary.main, textAlign: 'center', padding: '12px 0px' }}>
                                         Event Registration
                                     </Typography>
                                     <Box sx={{ padding: '20px 20px' }}>
@@ -283,12 +283,13 @@ const EventDetail = ({ setProgress }) => {
                                                     <Button
                                                         type="submit"
                                                         style={{
-                                                            backgroundColor: '#E10B0B',
-                                                            color: 'white',
+                                                            backgroundColor: theme.palette.primary.main,
+                                                            color: 'black',
                                                             fontSize: '16px',
                                                             borderRadius: '8px',
                                                             padding: '10px 20px',
                                                             border: 'none',
+                                                            fontWeight: 600
                                                         }}
                                                         disabled={loading}
                                                     >

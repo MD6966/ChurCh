@@ -42,9 +42,9 @@ export default function Router() {
   return (
     <>
       <LoadingBar
-        style={{
-          color: '#E10B0B'
-        }}
+        
+          color={ theme.palette.primary.main }
+    
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
