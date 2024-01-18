@@ -96,7 +96,7 @@ const Landing = ({ setProgress }) => {
             top: -120,
             left: 0,
             width: "100%",
-            height: "120vh",
+            height: "110vh",
             backgroundImage: `url('/main.png')`,
             // backgroundSize: "cover",
             backgroundPosition: "center",
