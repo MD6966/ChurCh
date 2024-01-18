@@ -12,7 +12,7 @@ import {
 import React, { useEffect, useState } from "react";
 import Header from "../../components/AppBar/Header";
 import Footer from "../../layouts/Landing/Footer";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"; import Page from '../../components/page/page'
 import {
   getPrayRequest,
   postPrayRequest,
@@ -39,7 +39,7 @@ const PrayerRequest = ({ setProgress }) => {
   //   const [selectedCategoryId, setSelectedCategoryId] = useState([]);
   const [requestForm, setRequestForm] = useState({
     name: "",
-    // email: "",
+    email: "",
 
     pray_request: "",
   });
@@ -79,12 +79,14 @@ const PrayerRequest = ({ setProgress }) => {
 
     if (
       requestForm.name.length &&
+      requestForm.email.length &&
       requestForm.pray_request.length
     ) {
       setLoading(true); // Set loading to true before the API call
 
       const formData = new FormData();
       formData.append("name", requestForm.name);
+      formData.append("email", requestForm.email);
       formData.append("pray_request", requestForm.pray_request);
 
       dispatch(postPrayRequest(formData))
@@ -119,97 +121,98 @@ const PrayerRequest = ({ setProgress }) => {
 
   return (
     <>
-      <Header />
-      <Box
-        sx={{
-          position: "relative",
-          minHeight: "400px",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: -70,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundImage: `url('/img25.png')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            zIndex: -1,
-          },
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Page title="Prayer-Request">
+        <Header />
         <Box
           sx={{
-            position: "absolute",
-            top: -70,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.70)",
-            zIndex: 0,
-          }}
-        />
-
-        <Box
-          sx={{
+            position: "relative",
+            minHeight: "400px",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: -70,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundImage: `url('/img25.png')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              zIndex: -1,
+            },
             display: "flex",
-            flexDirection: "column",
-            color: "white",
-            textAlign: "center",
-            gap: "10px",
             justifyContent: "center",
             alignItems: "center",
-            zIndex: 1,
           }}
         >
-          <Stack></Stack>
-          <Text sx={{ fontSize: "32px", fontWeight: 600 }}>
-            {" "}
-            Prayer Request
-          </Text>
-          <Text sx={{ paddingX: isSmall ? 5 : 10, mb: 5, fontSize: isSmall ? '17px' : '20px' }}>
-            Share your prayer requests with us. At Shekinah Haitian SDA Church,
-            we stand together in faith, supporting one another through the power
-            of prayer. Your concerns matter to us, and our community is here for
-            you, seeking strength, healing, and peace together.
-          </Text>
-        </Box>
-      </Box>
-      <Box sx={{ padding: "30px 40px" }}>
-        <Stack spacing={2}>
-          <Text
+          <Box
             sx={{
-              fontWeight: 800,
-              fontSize: { xs: "23px", md: "28px" },
-              lineHeight: "32.81px",
+              position: "absolute",
+              top: -70,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.70)",
+              zIndex: 0,
             }}
-          >
-            Prayer Requests Form
-          </Text>
-          <Text
-            sx={{
-              fontWeight: 400,
-              fontSize: { xs: "17px", md: "24px" },
-              lineHeight: "28.13px",
-            }}
-          >
-            Please fill in this information so we can deliver your prayer
-          </Text>
-        </Stack>
+          />
 
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "40px",
-            marginTop: "30px",
-          }}
-        >
-          {/* <Box sx={{ display: "flex", gap: "20px" }}> */}
-          {/* <input
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              color: "white",
+              textAlign: "center",
+              gap: "10px",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 1,
+            }}
+          >
+            <Stack></Stack>
+            <Text sx={{ fontSize: "32px", fontWeight: 600 }}>
+              {" "}
+              Prayer Request
+            </Text>
+            <Text sx={{ paddingX: isSmall ? 5 : 10, mb: 5, fontSize: isSmall ? '17px' : '20px' }}>
+              Share your prayer requests with us. At Shekinah Haitian SDA Church,
+              we stand together in faith, supporting one another through the power
+              of prayer. Your concerns matter to us, and our community is here for
+              you, seeking strength, healing, and peace together.
+            </Text>
+          </Box>
+        </Box>
+        <Box sx={{ padding: "30px 40px" }}>
+          <Stack spacing={2}>
+            <Text
+              sx={{
+                fontWeight: 800,
+                fontSize: { xs: "23px", md: "28px" },
+                lineHeight: "32.81px",
+              }}
+            >
+              Prayer Requests Form
+            </Text>
+            <Text
+              sx={{
+                fontWeight: 400,
+                fontSize: { xs: "17px", md: "24px" },
+                lineHeight: "28.13px",
+              }}
+            >
+              Please fill in this information so we can deliver your prayer
+            </Text>
+          </Stack>
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "40px",
+              marginTop: "30px",
+            }}
+          >
+            {/* <Box sx={{ display: "flex", gap: "20px" }}> */}
+            {/* <input
               type="text"
               placeholder="First Name"
               style={{
@@ -224,78 +227,78 @@ const PrayerRequest = ({ setProgress }) => {
               onChange={(event) => handleChange(event)}
               value={requestForm.first_name}
             /> */}
-          <Box sx={styles.inputsBox}>
-            <input
-              type="text"
-              placeholder="Write Your Name"
-              style={styles.inputStyle}
-              name="name"
-              values={requestForm.name}
-              onChange={(event) => handleChange(event)}
-            />
+            <Box sx={styles.inputsBox}>
+              <input
+                type="text"
+                placeholder="Full Name"
+                style={styles.inputStyle}
+                name="name"
+                values={requestForm.name}
+                onChange={(event) => handleChange(event)}
+              />
 
-            {/* <input
-              type="text"
-              placeholder="Write Your Email"
-              style={styles.inputStyle}
-              name="email"
-              values={requestForm.email}
-              onChange={(event) => handleChange(event)}
-            /> */}
+              <input
+                type="text"
+                placeholder="Write Your Email"
+                style={styles.inputStyle}
+                name="email"
+                values={requestForm.email}
+                onChange={(event) => handleChange(event)}
+              />
 
 
-            <textarea
-              rows={6}
-              placeholder="Write Your Prayers"
-              style={{
-                border: "none",
-                backgroundColor: "#EDE8E8",
-                color: "gray",
-                padding: "15px 20px",
-                borderRadius: "8px",
-              }}
-              name="pray_request"
-              onChange={(event) => handleChange(event)}
-              values={requestForm.pray_request}
-            ></textarea>
-
-            <div>
-              {loading && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    // You might want to adjust the background color and opacity
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    zIndex: 999, // Make sure the overlay is behind the button
-                  }}
-                ></div>
-              )}
-              <button
+              <textarea
+                rows={6}
+                placeholder="Write Your Prayers"
                 style={{
-                  backgroundColor: theme.palette.primary.main,
-                  color: "black",
-                  fontSize: isSmall ? '17px' : "24px",
-                  borderRadius: "8px",
-                  padding: "10px 40px",
                   border: "none",
-                  marginTop: '',
-                  position: 'relative',
-                  fontWeight: 600,
-                  zIndex: 1000, // Make sure the button is above the overlay
+                  backgroundColor: "#EDE8E8",
+                  color: "gray",
+                  padding: "15px 20px",
+                  borderRadius: "8px",
                 }}
-                onClick={submitPrayRequest}
-                disabled={loading}
-              >
-                {loading ? 'wait...' : 'Pray Request'}
-              </button>
-            </div>
+                name="pray_request"
+                onChange={(event) => handleChange(event)}
+                values={requestForm.pray_request}
+              ></textarea>
+
+              <div>
+                {loading && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      // You might want to adjust the background color and opacity
+                      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                      zIndex: 999, // Make sure the overlay is behind the button
+                    }}
+                  ></div>
+                )}
+                <button
+                  style={{
+                    backgroundColor: theme.palette.primary.main,
+                    color: "black",
+                    fontSize: isSmall ? '17px' : "24px",
+                    borderRadius: "8px",
+                    padding: "10px 40px",
+                    border: "none",
+                    marginTop: '',
+                    position: 'relative',
+                    fontWeight: 600,
+                    zIndex: 1000, // Make sure the button is above the overlay
+                  }}
+                  onClick={submitPrayRequest}
+                  disabled={loading}
+                >
+                  {loading ? 'wait...' : 'Pray Request'}
+                </button>
+              </div>
 
 
-          </Box>
-          {/* <input
+            </Box>
+            {/* <input
             type="text"
             placeholder="Full Name"
             style={{
@@ -358,9 +361,9 @@ const PrayerRequest = ({ setProgress }) => {
  */}
 
 
-          {/* </Box> */}
+            {/* </Box> */}
 
-          {/* <select
+            {/* <select
             style={{
               width: "100%",
               padding: " 15px 20px",
@@ -389,9 +392,10 @@ const PrayerRequest = ({ setProgress }) => {
 
 
 
+          </Box>
         </Box>
-      </Box>
-      <Footer />
+        <Footer />
+      </Page>
     </>
   );
 };

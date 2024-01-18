@@ -22,6 +22,7 @@ export const useHeaderStyle = ({ theme }) => {
     appBar: { backgroundColor: scrolling ? 'white' : 'transparent', },
     toolbar: {
       display: "flex",
+      padding: '10px',
       justifyContent: "space-between",
       // backgroundColor: "transparent",
       color: "black",

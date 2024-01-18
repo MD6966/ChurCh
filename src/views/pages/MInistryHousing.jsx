@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import Header from '../../components/AppBar/Header'
 import Footer from '../../layouts/Landing/Footer';
 import { useLocation } from 'react-router';
+import Page from '../../components/page/page'
 const popularPost = [
     {
         img: '/img9.png', title: 'Faith Journeys'
@@ -60,58 +61,59 @@ const MinistryHousing = ({ setProgress }) => {
     // console.log(state.Image.url, 'hi')
     return (
         <>
-            <Header />
-            <Box
-                sx={{
-                    position: 'relative',
-                    minHeight: '400px',
-                    '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: -70,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        backgroundImage: `url('/img19.png')`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        zIndex: -1,
-                    },
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-
+            <Page title="All-Details">
+                <Header />
                 <Box
                     sx={{
-                        position: 'absolute',
-                        top: -70,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        backgroundColor: 'rgba(0, 0, 0, 0.70)',
-                        zIndex: 0,
+                        position: 'relative',
+                        minHeight: '400px',
+                        '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: -70,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            backgroundImage: `url('/img19.png')`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            zIndex: -1,
+                        },
+                        position: 'relative',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                     }}
-                />
+                >
+
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            top: -70,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            backgroundColor: 'rgba(0, 0, 0, 0.70)',
+                            zIndex: 0,
+                        }}
+                    />
 
 
-                <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: isSmall ? '50px' : "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', color: 'white', textAlign: 'center', padding: isSmall ? '50px' : "0px 200px", gap: '10px', justifyContent: 'center', alignItems: 'center', zIndex: 1, }}>
 
-                    <Typography sx={{ fontSize: '32px', fontWeight: 600, }}> {state.title}
-                    </Typography>
-                    <Typography sx={{
-                        fontSize: '20px', fontWeight: 400, textAlign: 'center', display: '-webkit-box',
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden',
-                        WebkitLineClamp: 3,
-                    }}>{state.description}
-                    </Typography>
+                        <Typography sx={{ fontSize: '32px', fontWeight: 600, }}> {state.title}
+                        </Typography>
+                        <Typography sx={{
+                            fontSize: '20px', fontWeight: 400, textAlign: 'center', display: '-webkit-box',
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden',
+                            WebkitLineClamp: 3,
+                        }}>{state.description}
+                        </Typography>
 
+                    </Box>
                 </Box>
-            </Box>
-            {/* <Box sx={{ padding: '50px' }}>
+                {/* <Box sx={{ padding: '50px' }}>
                 <Typography sx={{ fontSize: '22px', fontWeight: 600, textAlign: 'start' }}>Popular Post</Typography>
                 <Grid container spacing={5}>
                     {popularPost.map((val, ind) => (
@@ -126,23 +128,24 @@ const MinistryHousing = ({ setProgress }) => {
 
                 </Grid>
             </Box> */}
-            <Box sx={{ padding: isSmall ? '20px' : isMedium ? '40px' : '50px 100px' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={state.Image.url} style={{ width: '100%', height: isSmall ? '50vh' : '80vh', objectFit: 'cover' }} alt="" />
-                </Box>
+                <Box sx={{ padding: isSmall ? '20px' : isMedium ? '40px' : '50px 100px' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <img src={state.Image.url} style={{ width: '100%', height: isSmall ? '50vh' : '80vh', objectFit: 'cover' }} alt="" />
+                    </Box>
 
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                    <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginTop: '10px', }}>{state.title}</Typography>
-                    <Typography sx={{ textAlign: 'start' }}>{state.description}</Typography>
-                </Box>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                        <Typography sx={{ fontSize: '18px', fontWeight: 600, textAlign: 'start', marginTop: '10px', }}>{state.title}</Typography>
+                        <Typography sx={{ textAlign: 'start' }}>{state.description}</Typography>
+                    </Box>
 
-                <Box sx={{ mt: 3 }}>
-                    <Typography sx={{ textAlign: 'start', fontWeight: 600 }}>For more information or to join our Ministry of Human Rights initiatives, please contact <span style={{ color: 'blue' }}> Info@shekinahsda.org.</span></Typography>
-                    <br />
-                    <Typography sx={{ textAlign: 'start', fontWeight: 600 }}>Feel free to customize the above information to better align with the specific activities and goals of the Ministry of Human Rights at Shekinah Haitian SDA Church.</Typography>
+                    <Box sx={{ mt: 3 }}>
+                        <Typography sx={{ textAlign: 'start', fontWeight: 600 }}>For more information or to join our Ministry of Human Rights initiatives, please contact <span style={{ color: 'blue' }}> Info@shekinahsda.org.</span></Typography>
+                        <br />
+                        <Typography sx={{ textAlign: 'start', fontWeight: 600 }}>Feel free to customize the above information to better align with the specific activities and goals of the Ministry of Human Rights at Shekinah Haitian SDA Church.</Typography>
+                    </Box>
                 </Box>
-            </Box>
-            <Footer />
+                <Footer />
+            </Page>
         </>
     )
 }

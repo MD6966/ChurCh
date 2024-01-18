@@ -60,13 +60,13 @@ const Landing = ({ setProgress }) => {
               src="img39.png"
               style={{
                 objectFit: "cover",
-                height: isSmall ? '30px' : '60px',
+                height: isSmall ? '40px' : '60px',
                 width: '100%'
               }}
               alt="Logo"
             />
           </Box>
-          <Box sx={{ display: 'flex', gap: isSmall ? '12px' : "30px", paddingRight: isSmall ? '25px' : '50px', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
+          <Box sx={{ display: 'flex', gap: isSmall ? '10px' : "30px", paddingRight: isSmall ? '0px' : '50px', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
             <a href="https://www.facebook.com/shekinahsda" target="_blank" rel="noopener noreferrer">
               <FacebookOutlinedIcon sx={{ fontSize: '20px', color: 'white' }} />
             </a>

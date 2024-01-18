@@ -380,8 +380,8 @@ const LandingContent = () => {
                     src={val.Image.url}
                     style={{
                       width: "100%",
-                      height: "100%",
-                      height: "50vh",
+                      // height: "100%",
+                      height: isSmall ? '35vh' : "50vh",
                       objectFit: "cover",
                     }}
                     alt="abc"
@@ -704,7 +704,7 @@ const LandingContent = () => {
                 >
                   <img
                     src={val.Image.url}
-                    style={{ width: '100%', height: '50vh', objectFit: 'cover' }}
+                    style={{ width: '100%', height: isSmall ? '35vh' : '50vh', objectFit: 'cover' }}
                     alt="abc"
                   />
                   <Box sx={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>

@@ -77,13 +77,13 @@ const Slider = () => {
         //     )}
         // </div>
         <>
-            <Box sx={{ position: 'absolute', bottom: 30 }}>
+            <Box sx={{ position: 'absolute', bottom: isSmall ? 0 : 30 }}>
                 <Grid container spacing={3}>
                     {loading ? (
                         <CircularProgress sx={{ display: 'block', color: theme.palette.secondary.main }} />
                     ) : (
                         showEvent.length > 0 ? (
-                            showEvent.map((val, ind) => (
+                            showEvent.slice(0, 2).map((val, ind) => (
                                 <Grid item lg={6} md={6} sm={12} xs={12} key={ind}>
                                     <Card>
                                         <Box sx={{ color: 'black', padding: isSmall ? '0 15px' : '0px 30px', zIndex: 1 }}>

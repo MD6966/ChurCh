@@ -85,7 +85,7 @@ const Header = (props) => {
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerOpen}
-              sx={{ color: color || (scrolling ? "black" : "white"), }}
+              sx={{ color: color || (scrolling ? "black" : "white"), paddingLeft: '10px' }}
             >
               <MenuIcon />
             </IconButton>
@@ -167,6 +167,7 @@ const Header = (props) => {
                       alignItems: "center",
                       justifyContent: "center",
                       cursor: "pointer",
+
                       color: color || (scrolling ? "black" : "white"),
                       "&:hover": { color: "#" },
                     }}
@@ -198,7 +199,8 @@ const Header = (props) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            textAlign: 'center'
           },
         }}
       >
@@ -210,7 +212,10 @@ const Header = (props) => {
         >
           <CloseIcon />
         </IconButton>
+
+
         {renderDrawerItems()}
+
       </Drawer>
 
       <Toolbar />
