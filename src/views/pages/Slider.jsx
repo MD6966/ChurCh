@@ -77,27 +77,41 @@ const Slider = () => {
         //     )}
         // </div>
         <>
-            <Box sx={{ position: 'absolute', bottom: isSmall ? 0 : 30 }}>
+            <Box sx={{ position: 'absolute', bottom: isSmall ? 0 : 30, width: '100%' }}>
                 <Grid container spacing={3}>
                     {loading ? (
                         <CircularProgress sx={{ display: 'block', color: theme.palette.secondary.main }} />
                     ) : (
                         showEvent.length > 0 ? (
                             showEvent.slice(0, 2).map((val, ind) => (
-                                <Grid item lg={6} md={6} sm={12} xs={12} key={ind} sx={{ height: '100%' }}>
-                                    <Card >
-                                        <Box sx={{ color: 'black', padding: isSmall ? '0 15px' : '0px 30px', zIndex: 1, height: '100%', position: 'relative' }}>
-                                            {/* Set a fixed height for the Box component */}
-                                            <Box sx={{ display: 'flex', gap: isSmall ? '5px' : '30px', padding: isSmall ? '8px' : '20px', borderRadius: '8px', border: '1px solid #DBD5D5', backgroundColor: 'white', height: '100%' }}>
-                                                <RoomOutlinedIcon sx={{ color: theme.palette.secondary.main, fontSize: '3rem' }} />
-                                                <Box sx={{ textAlign: "start", height: '100%' }}>
-                                                    <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>{val.title}</Typography>
-                                                    <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: theme.palette.secondary.main, fontWeight: 700 }}> {val.date_time} </span > at our <span style={{ color: theme.palette.secondary.main, fontWeight: 700 }}> {val.address}</span> </Typography>
-                                                    <button className="animated-button" onClick={() => handleBtn(val)} style={{ fontSize: '16px', fontWeight: 700, color: theme.palette.secondary.main, border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
-                                                </Box>
+                                <Grid item lg={6} md={6} sm={12} xs={12} key={ind}>
+
+                                    <Box sx={{
+                                        color: 'black',
+                                        padding: isSmall ? '0 15px' : '0px 30px',
+                                        zIndex: 1,
+                                        display: 'flex',
+                                        flexDirection: 'column',  // Make the inner boxes stack vertically
+                                        height: '100%',          // Take the full height of the parent
+                                    }}>
+                                        <Box sx={{
+                                            display: 'flex',
+                                            gap: isSmall ? '5px' : '30px',
+                                            padding: isSmall ? '8px' : '20px',
+                                            borderRadius: '8px',
+                                            border: '1px solid #DBD5D5',
+                                            backgroundColor: 'white',
+                                            flexGrow: 1,  // Grow to fill the remaining space
+                                        }}>
+                                            <RoomOutlinedIcon sx={{ color: theme.palette.secondary.main, fontSize: '3rem' }} />
+                                            <Box sx={{ textAlign: "start", flexGrow: 1 }}>
+                                                <Typography sx={{ fontSize: '16px', fontWeight: 700 }}>{val.title}</Typography>
+                                                <Typography sx={{ fontSize: '16px', fontWeight: 400 }}>Embark on a Heartwarming Journey this<span style={{ color: theme.palette.secondary.main, fontWeight: 700 }}> {val.date_time} </span > at our <span style={{ color: theme.palette.secondary.main, fontWeight: 700 }}> {val.address}</span> </Typography>
+                                                <button className="animated-button" onClick={() => handleBtn(val)} style={{ fontSize: '16px', fontWeight: 700, color: theme.palette.secondary.main, border: 'none', backgroundColor: 'white', cursor: 'pointer' }}>See Event Detail</button>
                                             </Box>
                                         </Box>
-                                    </Card>
+                                    </Box>
+
                                 </Grid>
                             ))
                         ) : (
@@ -106,6 +120,7 @@ const Slider = () => {
                     )}
                 </Grid>
             </Box>
+
         </>
         // <>
         //     <Box sx={{ position: 'absolute', bottom: 30 }}>
