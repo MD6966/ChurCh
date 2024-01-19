@@ -130,7 +130,7 @@ const Header = (props) => {
                       color: "white",
                       fontSize: "16px",
                       borderRadius: "8px",
-                      padding: "5px 10px 9px 10px ",
+                      padding: "8px 10px 8px 10px ",
                       border: "none",
                     }}
                   >

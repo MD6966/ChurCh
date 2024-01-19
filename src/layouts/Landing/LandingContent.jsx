@@ -7,6 +7,7 @@ import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import { useDispatch } from "react-redux";
 import { getMinistry, getStudyMaterials } from "../../store/actions/userActions";
 import { getAllBlogs } from "../../store/actions/blogActions";
+import Testimonials from "../../views/pages/Testimonials";
 const data = [
   {
     imageSrc: "/img1.png",
@@ -197,13 +198,13 @@ const LandingContent = () => {
               <Typography sx={{
                 textAlign: "start", fontSize: "22px", fontWeight: 800
               }}>
-                Striving for a greener tomorrow, one small step at a time.
+                More Than Just a Place
               </Typography>
-              <Typography sx={{ textAlign: "start", fontSize: "16px", fontWeight: 400, fontColor: '#6A6868' }}>
+              {/* <Typography sx={{ textAlign: "start", fontSize: "16px", fontWeight: 400, fontColor: '#6A6868' }}>
                 We extend a warm welcome to Shekinah Haitian SDA Church, where we joyfully share the transformative message of Jesus Christ with all who seek to listen.
-              </Typography>
+              </Typography> */}
               <Typography sx={{ textAlign: "start", fontSize: "16px", fontWeight: 600, fontStyle: 'italic' }}>
-                In the refuge of the Lord's name, the righteous find strength and safety, a steadfast tower in times of need.
+                Shekinah Haitian SDA Church is more than a place of worship. We aim to create a spiritual home for everyone—an active family involved in impactful ministries and events. Our mission is to touch lives, fill hearts, and strengthen faith.
               </Typography>
               <Grid container>
                 <Grid item lg={6} md={12} sm={12} xs={12}>
@@ -295,7 +296,7 @@ const LandingContent = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.70)",
+            backgroundColor: 'rgba(10, 28, 50, 0.80)',
             zIndex: 0,
           }}
         />
@@ -455,7 +456,7 @@ const LandingContent = () => {
           See All Ministries
         </button>
       </Box> */}
-      <Box sx={{ padding: isSmall ? '20px' : "30px", backgroundColor: "black" }}>
+      <Box sx={{ padding: isSmall ? '20px' : "30px", backgroundColor: 'rgba(10, 28, 50, 0.98)', }}>
 
         <Grid container>
           <Grid item lg={6} sm={12} xs={12} md={6}>
@@ -667,12 +668,14 @@ const LandingContent = () => {
           View All Events
         </button>
       </Box> */}
-
+      <Box>
+        <Testimonials />
+      </Box>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          padding: isSmall ? '20px' : "40px",
+          padding: isSmall ? '20px' : "30px",
           justifyContent: "center",
           alignItems: "center",
           // gap: "30px",
@@ -745,13 +748,14 @@ const LandingContent = () => {
             borderRadius: "8px",
             padding: "10px 12px",
             border: "none",
-
+            zIndex: 1000,
           }}
           onClick={() => navigate('/blog_data')}
         >
           See All Blog
         </button>
       </Box >
+
       <Box
         sx={{
           position: "relative",
@@ -791,8 +795,8 @@ const LandingContent = () => {
           <Grid item lg={12} sm={12} md={6} xs={12}>
             <Box sx={{ color: 'white', display: 'flex', flexDirection: 'column', gap: '5px', alignItems: isSmall ? 'center' : 'start', justifyContent: isSmall ? 'center' : 'start', marginBottom: '30px' }}>
               <Typography sx={{ fontSize: isSmall ? '27px' : '35px', fontWeight: 700 }}>Get in touch</Typography>
-              <Typography sx={{ fontSize: isSmall ? '27px' : '35px', fontWeight: 700, textAlign: isSmall ? 'center' : 'start' }}>Don't hesitate Contact Us</Typography>
-              <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: isSmall ? 'center' : 'start', padding: isSmall ? '10px' : '0px 50px 0px 0px' }}>Feel free to Contact Us. Shekinah Haitian SDA Church WP Theme comes with sermons, ministries, events, testimonies, staff members, church locations short codes to enhance your website.</Typography>
+              <Typography sx={{ fontSize: isSmall ? '27px' : '35px', fontWeight: 700, textAlign: isSmall ? 'center' : 'start' }}>For inquiries, you can reach out to us at [Contact].</Typography>
+              <Typography sx={{ fontSize: '20px', fontWeight: 400, textAlign: isSmall ? 'center' : 'start', padding: isSmall ? '10px' : '0px 50px 0px 0px' }}>Follow us on social media to keep up with our latest updates and events.</Typography>
               <Box>
                 <button
                   className="animated-button"
@@ -804,6 +808,7 @@ const LandingContent = () => {
                     borderRadius: "8px",
                     padding: "10px 12px",
                     border: "none",
+                    zIndex: 1000,
 
                   }}
                   onClick={() => navigate('/contact')}

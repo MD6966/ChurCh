@@ -9,6 +9,7 @@ import { Carousel } from 'primereact/carousel';
 import { useDispatch } from 'react-redux';
 import { getPators } from '../../store/actions/userActions';
 import Page from '../../components/page/page'
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 const product = [
     {
         name: 'moaz',
@@ -108,29 +109,29 @@ const AboutUs = ({ setProgress }) => {
                                     <Typography sx={{
                                         textAlign: "start", fontSize: "22px", fontWeight: 800,
                                     }}>
-                                        Striving for a greener tomorrow, one small step at a time.
+
+                                        More Than Just a Place
                                     </Typography>
-                                    <Typography sx={{ textAlign: "start", fontSize: "16px", fontWeight: 400, fontColor: '#6A6868' }}>
+                                    {/* <Typography sx={{ textAlign: "start", fontSize: "16px", fontWeight: 400, fontColor: '#6A6868' }}>
                                         We extend a warm welcome to Shekinah Haitian SDA Church, where we joyfully share the transformative message of Jesus Christ with all who seek to listen.
-                                    </Typography>
+                                    </Typography> */}
                                     <Typography sx={{ textAlign: "start", fontSize: "16px", fontWeight: 600, fontStyle: 'italic' }}>
-                                        In the refuge of the Lord's name, the righteous find strength and safety, a steadfast tower in times of need.
+                                        Shekinah Haitian SDA Church is more than a place of worship. We aim to create a spiritual home for everyone—an active family involved in impactful ministries and events. Our mission is to touch lives, fill hearts, and strengthen faith.
                                     </Typography>
-                                    <Grid container>
+                                    <Typography sx={{ fontSize: '22px', fontWeight: 600 }}>What We Offer</Typography>
+                                    <Grid container spacing={2}>
                                         <Grid item lg={6}>
                                             <Box>
                                                 <Box sx={{ borderRadius: '50%', display: 'flex', alignItems: 'center', gap: '20px' }}>
                                                     <Box sx={{ backgroundColor: theme.palette.secondary.main, height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                                        <FavoriteOutlinedIcon sx={{ color: 'white', }} />
+                                                        <LocalLibraryOutlinedIcon sx={{ color: 'white', }} />
                                                     </Box>
                                                     <Box>
-                                                        <Typography sx={{ fontSize: '18px', fontWeight: 700 }}>Place of Heaven</Typography>
+                                                        <Typography sx={{ fontSize: '18px', fontWeight: 700 }}>Shared Meals</Typography>
                                                     </Box>
                                                 </Box>
                                                 <Typography sx={{ textAlign: 'start', mt: 1, color: '#6A6868' }}>
-                                                    At Shekinah Haitian SDA Church, immerse
-                                                    yourself in a sanctuary of divinity, piety,
-                                                    goodness, and steadfast faith.
+                                                    At Shekinah Haitian SDA Church, we believe food also feeds the soul. Part of our tradition is shared meals, where we gather around the table for delightful culinary experiences as a testament to our vibrant community.
                                                 </Typography>
 
                                             </Box>
@@ -139,16 +140,31 @@ const AboutUs = ({ setProgress }) => {
                                             <Box>
                                                 <Box sx={{ borderRadius: '50%', display: 'flex', alignItems: 'center', gap: '20px' }}>
                                                     <Box sx={{ backgroundColor: theme.palette.secondary.main, height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                                        <LocalLibraryOutlinedIcon sx={{ color: 'white', }} />
+                                                        <FavoriteOutlinedIcon sx={{ color: 'white', }} />
                                                     </Box>
                                                     <Box>
-                                                        <Typography sx={{ fontSize: '18px', fontWeight: 700 }}>Study Bible</Typography>
+                                                        <Typography sx={{ fontSize: '18px', fontWeight: 700 }}>Spiritual Nourishment</Typography>
                                                     </Box>
                                                 </Box>
                                                 <Typography sx={{ textAlign: 'start', mt: 1, color: '#6A6868' }}>
-                                                    Explore profound knowledge and spiritual
-                                                    growth within the pages of our study Bible
-                                                    —a sacred journey of understanding and faith.
+                                                    Experience spiritually-enriching sermons that resonate and inspire. Our dedicated team offers prayers and reflections that leave your soul fulfilled and motivated.
+                                                </Typography>
+
+                                            </Box>
+                                        </Grid>
+
+                                        <Grid item lg={12}>
+                                            <Box>
+                                                <Box sx={{ borderRadius: '50%', display: 'flex', alignItems: 'center', gap: '20px' }}>
+                                                    <Box sx={{ backgroundColor: theme.palette.secondary.main, height: '50px', width: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                        <EventAvailableIcon sx={{ color: 'white', }} />
+                                                    </Box>
+                                                    <Box>
+                                                        <Typography sx={{ fontSize: '18px', fontWeight: 700 }}>Ministries and Events</Typography>
+                                                    </Box>
+                                                </Box>
+                                                <Typography sx={{ textAlign: 'start', mt: 1, color: '#6A6868' }}>
+                                                    Beyond faith practice, we offer various ministries and events to foster a sense of connection and community. Explore opportunities to give back, evolve, and connect deeply with others.
                                                 </Typography>
 
                                             </Box>

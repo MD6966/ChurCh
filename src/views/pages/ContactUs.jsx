@@ -17,8 +17,8 @@ const data = [
     imgSrc: 'main.png',
     icon: <LocationOnOutlinedIcon sx={{ fontSize: '50px', color: '#CA9922', }} />,
     title: 'Our Location',
-    location1: 'Shekinah Haitian SDA Church',
-    location2: '3700 W. Risinger Rd Fort Worth, TX 76123'
+    location1: 'Shekinah Haitian SDA Church, Fort Worth, Texas',
+    // location2: '3700 W. Risinger Rd Fort Worth, TX 76123'
   },
   {
     imgSrc: 'main.png',

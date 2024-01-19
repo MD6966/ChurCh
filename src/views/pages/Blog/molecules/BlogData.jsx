@@ -90,7 +90,7 @@ const BlogData = ({ setProgress }) => {
               left: 0,
               width: '100%',
               height: '100%',
-              backgroundColor: 'rgba(0, 0, 0, 0.1)',
+              backgroundColor: 'rgba(10, 28, 50, 0.9)',
               zIndex: 0,
             }}
           />

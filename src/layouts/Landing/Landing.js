@@ -96,7 +96,7 @@ const Landing = ({ setProgress }) => {
             top: -120,
             left: 0,
             width: "100%",
-            height: "110vh",
+            height: "120vh",
             backgroundImage: `url('/main.png')`,
             // backgroundSize: "cover",
             backgroundPosition: "center",
@@ -138,22 +138,23 @@ const Landing = ({ setProgress }) => {
 
           }}
         >
-          <Typography sx={{ color: theme.palette.primary.main, fontSize: '24px', fontWeight: 700, }}>A Sanctuary of Faith and Community</Typography>
-          <Text sx={{ fontSize: isSmall ? '24px' : '32px', fontWeight: 600, padding: '0px 5px' }}>
+          <Typography sx={{ color: theme.palette.primary.main, fontSize: isSmall ? '20px' : '24px', fontWeight: 700, }}>Essentially Essential Community!</Typography>
+          {/* <Text sx={{ fontSize: isSmall ? '24px' : '32px', fontWeight: 600, padding: '0px 5px' }}>
 
             A Place of Worship, Community, and Spiritual Growth.
-          </Text>
+          </Text> */}
           <Text
             sx={{
-              fontSize: { xs: "16px", sm: "20px" },
+              fontSize: isSmall ? '16px' : '22px',
               fontWeight: 400,
               textAlign: "center",
-              padding: isSmall ? '0 20px' : isMedium ? '0 50px' : '0 200px'
+              padding: isSmall ? '0 20px' : isMedium ? '0 50px' : '0 60px'
             }}
           >
             {" "}
             {/* Ensure text is on top */}
-            Shekinah Haitian SDA Church: A vibrant community fostering spiritual growth. Join us for a journey of faith, fellowship, and transformation.
+
+            Discover the heartwarming fellowship at <span style={{ fontSize: isSmall ? '20px' : '25px', fontWeight: 600, padding: '0px 5px', color: theme.palette.primary.main }}> Shekinah Haitian SDA Church </span> located right in your neighborhood. Welcoming you with open arms and sincere smiles, we foster a sense of belonging. Join us today for a transformative worship experience!
           </Text>
           <button
             onClick={() => navigate('/live-stream')}
